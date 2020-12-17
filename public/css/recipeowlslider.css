@@ -1,0 +1,12 @@
+.category-recipes .recipe-feed-carousel .owl-stage-outer {
+    overflow: visible;
+
+}
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot {
+    background: 0 0;
+    color: inherit;
+    border: 1px solid #e1e1e1;
+    padding: 0!important;
+    font: inherit;
+	display:none;
+}

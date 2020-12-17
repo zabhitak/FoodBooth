@@ -1,0 +1,48 @@
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot {
+    background: 0 0;
+    color: inherit;
+    border: 1px solid #e1e1e1;
+    padding: 0!important;
+    font: inherit;
+    display: none;
+}
+#sync1 .item {
+    margin: 0px;
+    text-align: center;
+	cursor: pointer;
+}
+
+#sync2 .item {
+    padding: 5px 0px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#sync2 .item   h1 {
+      font-size: 18px;
+    
+  }
+ .current .item{
+    background: #fff;
+  
+}
+
+
+
+//arrows on first carousel
+#sync1.owl-theme {
+  position: relative;
+  .owl-next, .owl-prev {
+    width: 22px;
+    height: 40px;
+    margin-top: -20px;
+    position: absolute;
+    top: 50%;
+  }
+  .owl-prev {
+    left: 10px;
+  }
+  .owl-next {
+    right: 10px;
+  }
+}
