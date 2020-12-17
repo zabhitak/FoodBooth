@@ -26,7 +26,7 @@
           <div class="col-md-2 col-sm-12 col-xs-12">
             <div class="menu-left text-center text-md-left">
               <div class="logo-box">
-                <a href="/"><img src="images/logo.svg" alt="" /></a>
+                <a href="index.html"><img src="images/logo.svg" alt="" /></a>
               </div>
             </div>
           </div>
@@ -35,7 +35,7 @@
               <div class="icons-set">
                 <ul class="list-inline">
                   <li class="partner-btn">
-                      <a href="/signup" class="b-btn btn-link"
+                      <a href="partner_with_us.html" class="b-btn btn-link"
                         >Sign Up</a
                       >
                     </li>
@@ -52,33 +52,26 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-6 col-12">
-        <h1>Login Now</h1>
+        <h1>Verify Account</h1>
         <div class="login-container">
           <div class="row">
             <div class="col-lg-12 col-md-12 col-12">
-              <form action="/signin" method="POST">
+              <form method="POST" action="/verifyOtp-<%=otp.id%>" >
                   <div class="login-form">
                     <div class="login-logo">
                       <a href="index.html"><img src="images/login-register/logo.svg" alt=""></a>
                     </div>
-                    <div class="social-btns">
-                      <button class="facebook-btn"><i class="fab fa-facebook-f"></i>Continue with facebook</button>
-                      <button class="google-btn"><i class="fab fa-google"></i>Continue with Google</button>
-                    </div>
-                    <div class="or">
-                      <p> Or </p>
-                    </div>
                     <div class="form-group">
-                      <input type="text" class="video-form" id="emailphonenumber" name="username" placeholder="Username">
-                    </div>
-                    <div class="form-group">
-                      <input type="password" class="video-form" id="yourPassword" name="password" placeholder="Password">
+                      <input type="text" name="enteredOtp" class="video-form" id="emailphonenumber" placeholder="Enter OTP Here">
                     </div>
                     <%- include('./partials/flashMessage') %>
-                    <button type="submit" class="login-btn btn-link">Login Now</button>
+                    <button type="submit" class="login-btn btn-link">Verify Account</button>
                     <div class="forgot-password">
-                      <a href="#">Forgot Password?</a>
-                      <p>Don’t have an account? <a href="/signup"><span style="color:#ffa803;">- Register Now</span></a></p>
+                      <p>
+                        If you have an account?<a href="/signin"
+                          ><span style="color: #ffa803"> - Login Now</span></a
+                        >
+                      </p>
                     </div>
                   </div>
               </form>
