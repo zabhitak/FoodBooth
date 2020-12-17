@@ -21,6 +21,7 @@ const MONGODB_URI =keys.MONGODB_URI;
 
 const app = express();
 
+app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 

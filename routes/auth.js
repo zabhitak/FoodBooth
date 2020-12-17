@@ -38,7 +38,7 @@ router.post("/verifyOtp-:otpId",verifyOtpFunc)
 
 router.get("/wrongCredentials", (req,res) => {
     req.flash("error","USERNAME OR PASSWORD IS WRONG")
-    res.redirect("/")
+    res.redirect("/signin")
 })
 
 router.get("/sessionExpired",(req,res) => {
@@ -46,7 +46,7 @@ router.get("/sessionExpired",(req,res) => {
         res.redirect("/index")
     }
     req.flash("error","Sign in to continue!!!")
-    res.redirect("/")
+    res.redirect("/signin")
 })
 
 router.get("/logout", (req,res) => { 

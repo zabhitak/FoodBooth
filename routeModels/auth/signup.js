@@ -14,23 +14,29 @@ const auth = {
 var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
 
+
 const signup = async (req,res) => {
-    const {username,email,password,confirmPassword} = req.body
     
-    if(password !== confirmPassword ){
-        req.flash("error","PASSWORD ARE NOT THE SAME")
-        res.redirect("/signup")
-    }else{
-        try{
+    
+    var {username,email,password,confirmPassword } = req.body
+
+    try {
+        if(password !== confirmPassword ){
+            req.flash("error","Password are not same")
+            res.redirect("/signup")
+        }else if(password.length <= 5){
+            req.flash("error","Password length must be atleast 6")
+            res.redirect("/signup")
+        }else{
             var users = await User.findOne({ email })
             if(users){
-                req.flash("error","EMAIL ALREADY IN USE")
+                req.flash("error","Email already in use")
                 res.redirect("/signup")
             } 
             
             users = await User.findOne({ username })
             if(users){
-                req.flash("error","USERNAME ALREADY IN USE")
+                req.flash("error","Username already in use")
                 res.redirect("/signup")
             }
 
@@ -68,12 +74,13 @@ const signup = async (req,res) => {
             })
             req.flash("success",`Enter OTP sent to provided email`)
             res.redirect(`/verifyOtp-${otpCreated.id}`)
-        }
-        catch(err){
-            console.error(err)
-            req.flash("error","Cannot Verify Your Account !!!")
-            res.redirect("/signup")
-        }
+           
+        }  
+    } catch(err){
+        console.error(err)
+        req.flash("error","Cannot Verify Your Account !!!")
+        res.redirect("/signup")
     }
+    
 }
 module.exports = signup

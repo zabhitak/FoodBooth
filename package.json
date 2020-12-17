@@ -16,12 +16,14 @@
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "express-validator": "^6.8.0",
     "flash-message": "^2.0.1",
     "mongoose": "^5.11.8",
     "nodemailer": "^6.4.17",
     "nodemon": "^2.0.6",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^6.0.1"
+    "passport-local-mongoose": "^6.0.1",
+    "sanitize": "^2.1.0"
   }
 }
