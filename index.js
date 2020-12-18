@@ -6,8 +6,6 @@ const flash = require('connect-flash');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const LocalStratergy = require('passport-local');
-const multer = require("multer")
-const uuid = require("uuid")
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -24,29 +22,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
-
-const fileStorage = multer.diskStorage({
-  destination : "images/",
-  filename : function(req,file,cb){
-      cb(null,file.fieldname + "-" + uuid.v4() + path.extname(file.originalname));
-  }
-})
-
-const fileFilter = (req, file, cb) => {
-  if (
-    file.mimetype === 'image/png' ||
-    file.mimetype === 'image/jpg' ||
-    file.mimetype === 'image/jpeg'
-  ) {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
-};
-
-app.use( 
-  multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
-);
 
 
 mongoose
@@ -89,13 +64,6 @@ passport.deserializeUser(User.deserializeUser());
 
 var indexRoutes = require('./routes/index');
 var authRoutes = require('./routes/auth');
-
-// app.post("/settings",(req,res) => {
-//   console.log(req.file.path)
-//   console.log(req.body.fullName)
-//   res.redirect("/index")
-//  } 
-// )
 
 
 app.use(indexRoutes);
