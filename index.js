@@ -2,10 +2,12 @@ const path = require('path');
 
 const express = require('express');
 const mongoose = require('mongoose');
-var flash = require('connect-flash');
+const flash = require('connect-flash');
 const bodyParser = require('body-parser');
-var passport = require('passport');
-var LocalStratergy = require('passport-local');
+const passport = require('passport');
+const LocalStratergy = require('passport-local');
+const multer = require("multer")
+const uuid = require("uuid")
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -21,6 +23,31 @@ app.set('views', 'views');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
+const fileStorage = multer.diskStorage({
+  destination : "images/",
+  filename : function(req,file,cb){
+      cb(null,file.fieldname + "-" + uuid.v4() + path.extname(file.originalname));
+  }
+})
+
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === 'image/png' ||
+    file.mimetype === 'image/jpg' ||
+    file.mimetype === 'image/jpeg'
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+app.use( 
+  multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
+);
+
 
 mongoose
   .connect(MONGODB_URI, {
@@ -42,7 +69,7 @@ app.use(
   require('express-session')({
     resave: false,
     saveUninitialized: false,
-    secret: 'This is cara',
+    secret: 'This is food shop',
   })
 );
 
@@ -63,8 +90,18 @@ passport.deserializeUser(User.deserializeUser());
 var indexRoutes = require('./routes/index');
 var authRoutes = require('./routes/auth');
 
+// app.post("/settings",(req,res) => {
+//   console.log(req.file.path)
+//   console.log(req.body.fullName)
+//   res.redirect("/index")
+//  } 
+// )
+
+
 app.use(indexRoutes);
 app.use(authRoutes);
+
+
 
 app.listen(3000, () => {
   console.log('server running at 3000');

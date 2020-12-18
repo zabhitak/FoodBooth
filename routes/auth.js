@@ -2,11 +2,12 @@ const express = require("express")
 const passport = require("passport")
 const router = express.Router();
 
-const samePath = "../routeModels/auth/"
+const commonPath = "../routeModels/auth/"
 
-const signup = require(`${samePath}signup`)
-const verifyOtp = require(`${samePath}verifyOtp`)
-const verifyOtpFunc = require(`${samePath}verifyOtpFunc`) 
+const signup = require(`${commonPath}signup`)
+const verifyOtp = require(`${commonPath}verifyOtp`)
+const verifyOtpFunc = require(`${commonPath}verifyOtpFunc`) 
+const changePassword = require(`${commonPath}changePassword`)
 
 const middleware = require("../middleware")
 
@@ -31,6 +32,8 @@ router.get("/signup",(req,res ) => {
 } )
 
 router.post("/signup", signup )
+
+router.post("/changePassword",middleware.isLoggedIn,changePassword)
 
 router.get("/verifyOtp-:otpId",verifyOtp)
 router.post("/verifyOtp-:otpId",verifyOtpFunc)

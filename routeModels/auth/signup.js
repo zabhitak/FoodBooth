@@ -22,7 +22,7 @@ const signup = async (req,res) => {
 
     try {
         if(password !== confirmPassword ){
-            req.flash("error","Password are not same")
+            req.flash("error","Passwords are not same")
             res.redirect("/signup")
         }else if(password.length <= 5){
             req.flash("error","Password length must be atleast 6")

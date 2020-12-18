@@ -1,6 +1,6 @@
 var User = require("../user/User")
 
-indexRoute = (req,res) => {
+settingsRoute = (req,res) => {
     User.findById(req.user.id)
     .exec(function(err,user) {
         if(err){
@@ -8,8 +8,8 @@ indexRoute = (req,res) => {
             req.flash("error","Unexpected Error Occured!!!")
             res.redirect("/signin")
         }else{
-            res.render("index",{ user : user, title : "My Profile" })
+            res.render("settings",{ user : user, title : "Settings" })
         }
     })
 }
-module.exports = indexRoute
+module.exports = settingsRoute
