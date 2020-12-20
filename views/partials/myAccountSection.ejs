@@ -1,0 +1,37 @@
+<section class="my-account">
+    <div class="profile-bg">
+      <img src="images/profile/bg-img.jpg" alt="Responsive image" />
+      <div class="my-Profile-dt">
+        <div class="container">
+          <div class="row">
+            <div class="container">
+              <div class="profile-dpt">
+                <% var avatar = "images/profile/avatar.jpg" %>
+                <% if(user.avatar){%> 
+                    <% avatar = user.avatar %>
+                <%} %>
+                <div class="avtar">
+                  <img src="<%=avatar%>" alt="" />
+                </div>
+              </div>
+              <div class="profile-all-dt">
+                <div class="profile-name-dt">
+                  <% var name = user.username %>
+                  <% if(user.fullName){ %> 
+                    <% name = user.fullName %>  
+                  <%} %>
+                  <h1> <%= name %> </h1>
+                  <% if(user.address != ''){ %> 
+                    <p>
+                      <span><i class="fas fa-map-marker-alt"></i></span> <%= user.address  %> 
+                    </p>   
+                  <%} %>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

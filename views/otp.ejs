@@ -1,0 +1,86 @@
+<%- include('./partials/authentication/header') %>
+<body oncontextmenu="return false;">
+  <header id="header" class="default">
+    <div class="topbar">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-1">
+            <div class="topbar-right text-center text-md-right">
+              <ul class="list-inline">
+                <li class="nav-item dropdown">
+                  <div
+                    class="dropdown-menu dropdown-menu-right"
+                    aria-labelledby="accountDropdown"
+                  ></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 col-sm-12 col-xs-12">
+            <div class="menu-left text-center text-md-left">
+              <div class="logo-box">
+                <a href="index.html"><img src="images/logo.svg" alt="" /></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-10 col-sm-12 col-xs-12">
+            <div class="menu-items">
+              <div class="icons-set">
+                <ul class="list-inline">
+                  <li class="partner-btn">
+                      <a href="/signup" class="b-btn btn-link"
+                        >Sign Up</a
+                      >
+                    </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<section class="login_register">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-6 col-12">
+        <h1>Verify Account</h1>
+        <div class="login-container">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+              <form method="POST" action="/verifyOtp-<%=otp.id%>" >
+                  <div class="login-form">
+                    <div class="login-logo">
+                      <a href="index.html"><img src="images/login-register/logo.svg" alt=""></a>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" name="enteredOtp" class="video-form" id="emailphonenumber" placeholder="Enter OTP Here">
+                    </div>
+                    <%- include('./partials/flashMessage') %>
+                    <button type="submit" class="login-btn btn-link">Verify Account</button>
+                    <div class="forgot-password">
+                      <p>
+                        If you have an account?<a href="/signin"
+                          ><span style="color: #ffa803"> - Login Now</span></a
+                        >
+                      </p>
+                    </div>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('./partials/authentication/footer') %>
