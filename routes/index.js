@@ -24,4 +24,5 @@ router.get("/index",middleware.isLoggedIn,indexRoute)
 router.get('/settings',middleware.isLoggedIn,settingsRoute)
 router.post("/settings",middleware.isLoggedIn,settingsFunc)
 
+
 module.exports = router

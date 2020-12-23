@@ -31,9 +31,15 @@ const verifyOtpFunc = async (req,res) => {
             }else{
                 var removed = await OTP.findByIdAndRemove(otpId)
 
+<<<<<<< HEAD
                 const { username , email , password, role } = otpObject
                 
                 var newUser = await User.register({ username , email , role }, password ) 
+=======
+                const { username , email , password} = otpObject
+                
+                var newUser = await User.register({ username , email }, password ) 
+>>>>>>> 70ed34759fe6a280e752adebb6d508d42378cf40
             
                 await newUser.save()
 
@@ -42,6 +48,10 @@ const verifyOtpFunc = async (req,res) => {
                 res.redirect("/signin" )            
             }
         }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 70ed34759fe6a280e752adebb6d508d42378cf40
     }
     catch(err){
         console.log(err)

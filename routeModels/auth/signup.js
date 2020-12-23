@@ -18,7 +18,11 @@ var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
 const signup = async (req,res) => {
     
     
+<<<<<<< HEAD
     var {username,email,password,confirmPassword, role } = req.body
+=======
+    var {username,email,password,confirmPassword } = req.body
+>>>>>>> 70ed34759fe6a280e752adebb6d508d42378cf40
 
     try {
         if(password !== confirmPassword ){
@@ -64,14 +68,21 @@ const signup = async (req,res) => {
                 "Team ,Natto"
             }
     
+<<<<<<< HEAD
             // var response = await smtpTrans.sendMail(mailOpts)
+=======
+            var response = await smtpTrans.sendMail(mailOpts)
+>>>>>>> 70ed34759fe6a280e752adebb6d508d42378cf40
             var otpCreated = await OTP.create({
                 timeOfSending : Date.now(),
                 otp ,
                 username,
                 email,
                 password,
+<<<<<<< HEAD
                 role
+=======
+>>>>>>> 70ed34759fe6a280e752adebb6d508d42378cf40
             })
             req.flash("success",`Enter OTP sent to provided email`)
             res.redirect(`/verifyOtp-${otpCreated.id}`)

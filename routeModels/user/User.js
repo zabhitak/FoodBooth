@@ -42,6 +42,7 @@ const UserSchema = mongoose.Schema({
     website : {
         type : String,
         default : ""
+<<<<<<< HEAD
     },
     role : {
         type : String,
@@ -57,6 +58,9 @@ const UserSchema = mongoose.Schema({
         ref : "Product",
         default : []
     }]
+=======
+    }
+>>>>>>> 70ed34759fe6a280e752adebb6d508d42378cf40
 })
  
 
