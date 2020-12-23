@@ -42,7 +42,21 @@ const UserSchema = mongoose.Schema({
     website : {
         type : String,
         default : ""
-    }
+    },
+    role : {
+        type : String,
+        default : "User"
+    },
+    products : [ {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Product",
+        default : []
+    }],
+    cart : [{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Product",
+        default : []
+    }]
 })
  
 

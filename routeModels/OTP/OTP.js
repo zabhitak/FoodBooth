@@ -16,6 +16,10 @@ var otpSchema = new mongoose.Schema({
     password : {
         type : String,
     },
+    role : {
+        type : String,
+        default : "User"
+    },
 })
 
 module.exports = mongoose.model("OTP",otpSchema)

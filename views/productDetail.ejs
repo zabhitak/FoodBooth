@@ -1,0 +1,333 @@
+<%- include('./partials/header') %>
+  <body oncontextmenu="return false;">
+    <header id="header" class="default">
+      <%- include('./partials/topMenu') %>
+      <div class="container">
+        <%- include('./partials/flashMessage') %>
+      </div>
+    </header>
+
+
+
+<section class="all-partners">
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-md-8">
+<div id="sync1" class="owl-carousel owl-theme">
+	<% product.images.forEach(eachImg => { %> 
+		<div class="item">
+			<img src="<%=eachImg%>" alt="">
+		</div>
+	<%}) %>
+		
+</div>
+<div id="sync2" class="owl-carousel owl-theme">
+	<% product.images.forEach(eachImg => { %> 
+		<div class="item">
+			<img src="<%=eachImg%>" alt="">
+		</div>
+	<%}) %>
+</div>
+<div class="resto-meal-dt">
+<div class="resto-detail">
+<div class="resto-picy">
+<a href=""><img src="<%=product.user.avatar%>" alt=""></a>
+</div>
+<div class="name-location">
+<a href="restaurant_detail.html"><h5><%= product.user.fullName %></h5></a>
+<p><span><i class="fas fa-map-marker-alt"></i></span><%= product.user.address %></p>
+</div>
+</div>
+<div class="right-side-btns">
+<!-- <div class="bagde-dt"> -->
+<!-- <div class="partner-badge">
+Partner
+</div> -->
+<!-- </div> -->
+</div>
+</div>
+<div class="published-like-comments">
+<div class="published-time">
+<!-- <span><i class="far fa-calendar-alt"></i> Member since August 2018</span> -->
+</div>
+<div class="like-comments">
+<ul>
+<li>
+
+</li>
+<li>
+<span class="views" data-toggle="tooltip" data-placement="top" title="Comments">
+<i class="fas fa-comment-alt"></i>
+<ins> <%= product.comments.length %> </ins>
+</span>
+</li>
+
+</ul>
+</div>
+</div>
+<div class="all-tabs">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation">
+<a href="#comments" class="nav-link active" aria-controls="comments" role="tab" data-toggle="tab"><%= product.comments.length %> Comments</a>
+</li>
+<!-- <li class="nav-item" role="presentation">
+<a href="#reviews" class="nav-link" aria-controls="reviews" role="tab" data-toggle="tab">03 Reviews</a>
+</li> -->
+</ul>
+<div class="tab-content">
+<div class="tab-pane active" role="tabpanel" id="comments">
+<div class="comment-post">
+<div class="post-items">
+<div class="img-dp">
+<i class="fas fa-user"></i>
+</div>
+<form>
+<input type="text" class="post-input" name="post" placeholder="Write a comment">
+<input class="submit-btn btn-link" type="submit" value="Post Comment">
+</form>
+</div>
+</div>
+<% product.comments.forEach(eachCmt => { %> 
+	<div class="main-comments">
+		<div class="comment-1">
+		<div class="user-detail-heading">
+		<a href="user_profile_view.html"><img src="images/recipe-details/comment-1.png" alt=""></a>
+		<h4> Rock Smith</h4>
+		</div>
+		<div class="reply-time">
+		<a href="#reply-comment">Reply</a>
+		<p><i class="far fa-clock"></i>12 hours ago</p>
+		</div>
+		<div class="comment-description">
+		<p>Morbi hendrerit ipsum vel feugiat maximus. Duis posuere justo neque, sit amet efficitur quam aliquam non. Integer gravida ex quis lacinia consectetur.</p>
+		</div>
+		</div>
+		<div class="reply-1">
+		<div class="user-detail-heading">
+		<a href="user_profile_view.html"><img src="images/recipe-details/reply-1.png" alt=""></a>
+		<h4> Rock Smith</h4>
+		</div>
+		<div class="reply-time">
+		<p><i class="far fa-clock"></i>12 hours ago</p>
+		</div>
+		<div class="comment-description">
+		<p><a href="user_profile_view.html">@RockSmith</a> Thank you</p>
+		</div>
+		</div>
+		<div class="reply-comment">
+		<div class="post-items">
+		<div class="reply-dp">
+		<a href="https://www.gambolthemes.net/natto-new-demo/my_dashboard.html"><img src="images/recipe-details/reply-1.png" alt=""></a>
+		</div>
+		<form>
+		<input type="text" class="reply-input" name="post" placeholder="Write a reply">
+		<input class="reply-btn btn-link" type="submit" value="Reply">
+		</form>
+		</div>
+		</div>
+		</div>	
+<%}) %>
+
+<div class="main-comments">
+<div class="comment-1">
+<div class="user-detail-heading">
+<a href="user_profile_view.html"><img src="images/recipe-details/comment-2.png" alt=""></a>
+<h4> Jassica William</h4>
+</div>
+<div class="reply-time">
+<a href="#reply-comment">Reply</a>
+<p><i class="far fa-clock"></i>12 hours ago</p>
+</div>
+<div class="comment-description">
+<p>Morbi hendrerit ipsum vel feugiat maximus. Duis posuere justo neque, sit amet efficitur quam aliquam non. Integer gravida ex quis lacinia consectetur.</p>
+</div>
+</div>
+</div>
+<div class="main-comments">
+<div class="comment-1">
+<div class="user-detail-heading">
+<a href="user_profile_view.html"><img src="images/recipe-details/comment-3.png" alt=""></a>
+<h4> Jass Singh</h4>
+</div>
+<div class="reply-time">
+<a href="#reply-comment">Reply</a>
+<p><i class="far fa-clock"></i>12 hours ago</p>
+</div>
+<div class="comment-description">
+<p>Morbi hendrerit ipsum vel feugiat maximus. Duis posuere justo neque, sit amet efficitur quam aliquam non. Integer gravida ex quis lacinia consectetur.</p>
+</div>
+</div>
+</div>
+<div class="main-comments">
+<div class="comment-1">
+<div class="user-detail-heading">
+<a href="user_profile_view.html"><img src="images/recipe-details/comment-4.png" alt=""></a>
+<h4> Johnson Smith</h4>
+</div>
+<div class="reply-time">
+<a href="#reply-comment">Reply</a>
+<p><i class="far fa-clock"></i>12 hours ago</p>
+</div>
+<div class="comment-description">
+<p>Morbi hendrerit ipsum vel feugiat maximus. Duis posuere justo neque, sit amet efficitur quam aliquam non. Integer gravida ex quis lacinia consectetur.</p>
+</div>
+ </div>
+</div>
+<div class="main-comments">
+<div class="comment-1">
+<div class="user-detail-heading">
+<a href="user_profile_view.html"><img src="images/recipe-details/comment-5.png" alt=""></a>
+<h4> Joy Cutler</h4>
+</div>
+<div class="reply-time">
+<a href="#reply-comment">Reply</a>
+<p><i class="far fa-clock"></i>12 hours ago</p>
+</div>
+<div class="comment-description">
+<p>Morbi hendrerit ipsum vel feugiat maximus. Duis posuere justo neque, sit amet efficitur quam aliquam non. Integer gravida ex quis lacinia consectetur.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- <div class="tab-pane" role="tabpanel" id="reviews">
+<div class="comment-post">
+<div class="post-items">
+<a href="https://www.gambolthemes.net/natto-new-demo/my_dashboard.html">
+<div class="img-dp">
+<i class="fas fa-user"></i>
+</div>
+</a>
+<div class="select-rating">
+<h4>Your Rating :</h4>
+<ul class="rating-stars">
+<li><i class="fas fa-star"></i></li>
+<li><i class="fas fa-star"></i></li>
+<li><i class="fas fa-star"></i></li>
+<li><i class="fas fa-star"></i></li>
+<li><i class="fas fa-star"></i></li>
+</ul>
+</div>
+<form>
+<input type="text" class="rating-input" name="post" placeholder="Please describe the reason for your rating to help the author">
+<input class="rating-btn btn-link" type="submit" value="Save Review">
+</form>
+</div>
+</div>
+<div class="main-comments">
+<div class="rating-1">
+<div class="user-detail-heading">
+<a href="user_profile_view.html"><img src="images/recipe-details/comment-5.png" alt=""></a>
+<h4> Joy Cutler</h4><br>
+<div class="rate-star">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="far fa-star"></i>
+<span>4.5</span>
+</div>
+</div>
+<div class="reply-time">
+<p><i class="far fa-clock"></i>12 hours ago</p>
+</div>
+<div class="comment-description">
+<p>Morbi hendrerit ipsum vel feugiat maximus. Duis posuere justo neque, sit amet efficitur quam aliquam non. Integer gravida ex quis lacinia consectetur.</p>
+</div>
+</div>
+</div>
+<div class="main-comments bm-margin">
+<div class="rating-1">
+<div class="user-detail-heading">
+<a href="user_profile_view.html"><img src="images/recipe-details/comment-3.png" alt=""></a>
+<h4> Jass Singh</h4><br>
+<div class="rate-star">
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="fas fa-star"></i>
+<i class="far fa-star"></i>
+<span>4.5</span>
+</div>
+</div>
+<div class="reply-time">
+<p><i class="far fa-clock"></i>12 hours ago</p>
+</div>
+<div class="comment-description">
+<p>Morbi hendrerit ipsum vel feugiat maximus. Duis posuere justo neque, sit amet efficitur quam aliquam non. Integer gravida ex quis lacinia consectetur.</p>
+</div>
+</div>
+</div>
+</div> -->
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-4">
+<div class="right-side">
+<div class="new-heading t-bottom">
+<h1><%= product.title %></h1>
+</div>
+<div class="about-meal">
+<h4> Description</h4>
+<p><span> <%= product.description %>  </span></p>
+</div>
+<div class="price">
+<span><%= product.price %></span>
+</div>
+<div class="dt-detail">
+<ul>
+<li>
+<div class="delivery"><i class="fas fa-shopping-cart"></i>Delivery Free : <%= product.deliveryCharge %></div>
+</li>
+<li>
+<div class="time"><i class="far fa-clock"></i>Delivery Time : <%= product.deliveryTime %></div>
+</li>
+</ul>
+</div>
+
+<div class="Qty">
+<h4> Qty</h4>
+<div class="input-group">
+<div class="input-group-prepend">
+<button class="minus-btn btn-sm" id="minus-btn"><i class="fas fa-minus-square"></i></button>
+</div>
+<input type="number" id="qty_input" class="qty-control" value="1" min="1">
+<div class="input-group-prepend">
+<button class="add-btn btn-sm" id="plus-btn"><i class="fas fa-plus-square"></i></button>
+</div>
+</div>
+</div>
+
+<div class="order-now-check">
+<button class="on-btn btn-link" onclick="">Order Now</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+
+<%- include('./partials/footer') %>
+
+<script src="js/custom.js"></script>
+<script src="js/thumbnail.slider.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/bootstrap-select.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#qty_input').prop('disabled', true);
+		$('#plus-btn').click(function(){
+    	$('#qty_input').val(parseInt($('#qty_input').val()) + 1 );
+    	    });
+        $('#minus-btn').click(function(){
+    	$('#qty_input').val(parseInt($('#qty_input').val()) - 1 );
+    	if ($('#qty_input').val() == 0) {
+			$('#qty_input').val(1);
+		}
+
+		});
+	});
+	</script>
+</body>
+</html>

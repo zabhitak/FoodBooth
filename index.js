@@ -20,13 +20,8 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/images', express.static(path.join(__dirname, 'images')));
-
 const fileStorage = multer.diskStorage({
-  destination : "images/",
+  destination : "products/",
   filename : function(req,file,cb){
       cb(null,file.fieldname + "-" + uuid.v4() + path.extname(file.originalname));
   }
@@ -36,6 +31,7 @@ const fileFilter = (req, file, cb) => {
   if (
     file.mimetype === 'image/png' ||
     file.mimetype === 'image/jpg' ||
+    file.mimetype === 'image/JPG' ||
     file.mimetype === 'image/jpeg'
   ) {
     cb(null, true);
@@ -44,8 +40,17 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-app.use( 
-  multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
+const upload =  multer({ storage: fileStorage, fileFilter: fileFilter }).array('image',4);
+
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/products', express.static(path.join(__dirname, 'products')));
+
+app.use(
+  multer({ storage: fileStorage, fileFilter: fileFilter }).array('image',4)
 );
 
 
@@ -89,13 +94,14 @@ passport.deserializeUser(User.deserializeUser());
 
 var indexRoutes = require('./routes/index');
 var authRoutes = require('./routes/auth');
-
+var productRoutes = require("./routes/product")
 
 app.use(indexRoutes);
 app.use(authRoutes);
+app.use(productRoutes)
 
+const port = 3000
 
-
-app.listen(3000, () => {
-  console.log('server running at 3000');
+app.listen(port, () => {
+  console.log(`server running at ${port}`);
 });

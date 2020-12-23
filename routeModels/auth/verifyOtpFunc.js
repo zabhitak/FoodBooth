@@ -31,9 +31,9 @@ const verifyOtpFunc = async (req,res) => {
             }else{
                 var removed = await OTP.findByIdAndRemove(otpId)
 
-                const { username , email , password} = otpObject
+                const { username , email , password, role } = otpObject
                 
-                var newUser = await User.register({ username , email }, password ) 
+                var newUser = await User.register({ username , email , role }, password ) 
             
                 await newUser.save()
 
@@ -42,7 +42,6 @@ const verifyOtpFunc = async (req,res) => {
                 res.redirect("/signin" )            
             }
         }
-    
     }
     catch(err){
         console.log(err)

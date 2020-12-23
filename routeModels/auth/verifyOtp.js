@@ -9,7 +9,6 @@ const verifyOtp = async (req,res ) => {
             req.flash("error","Cannot verify your account right now !!!")
             res.redirect("/signup")
         }
-        
         res.render("otp",{ title : "Account Verification", otp })
         
 
