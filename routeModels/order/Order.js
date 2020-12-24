@@ -5,7 +5,11 @@ var orderSchema = new mongoose.Schema({
         type : Date,
         default : Date.now()
     },
-    user : { 
+    customer : { 
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "User"
+    },
+    restaurant : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "User"
     },

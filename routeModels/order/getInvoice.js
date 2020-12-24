@@ -2,6 +2,7 @@ const pdfDocument = require('pdfkit');
 const Order = require('./Order');
 const path = require('path');
 const fs = require('fs');
+const User = require("../user/User")
 
 function generateHr(doc, y) {
   doc.strokeColor('#aaaaaa').lineWidth(1).moveTo(50, y).lineTo(550, y).stroke();
@@ -27,21 +28,27 @@ function generateTableRow(doc, y, item, unitCost, lineTotal) {
     .text(lineTotal, 0, y, {align: 'right'});
 }
 
-getInvoice = (req, res, next) => {
+getInvoice = async (req, res, next) => {
   const {orderId} = req.params;
-
-  Order.findById(orderId)
-    .populate('products')
-    .then((order) => {
+  try {
+    Order.findById(orderId).populate('products')
+    .then( async (order) => {
       if (!order) {
         req.flash('error', 'You dont have any order placed');
         res.redirect('/index');
       }
 
-      if (order.user.toString() != req.user.id.toString()) {
+      if (order.customer.toString() != req.user.id.toString()) {
         res.redirect('/index');
         return;
       }
+
+      var {totalCost , customer } = order;
+
+      customer = await User.findById(customer)
+
+
+
       const invoiceName = 'invoice-' + orderId + '.pdf';
       const invoicePath = path.join('data', 'invoices', invoiceName);
       const image = path.join(__dirname, './logo.png');
@@ -71,7 +78,7 @@ getInvoice = (req, res, next) => {
 
       generateHr(pdfDoc, 185);
       const customerInformationTop = 200;
-      let {totalCost} = order;
+
       pdfDoc
         .fontSize(10)
         .text('Invoice Number:', 50, customerInformationTop)
@@ -84,9 +91,9 @@ getInvoice = (req, res, next) => {
         .text(formatCurrency(totalCost), 150, customerInformationTop + 30)
 
         .font('Helvetica-Bold')
-        .text('invoice.shipping.name', 300, customerInformationTop)
+        .text(customer.username.toString(), 300, customerInformationTop)
         .font('Helvetica')
-        .text('invoice.shipping.address', 300, customerInformationTop + 15)
+        .text(customer.address.toString(), 300, customerInformationTop + 15)
         // .text(
         //   invoice.shipping.city +
         //     ", " +
@@ -100,7 +107,7 @@ getInvoice = (req, res, next) => {
 
       generateHr(pdfDoc, 185);
 
-      let i;
+      let i = 0;
       const invoiceTableTop = 330;
 
       pdfDoc.font('Helvetica-Bold');
@@ -114,43 +121,59 @@ getInvoice = (req, res, next) => {
       generateHr(pdfDoc, invoiceTableTop + 20);
       pdfDoc.font('Helvetica');
 
-      // order.products.forEach((product) => {
-      //   const position = invoiceTableTop + (i + 1) * 30;
-      //   i++;
-      //   generateTableRow(
-      //     pdfDoc,
-      //     position,
-      //     'product.title',
-      //     'product.deliveryCharge',
-      //     'product.price'
-      //   );
+      order.products.forEach((product) => {
+        const position = invoiceTableTop + (i + 1) * 30;
+        i++;
+        generateTableRow(
+          pdfDoc,
+          position,
+          product.title,
+          product.deliveryCharge + " + " + product.price,
+          product.deliveryCharge + " + " + product.price
+        );
 
-      //   generateHr(pdfDoc, position + 20);
-      // });
+        generateHr(pdfDoc, position + 20);
+      });
+
+      var position = invoiceTableTop + (i + 1) * 30;
+      
+      generateTableRow(
+        pdfDoc,
+        position,
+        "",
+        "Total",
+        "$ " + totalCost
+      );
+
+      generateHr(pdfDoc, position + 20);
 
       // let { totalCost } = order;
-      order.products.forEach((product) => {
-        // totalCost = totalCost + prod.quantity * prod.product.price;
-        pdfDoc
-          .fontSize(14)
-          .text(
-            product.title +
-              ' -- ' +
-              product.price +
-              '+' +
-              product.deliveryCharge
-          );
-      });
-      pdfDoc.text('-----------');
-      pdfDoc.fontSize(20).text('Total Price $' + totalCost);
+      // order.products.forEach((product) => {
+      //   // totalCost = totalCost + prod.quantity * prod.product.price;
+      //   pdfDoc
+      //     .fontSize(14)
+      //     .text(
+      //       product.title +
+      //         ' -- ' +
+      //         product.price +
+      //         '+' +
+      //         product.deliveryCharge
+      //     );
+      // });
+      // pdfDoc.text('-----------');
+      // pdfDoc.fontSize(20).text('Total Price $' + totalCost);
       pdfDoc.end();
-    })
-
-    .catch((err) => {
+    }).catch((err) => {
       console.log(err);
       req.flash('error', 'Can not get your invoice right now');
       res.redirect('/index');
     });
+  } catch (err) {
+    console.log(err)
+    req.flash("error","Cannot get your invoice right now")
+    res.redirect("/index")
+  }
+  
 };
 
 module.exports = getInvoice;

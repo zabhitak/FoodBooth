@@ -1,6 +1,7 @@
 var User = require("../user/User")
 var Order = require("./Order")
 
+
 placeOrder = async (req,res) => {
     const userId = req.user.id
     try {
@@ -8,9 +9,11 @@ placeOrder = async (req,res) => {
 
         var products = user.cart
 
+        var restaurant = await User.findById(products[0].user)
+
         var { totalCost } = user
 
-        var newOrder = await Order.create({ user , products,totalCost })
+        var newOrder = await Order.create({ customer : user , products,totalCost ,restaurant })
 
         user.currentOrder = newOrder
 
