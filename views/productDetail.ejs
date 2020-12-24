@@ -225,11 +225,14 @@ Partner
 			<button class="on-btn btn-link" onclick="">Add to Cart</button>
 		</a>
 	</div>	
+	<% if(product.user.id == user.id ){ %> 
+		<form action="/delete-product" method="POST">
+			<input type="hidden" value="<%= product.id %>" name="productId">
+			<button class="btn" type="submit">Delete</button>
+		</form>	
+	<%} %>
 <%} %>
-<form action="/delete-product" method="POST">
-	<input type="hidden" value="<%= product.id %>" name="productId">
-	<button class="btn" type="submit">Delete</button>
-</form>
+
 
 </div>
 </div>

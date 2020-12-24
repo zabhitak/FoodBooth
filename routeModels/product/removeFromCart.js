@@ -11,9 +11,12 @@ const removeFromCart = async (req,res) => {
 
         var currentCart = user.cart
         delete currentCart[index]
-        // this is not working .....
-        console.log(currentCart)
-        user.cart = currentCart
+        
+        var newCart = currentCart.filter( eachOne => {
+            return eachOne != null
+        } )
+
+        user.cart = newCart
 
         var { price, deliveryCharge } = product
 
@@ -53,18 +56,3 @@ const removeFromCart = async (req,res) => {
 }
 
 module.exports = removeFromCart
-
-
-// exports.postCartDeleteProduct = (req, res, next) => {
-//     const prodId = req.body.productId;
-//     req.user
-//       .removeFromCart(prodId)
-//       .then((result) => {
-//         res.redirect('/cart');
-//       })
-//       .catch((err) => {
-//         const error = new Error(err);
-//         error.httpStatusCode = 500;
-//         return next(error);
-//       });
-//   };

@@ -31,7 +31,6 @@ router.get('/addToCart-:productId',middleware.isLoggedIn,addToCart)
 router.get('/myCart',middleware.isLoggedIn,myCart)
 
 router.get('/remove-:productId-:index',middleware.isLoggedIn,removeFromCart)
-// router.post('/cart-delete-item', middleware.isLoggedIn, postCartDeleteProduct);
 
 router.post('/delete-product', middleware.isLoggedIn, postDeleteProduct);
 
