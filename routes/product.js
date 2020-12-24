@@ -15,11 +15,18 @@ const addToCart = require(`${commonPath}addToCart`)
 const myCart = require(`${commonPath}myCart`)
 const removeFromCart = require(`${commonPath}removeFromCart`)
 const postDeleteProduct = require(`${commonPath}deleteProduct`)
+const editProduct = require(`${commonPath}editProduct`)
+const editProductFunc = require(`${commonPath}editProductFunc`)
 
 router.get('/allProducts',allProducts)
 
 router.get("/addProduct",middleware.isLoggedIn,addProduct)
-router.post("/addProduct",addProductFunc)
+router.post("/addProduct",middleware.isLoggedIn,addProductFunc)
+
+
+router.get('/editProduct-:productId',middleware.isLoggedIn,editProduct)
+router.post('/editProduct-:productId',middleware.isLoggedIn,editProductFunc)
+
 
 router.get("/myProducts",middleware.isLoggedIn,myProducts)
 router.get("/productDetail-:productId",productDetail)

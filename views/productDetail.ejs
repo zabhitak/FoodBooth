@@ -220,15 +220,23 @@ Partner
 </div>
 </div>
 <% if(user){%> 
-	<div class="order-now-check">
-		<a href="/addToCart-<%=product.id%>">
-			<button class="on-btn btn-link" onclick="">Add to Cart</button>
-		</a>
-	</div>	
+	<% if(product.user.id != user.id){ %> 
+		<div class="order-now-check">
+			<a href="/addToCart-<%=product.id%>">
+				<button class="on-btn btn-link" onclick="">Add to Cart</button>
+			</a>
+		</div>	
+	<%}else{ %> 
+		<div class="order-now-check">
+			<a href="/editProduct-<%=product.id%>">
+				<button class="on-btn btn-link" onclick="">Edit</button>
+			</a>
+		</div>	
+	<%} %>
 	<% if(product.user.id == user.id ){ %> 
 		<form action="/delete-product" method="POST">
 			<input type="hidden" value="<%= product.id %>" name="productId">
-			<button class="btn" type="submit">Delete</button>
+			<button class="on-btn btn-danger" type="submit" style="color: white;" onclick="">Delete</button>
 		</form>	
 	<%} %>
 <%} %>
