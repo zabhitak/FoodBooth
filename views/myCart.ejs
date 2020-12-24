@@ -1,0 +1,84 @@
+<%- include('./partials/header') %>
+  <body oncontextmenu="return false;">
+    <header id="header" class="default">
+      <%- include('./partials/topMenu') %>
+      <div class="container">
+        <%- include('./partials/flashMessage') %>
+      </div>
+    </header>
+
+
+    <section class="all-partners">
+        <div class="container">
+        <div class="row">
+        <div class="col-lg-3 col-md-4">
+        <div class="filters partner-bottom">
+        <div class="filter-heading">
+        <h3> Total </h3>
+        </div>
+        <div class="accordion" id="accordionone">
+            <div class="total-cost">
+                <div class="total-text">
+                <h5>Total</h5>
+                </div>
+                <div class="total-price">
+                <p> <%= totalCost %> </p>
+                </div>
+                </div>
+        
+        </div>
+        </div>
+        </div>
+            <div class="col-lg-9 col-md-8">
+            <div class="col-lg-12 col-md-12 m-left m-right">
+            <div class="all-meals-show">
+            <div class="new-heading">
+            <h1> My Cart </h1>
+            </div>
+            </div>
+            </div>
+            <div class="row">
+                <% var index = 0; %>
+                <% products.forEach(eachProduct => { %> 
+                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                        <div class="all-meal">
+                            <div class="top">
+                                <a href="productDetail-<%=eachProduct.id%>"><div class="bg-gradient"></div></a>
+                                <div class="top-img">
+                                    <img src="<%=eachProduct.images[0]%>" alt="">
+                                </div>
+                                <div class="logo-img">
+                                    <img src="<%=eachProduct.user.avatar%>" alt="">
+                                </div>
+                                <div class="top-text">
+                                    <div class="heading"><h4><a href="productDetail-<%=eachProduct.id%>"> <%= eachProduct.title %> </a></h4></div>
+                                    <div class="sub-heading">
+                                        <h5><a href="restaurant_detail.html"><%= eachProduct.category %></a></h5>
+                                        <p><%= eachProduct.price %></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bottom">
+                            <div class="bottom-text">
+                                <div class="delivery"><i class="fas fa-shopping-cart"></i>Delivery Free : <%= eachProduct.deliveryCharge %> </div>
+                                <div class="time"><i class="far fa-clock"></i>Delivery Time : <%= eachProduct.deliveryTime %></div>
+                                <div class="star">
+                                    <a href="/remove-<%=eachProduct.id%>-<%=index%>">
+                                        <span> Remove </span>
+                                    </a>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    <% index = index + 1 %>
+                <% }) %>
+           
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+<%- include('./partials/footer') %>

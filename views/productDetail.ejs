@@ -81,8 +81,8 @@ Partner
 <div class="img-dp">
 <i class="fas fa-user"></i>
 </div>
-<form>
-<input type="text" class="post-input" name="post" placeholder="Write a comment">
+<form action="addComment-<%=product.id%>" method="POST">
+<input type="text" class="post-input" name="commentText" placeholder="Write a comment">
 <input class="submit-btn btn-link" type="submit" value="Post Comment">
 </form>
 </div>
@@ -90,104 +90,27 @@ Partner
 <% product.comments.forEach(eachCmt => { %> 
 	<div class="main-comments">
 		<div class="comment-1">
-		<div class="user-detail-heading">
-		<a href="user_profile_view.html"><img src="images/recipe-details/comment-1.png" alt=""></a>
-		<h4> Rock Smith</h4>
+			<div class="user-detail-heading">
+				
+				<a href="">
+					<% if(eachCmt.userImage){%> 
+						<img src="<%=eachCmt.userImage%>" alt="">
+					<%}else{%> 
+						
+					<% } %>
+				</a>
+				<h4> <%= eachCmt.username %> </h4>
+			</div>
+			<div class="reply-time">
+				<p><i class="far fa-clock"></i>12 hours ago</p>
+			</div>
+			<div class="comment-description">
+				<p> <%= eachCmt.commentText %> </p>
+			</div>
 		</div>
-		<div class="reply-time">
-		<a href="#reply-comment">Reply</a>
-		<p><i class="far fa-clock"></i>12 hours ago</p>
-		</div>
-		<div class="comment-description">
-		<p>Morbi hendrerit ipsum vel feugiat maximus. Duis posuere justo neque, sit amet efficitur quam aliquam non. Integer gravida ex quis lacinia consectetur.</p>
-		</div>
-		</div>
-		<div class="reply-1">
-		<div class="user-detail-heading">
-		<a href="user_profile_view.html"><img src="images/recipe-details/reply-1.png" alt=""></a>
-		<h4> Rock Smith</h4>
-		</div>
-		<div class="reply-time">
-		<p><i class="far fa-clock"></i>12 hours ago</p>
-		</div>
-		<div class="comment-description">
-		<p><a href="user_profile_view.html">@RockSmith</a> Thank you</p>
-		</div>
-		</div>
-		<div class="reply-comment">
-		<div class="post-items">
-		<div class="reply-dp">
-		<a href="https://www.gambolthemes.net/natto-new-demo/my_dashboard.html"><img src="images/recipe-details/reply-1.png" alt=""></a>
-		</div>
-		<form>
-		<input type="text" class="reply-input" name="post" placeholder="Write a reply">
-		<input class="reply-btn btn-link" type="submit" value="Reply">
-		</form>
-		</div>
-		</div>
-		</div>	
+	</div>	
 <%}) %>
 
-<div class="main-comments">
-<div class="comment-1">
-<div class="user-detail-heading">
-<a href="user_profile_view.html"><img src="images/recipe-details/comment-2.png" alt=""></a>
-<h4> Jassica William</h4>
-</div>
-<div class="reply-time">
-<a href="#reply-comment">Reply</a>
-<p><i class="far fa-clock"></i>12 hours ago</p>
-</div>
-<div class="comment-description">
-<p>Morbi hendrerit ipsum vel feugiat maximus. Duis posuere justo neque, sit amet efficitur quam aliquam non. Integer gravida ex quis lacinia consectetur.</p>
-</div>
-</div>
-</div>
-<div class="main-comments">
-<div class="comment-1">
-<div class="user-detail-heading">
-<a href="user_profile_view.html"><img src="images/recipe-details/comment-3.png" alt=""></a>
-<h4> Jass Singh</h4>
-</div>
-<div class="reply-time">
-<a href="#reply-comment">Reply</a>
-<p><i class="far fa-clock"></i>12 hours ago</p>
-</div>
-<div class="comment-description">
-<p>Morbi hendrerit ipsum vel feugiat maximus. Duis posuere justo neque, sit amet efficitur quam aliquam non. Integer gravida ex quis lacinia consectetur.</p>
-</div>
-</div>
-</div>
-<div class="main-comments">
-<div class="comment-1">
-<div class="user-detail-heading">
-<a href="user_profile_view.html"><img src="images/recipe-details/comment-4.png" alt=""></a>
-<h4> Johnson Smith</h4>
-</div>
-<div class="reply-time">
-<a href="#reply-comment">Reply</a>
-<p><i class="far fa-clock"></i>12 hours ago</p>
-</div>
-<div class="comment-description">
-<p>Morbi hendrerit ipsum vel feugiat maximus. Duis posuere justo neque, sit amet efficitur quam aliquam non. Integer gravida ex quis lacinia consectetur.</p>
-</div>
- </div>
-</div>
-<div class="main-comments">
-<div class="comment-1">
-<div class="user-detail-heading">
-<a href="user_profile_view.html"><img src="images/recipe-details/comment-5.png" alt=""></a>
-<h4> Joy Cutler</h4>
-</div>
-<div class="reply-time">
-<a href="#reply-comment">Reply</a>
-<p><i class="far fa-clock"></i>12 hours ago</p>
-</div>
-<div class="comment-description">
-<p>Morbi hendrerit ipsum vel feugiat maximus. Duis posuere justo neque, sit amet efficitur quam aliquam non. Integer gravida ex quis lacinia consectetur.</p>
-</div>
-</div>
-</div>
 </div>
 <!-- <div class="tab-pane" role="tabpanel" id="reviews">
 <div class="comment-post">
@@ -258,7 +181,7 @@ Partner
 </div>
 </div>
 </div> -->
-</div>
+</div> -->
 </div>
 </div>
 <div class="col-lg-4 col-md-4">
@@ -276,7 +199,7 @@ Partner
 <div class="dt-detail">
 <ul>
 <li>
-<div class="delivery"><i class="fas fa-shopping-cart"></i>Delivery Free : <%= product.deliveryCharge %></div>
+<div class="delivery"><i class="fas fa-shopping-cart"></i>Delivery Charge : <%= product.deliveryCharge %></div>
 </li>
 <li>
 <div class="time"><i class="far fa-clock"></i>Delivery Time : <%= product.deliveryTime %></div>
@@ -296,10 +219,14 @@ Partner
 </div>
 </div>
 </div>
+<% if(user){%> 
+	<div class="order-now-check">
+		<a href="/addToCart-<%=product.id%>">
+			<button class="on-btn btn-link" onclick="">Add to Cart</button>
+		</a>
+	</div>	
+<%} %>
 
-<div class="order-now-check">
-<button class="on-btn btn-link" onclick="">Order Now</button>
-</div>
 </div>
 </div>
 </div>

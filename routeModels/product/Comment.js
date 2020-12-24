@@ -1,7 +1,10 @@
 var mongoose = require("mongoose")
 
 var commentSchema = new mongoose.Schema({
-    timeOfUploading : Date,
+    timeOfUploading : {
+        type : Date,
+        default : Date.now()
+    },
     commentText : String,
     user : { 
         type : mongoose.Schema.Types.ObjectId,
@@ -11,6 +14,14 @@ var commentSchema = new mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref : "Product"
     },
+    userImage : {
+        type : String,
+        default : ""
+    },
+    username : {
+        type : String,
+        default : ""
+    }
 })
 
 module.exports = mongoose.model("Comment",commentSchema)

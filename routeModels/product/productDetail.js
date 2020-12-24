@@ -7,13 +7,13 @@ myProducts =  async (req,res) => {
             user = await  User.findById(req.user.id)
         }
         var product = await Product.findById(req.params.productId).populate("user")
-            // .populate({
-            //     path : 'comments',
-            //     populate : {
-            //     path : 'Comment',
-            //     model : "Comment",
-            //     }
-            // })
+            .populate({
+                path : 'comments',
+                populate : {
+                    path : 'Comment',
+                    model : "Comment",
+                }
+            })
 
           var isOwner = false;
           if(req.user){

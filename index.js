@@ -94,7 +94,6 @@ passport.deserializeUser(User.deserializeUser());
 
 var indexRoutes = require('./routes/index');
 var authRoutes = require('./routes/auth');
-<<<<<<< HEAD
 var productRoutes = require("./routes/product")
 
 app.use(indexRoutes);
@@ -105,15 +104,4 @@ const port = 3000
 
 app.listen(port, () => {
   console.log(`server running at ${port}`);
-=======
-
-
-app.use(indexRoutes);
-app.use(authRoutes);
-
-
-
-app.listen(3000, () => {
-  console.log('server running at 3000');
->>>>>>> 70ed34759fe6a280e752adebb6d508d42378cf40
 });

@@ -42,7 +42,6 @@ const UserSchema = mongoose.Schema({
     website : {
         type : String,
         default : ""
-<<<<<<< HEAD
     },
     role : {
         type : String,
@@ -57,10 +56,11 @@ const UserSchema = mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref : "Product",
         default : []
-    }]
-=======
+    }] ,
+    totalCost : {
+        type : String,
+        default : "0"
     }
->>>>>>> 70ed34759fe6a280e752adebb6d508d42378cf40
 })
  
 
