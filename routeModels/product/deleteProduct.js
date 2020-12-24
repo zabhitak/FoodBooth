@@ -15,9 +15,8 @@ postDeleteProduct = (req, res, next) => {
       res.redirect('index');
     })
     .catch((err) => {
-      const error = new Error(err);
-      error.httpStatusCode = 500;
-      return next(error);
+      req.flash("error","Cannot delete product right now")
+      res.redirect("/index")
     });
 };
 
