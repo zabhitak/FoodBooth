@@ -60,12 +60,19 @@ const UserSchema = mongoose.Schema({
     totalCost : {
         type : String,
         default : "0"
-    }
+    },
+    currentOrder : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Order",
+    },
+    orders : [{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Order",
+        default : []
+    }]
 })
  
 
 UserSchema.plugin(passportLocalMongoose)
-
-
 
 module.exports = mongoose.model("User",UserSchema)

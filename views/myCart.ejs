@@ -12,18 +12,24 @@
         <div class="container">
         <div class="row">
         <div class="col-lg-3 col-md-4">
-        <div class="filters partner-bottom">
-        <div class="filter-heading">
-        <h3> Total </h3>
-        </div>
+        
         <div class="accordion" id="accordionone">
             <div class="total-cost">
+                <div class="total-text">
+                    <h5>Total</h5>
+                </div>
                 <div class="total-price">
-                <p> <%= totalCost %> </p>
+                    <p> <%= totalCost %> </p>
                 </div>
-                </div>
+            </div>
         
         </div>
+        <div class="accordion" id="accordionone">
+            <div class="order-now-check">
+                <form method="POST" action="/order">
+                    <button class="on-btn btn-link " onclick="">Order Now</button>
+                </form>
+            </div>
         </div>
         </div>
             <div class="col-lg-9 col-md-8">
@@ -75,7 +81,9 @@
             </div>
         </div>
         </div>
+        <div style="height: 40px;"></div>
     </section>
+
 
 
 <%- include('./partials/footer') %>

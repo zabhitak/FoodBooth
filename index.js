@@ -95,10 +95,12 @@ passport.deserializeUser(User.deserializeUser());
 var indexRoutes = require('./routes/index');
 var authRoutes = require('./routes/auth');
 var productRoutes = require("./routes/product")
+var orderRoutes = require("./routes/order")
 
 app.use(indexRoutes);
 app.use(authRoutes);
 app.use(productRoutes)
+app.use(orderRoutes)
 
 const port = 3000
 

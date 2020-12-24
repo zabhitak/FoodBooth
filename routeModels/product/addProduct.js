@@ -1,6 +1,6 @@
 var User = require("../user/User")
 
-indexRoute = (req,res) => {
+addProduct = (req,res) => {
     User.findById(req.user.id)
     .exec(function(err,user) {
         if(err){
@@ -16,4 +16,4 @@ indexRoute = (req,res) => {
         }
     })
 }
-module.exports = indexRoute
+module.exports = addProduct

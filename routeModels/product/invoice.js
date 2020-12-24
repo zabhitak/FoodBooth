@@ -32,22 +32,22 @@ getInvoice = (req, res, next) => {
           };
   
         pdfDoc.text('---------------------');
-        let totalPrice = 0;
-        order.products.forEach((prod) => {
-          totalPrice = totalPrice + prod.quantity * prod.product.price;
+        let { totalCost } = order;
+        order.products.forEach((product) => {
+          // totalCost = totalCost + prod.quantity * prod.product.price;
           pdfDoc
             .fontSize(14)
             .text(
-              prod.product.title +
+              product.title +
                 ' -- ' +
-                prod.quantity +
-                'x' +
+                product.price +
+                '+' +
                 '$' +
-                prod.product.price
+                product.deliveryCharge
             );
         });
         pdfDoc.text('-----------');
-        pdfDoc.fontSize(20).text('Total Price $' + totalPrice);
+        pdfDoc.fontSize(20).text('Total Price $' + totalCost);
         pdfDoc.end();
       })
       .catch((err) => next(err));
