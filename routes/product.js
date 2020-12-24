@@ -14,6 +14,7 @@ const addComment = require(`${commonPath}addComment`)
 const addToCart = require(`${commonPath}addToCart`)
 const myCart = require(`${commonPath}myCart`)
 const removeFromCart = require(`${commonPath}removeFromCart`)
+const postDeleteProduct = require(`${commonPath}deleteProduct`)
 
 router.get('/allProducts',allProducts)
 
@@ -30,5 +31,8 @@ router.get('/addToCart-:productId',middleware.isLoggedIn,addToCart)
 router.get('/myCart',middleware.isLoggedIn,myCart)
 
 router.get('/remove-:productId-:index',middleware.isLoggedIn,removeFromCart)
+// router.post('/cart-delete-item', middleware.isLoggedIn, postCartDeleteProduct);
+
+router.post('/delete-product', middleware.isLoggedIn, postDeleteProduct);
 
 module.exports = router
