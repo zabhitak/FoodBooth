@@ -1,16 +1,21 @@
 const pdfDocument = require('pdfkit');
-const Order = require('../models/order');
+const Order = require('./Order');
+const path = require("path")
+const fs = require("fs");
 
 getInvoice = (req, res, next) => {
-    const orderId = req.params.orderId;
-    Order.findById(orderId)
+    const { orderId } = req.params ;
+    
+    Order.findById(orderId).populate("products")
       .then((order) => {
         if (!order) {
-          return next(new Error('No order found'));
+          req.flash("error","You dont have any order placed")
+          res.redirect("/index")
         }
-  
-        if (order.user.userId.toString() !== req.user._id.toString()) {
-          return next(new Error('No order found'));
+        
+        if (order.user.toString() != req.user.id.toString()) {
+          res.redirect("/index")
+          return
         }
         const invoiceName = 'invoice-' + orderId + '.pdf';
         const invoicePath = path.join('data', 'invoices', invoiceName);
@@ -42,7 +47,6 @@ getInvoice = (req, res, next) => {
                 ' -- ' +
                 product.price +
                 '+' +
-                '$' +
                 product.deliveryCharge
             );
         });
@@ -50,7 +54,11 @@ getInvoice = (req, res, next) => {
         pdfDoc.fontSize(20).text('Total Price $' + totalCost);
         pdfDoc.end();
       })
-      .catch((err) => next(err));
+      .catch(err => {
+        console.log(err)
+        req.flash("error","Can not get your invoice right now")
+        res.redirect("/index")
+      });
   };
 
   module.exports = getInvoice
