@@ -4,6 +4,7 @@ const User = require("../user/User")
 const addToCart = async (req,res) => {
     const {productId} = req.params
     try {
+        
         var user = await User.findById(req.user.id)
         
         var product = await Product.findById(productId)
