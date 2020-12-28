@@ -579,12 +579,12 @@
                           <div class="col-lg-6 col-md-6 col-12 pm-right">
                             <div class="visit-restaurants">
                               <div class="recently-resto-picy">
-                                <a href="restaurant_detail.html"
+                                <a href="#"
                                   ><img src="images/profile/view-1.jpg" alt=""
                                 /></a>
                               </div>
                               <div class="recently-resto-dt">
-                                <a href="restaurant_detail.html"
+                                <a href="#"
                                   ><h4>Restaurant Name</h4></a
                                 >
                                 <p>
@@ -599,12 +599,12 @@
                           <div class="col-lg-6 col-md-6 col-12 pm-left">
                             <div class="visit-restaurants">
                               <div class="recently-resto-picy">
-                                <a href="restaurant_detail.html"
+                                <a href="#"
                                   ><img src="images/profile/view-2.jpg" alt=""
                                 /></a>
                               </div>
                               <div class="recently-resto-dt">
-                                <a href="restaurant_detail.html"
+                                <a href="#"
                                   ><h4>Restaurant Name</h4></a
                                 >
                                 <p>
@@ -619,12 +619,12 @@
                           <div class="col-lg-6 col-md-6 col-12 pm-right">
                             <div class="visit-restaurants">
                               <div class="recently-resto-picy">
-                                <a href="restaurant_detail.html"
+                                <a href="#"
                                   ><img src="images/profile/view-3.jpg" alt=""
                                 /></a>
                               </div>
                               <div class="recently-resto-dt">
-                                <a href="restaurant_detail.html"
+                                <a href="#"
                                   ><h4>Restaurant Name</h4></a
                                 >
                                 <p>
@@ -639,12 +639,12 @@
                           <div class="col-lg-6 col-md-6 col-12 pm-left">
                             <div class="visit-restaurants">
                               <div class="recently-resto-picy">
-                                <a href="restaurant_detail.html"
+                                <a href="#"
                                   ><img src="images/profile/view-4.jpg" alt=""
                                 /></a>
                               </div>
                               <div class="recently-resto-dt">
-                                <a href="restaurant_detail.html"
+                                <a href="#"
                                   ><h4>Restaurant Name</h4></a
                                 >
                                 <p>
@@ -686,7 +686,6 @@
                                 </tr>
                               </thead>
                               <tbody>
-
                               <% if(user.currentOrder){ %> 
                                 <% user.currentOrder.products.forEach( eachProduct => { %> 
                                   <tr>
@@ -705,7 +704,7 @@
                                         <a href="productDetail-<%=eachProduct.id%>"
                                           ><h4> <%= eachProduct.title %> </h4></a
                                         >
-                                        <a href="restaurant_detail.html"
+                                        <a href="#"
                                           ><p>Restaurant Name</p></a
                                         >
                                       </div>
@@ -905,166 +904,80 @@
                     <h4>Order History</h4>
                   </div>
                   <div class="my-orders">
+                    <% var index = 0 %>
+                    <% if(user.orders){ %> 
+                      <% user.orders.forEach(eachOrder => { %>
                     <div class="row">
                       <div class="col-lg-12 col-md-12 col-12">
                         <div class="my-checkout">
                           <div class="table-responsive">
+
+                            <h3 style="margin: 2% 0%;"> <%= eachOrder.timeOfOrder.toDateString() %> </h3>  
                             <table class="table table-bordered">
                               <thead>
                                 <tr>
                                   <td class="td-heading">Meal</td>
-                                  <td class="td-heading">Qty</td>
+                                  <!-- <td class="td-heading">Qty</td> -->
                                   <td class="td-heading">Price</td>
-                                  <td class="td-heading">Action</td>
+                                  <td class="td-heading">Status</td>
+                                  <td class="td-heading">
+
+                                    <a target="_blank" href="/getInvoice-<%=eachOrder.id%>">
+                                      <button class="invoice-btn btn-link">
+                                        <i class="far fa-file-alt"></i>
+                                      </button>
+                                    </a>
+                                    <a href="/deleteOrderFromHistory-<%=eachOrder.id%>-<%=index%>">
+                                      <button class="trash-btn btn-link">
+                                        <i class="far fa-trash-alt"></i>
+                                      </button>
+                                    </a>
+                                  </td>
                                 </tr>
                               </thead>
+
                               <tbody>
-                                <tr>
-                                  <td>
-                                    <div class="checkout-thumb-2">
-                                      <a href="meal_detail.html">
-                                        <img
-                                          src="images/profile/order-1.jpg"
-                                          class="img-responsive"
-                                          alt="thumb"
-                                          title="thumb"
-                                        />
-                                      </a>
-                                    </div>
-                                    <div class="name-dt">
-                                      <a href="meal_detail.html"
-                                        ><h4>Hum Burgar</h4></a
-                                      >
-                                      <a href="restaurant_detail.html"
-                                        ><p>Restaurant Name</p></a
-                                      >
-                                    </div>
-                                  </td>
-                                  <td class="td-content">2</td>
-                                  <td class="td-content">$22.00</td>
-                                  <td>
-                                    <button class="trace-btn btn-link">
-                                      Completed
-                                    </button>
-                                    <button class="invoice-btn btn-link">
-                                      <i class="far fa-file-alt"></i>
-                                    </button>
-                                    <button class="trash-btn btn-link">
-                                      <i class="far fa-trash-alt"></i>
-                                    </button>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <div class="checkout-thumb-2">
-                                      <a href="meal_detail.html">
-                                        <img
-                                          src="images/profile/order-2.jpg"
-                                          class="img-responsive"
-                                          alt="thumb"
-                                          title="thumb"
-                                        />
-                                      </a>
-                                    </div>
-                                    <div class="name-dt">
-                                      <a href="meal_detail.html"
-                                        ><h4>Cheese Pizza</h4></a
-                                      >
-                                      <a href="restaurant_detail.html"
-                                        ><p>Restaurant Name</p></a
-                                      >
-                                    </div>
-                                  </td>
-                                  <td class="td-content">1</td>
-                                  <td class="td-content">$18.00</td>
-                                  <td>
-                                    <button class="trace-btn btn-link">
-                                      Completed
-                                    </button>
-                                    <button class="invoice-btn btn-link">
-                                      <i class="far fa-file-alt"></i>
-                                    </button>
-                                    <button class="trash-btn btn-link">
-                                      <i class="far fa-trash-alt"></i>
-                                    </button>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <div class="checkout-thumb-2">
-                                      <a href="meal_detail.html">
-                                        <img
-                                          src="images/profile/order-3.jpg"
-                                          class="img-responsive"
-                                          alt="thumb"
-                                          title="thumb"
-                                        />
-                                      </a>
-                                    </div>
-                                    <div class="name-dt">
-                                      <a href="meal_detail.html"
-                                        ><h4>Veg Noodles</h4></a
-                                      >
-                                      <a href="restaurant_detail.html"
-                                        ><p>Restaurant Name</p></a
-                                      >
-                                    </div>
-                                  </td>
-                                  <td class="td-content">1</td>
-                                  <td class="td-content">$20.00</td>
-                                  <td>
-                                    <button class="trace-btn btn-link">
-                                      Completed
-                                    </button>
-                                    <button class="invoice-btn btn-link">
-                                      <i class="far fa-file-alt"></i>
-                                    </button>
-                                    <button class="trash-btn btn-link">
-                                      <i class="far fa-trash-alt"></i>
-                                    </button>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>
-                                    <div class="checkout-thumb-2">
-                                      <a href="meal_detail.html">
-                                        <img
-                                          src="images/profile/order-4.jpg"
-                                          class="img-responsive"
-                                          alt="thumb"
-                                          title="thumb"
-                                        />
-                                      </a>
-                                    </div>
-                                    <div class="name-dt">
-                                      <a href="meal_detail.html"
-                                        ><h4>Chicken Masala</h4></a
-                                      >
-                                      <a href="restaurant_detail.html"
-                                        ><p>Restaurant Name</p></a
-                                      >
-                                    </div>
-                                  </td>
-                                  <td class="td-content">1</td>
-                                  <td class="td-content">$25.00</td>
-                                  <td>
-                                    <button class="trace-btn btn-link">
-                                      Completed
-                                    </button>
-                                    <button class="invoice-btn btn-link">
-                                      <i class="far fa-file-alt"></i>
-                                    </button>
-                                    <button class="trash-btn btn-link">
-                                      <i class="far fa-trash-alt"></i>
-                                    </button>
-                                  </td>
-                                </tr>
+                                    <% eachOrder.products.forEach( eachProduct => { %> 
+                                      <tr>
+                                        <td>
+                                          <div class="checkout-thumb-2">
+                                            <a href="productDetail-<%=eachProduct.id%>">
+                                              <img
+                                                src="<%=eachProduct.images[0]%>"
+                                                class="img-responsive"
+                                                alt="thumb"
+                                                title="thumb"
+                                              />
+                                            </a>
+                                          </div>
+                                          <div class="name-dt">
+                                            <a href="productDetail-<%=eachProduct.id%>"
+                                              ><h4><%= eachProduct.title %> </h4></a
+                                            >
+                                            <a href="#"
+                                              ><p>Restaurant Name</p></a
+                                            >
+                                          </div>
+                                        </td>
+                                        <!-- <td class="td-content">1</td> -->
+                                        <td class="td-content"><%= eachProduct.price %> </td>
+                                        <td>
+                                          <button class="trace-btn btn-link">
+                                            Completed
+                                          </button>
+                                        </td>
+                                      </tr>
+                                  <% } ) %>
                               </tbody>
                             </table>
                           </div>
                         </div>
                       </div>
                     </div>
+                    <% index = index + 1 %>
+                    <% } ) %>
+                  <%} %>
+                    
                   </div>
                 </div>
               </div>

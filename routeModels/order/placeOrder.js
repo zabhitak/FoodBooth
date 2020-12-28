@@ -17,6 +17,10 @@ placeOrder = async (req,res) => {
 
         user.currentOrder = newOrder
 
+        if(user.orders.length > 10){
+            user.orders = user.orders.slice(0,10) // max 10 orders at a time
+        }
+
         user.orders.unshift(newOrder)
 
         user.cart = []
