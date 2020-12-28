@@ -89,20 +89,10 @@ getInvoice = async (req, res, next) => {
         .text(formatDate(new Date()), 150, customerInformationTop + 15)
         .text('Balance Due:', 50, customerInformationTop + 30)
         .text(formatCurrency(totalCost), 150, customerInformationTop + 30)
-
         .font('Helvetica-Bold')
         .text(customer.username.toString(), 300, customerInformationTop)
         .font('Helvetica')
         .text(customer.address.toString(), 300, customerInformationTop + 15)
-        // .text(
-        //   invoice.shipping.city +
-        //     ", " +
-        //     invoice.shipping.state +
-        //     ", " +
-        //     invoice.shipping.country,
-        //   300,
-        //   customerInformationTop + 30
-        // )
         .moveDown();
 
       generateHr(pdfDoc, 185);
@@ -147,21 +137,6 @@ getInvoice = async (req, res, next) => {
 
       generateHr(pdfDoc, position + 20);
 
-      // let { totalCost } = order;
-      // order.products.forEach((product) => {
-      //   // totalCost = totalCost + prod.quantity * prod.product.price;
-      //   pdfDoc
-      //     .fontSize(14)
-      //     .text(
-      //       product.title +
-      //         ' -- ' +
-      //         product.price +
-      //         '+' +
-      //         product.deliveryCharge
-      //     );
-      // });
-      // pdfDoc.text('-----------');
-      // pdfDoc.fontSize(20).text('Total Price $' + totalCost);
       pdfDoc.end();
     }).catch((err) => {
       console.log(err);
