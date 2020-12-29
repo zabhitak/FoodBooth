@@ -41,13 +41,6 @@ editProductFunc = async (req,res) => {
                 }
                  product.images = images
             }
-            // }else{
-            //     images  = product.images
-            // }
-         
-
-          
-
             await product.save()
 
             req.flash("success","Your product edited successfully")
