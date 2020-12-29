@@ -1,6 +1,7 @@
 
 const Order = require("./Order")
 const User = require("../user/User")
+// const fileHelper = require('../../util/file');
 
 const deleteOrderFromHistory = async (req,res) => {
     const { orderId, index} = req.params
@@ -10,6 +11,9 @@ const deleteOrderFromHistory = async (req,res) => {
         
         var order = await Order.findByIdAndDelete(orderId)
 
+        // order.forEach(element => {
+        //     fileHelper.deleteFile(element);
+        //   }
 
         req.flash("success",`Order removed from history`)
         res.redirect(`index`)
