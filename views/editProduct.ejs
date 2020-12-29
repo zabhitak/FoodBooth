@@ -31,7 +31,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="videoDescription">Description</label>
-                                    <input textarea required value="<%=product.description%>" name="description" class="text-area" id="videoDescription" placeholder="Description"></textarea>
+                                    <textarea required name="description" class="text-area" id="videoDescription" placeholder="Description">
+                                        <%=product.description%>
+                                    </textarea>
                                     <!-- <input required value="<%=product.description%>" name="description" type="text" class="video-form" id="videoDescription" placeholder="Description"> -->
                                 </div>
                                
