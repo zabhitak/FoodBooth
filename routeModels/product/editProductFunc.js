@@ -16,6 +16,13 @@ editProductFunc = async (req,res) => {
           
             const { title, price, description, category, offer,deliveryCharge,deliveryTime } = (req.body)
             var images = []
+            product.title = title
+            product.price = price
+            product.description = description
+            product.category = category
+            product.offer = offer
+            product.deliveryCharge = deliveryCharge
+            product.deliveryTime = deliveryTime
             if(req.files.length != 0){
                 product.images.forEach(element => {
                     fileHelper.deleteFile(element);
@@ -32,18 +39,14 @@ editProductFunc = async (req,res) => {
                 if(req.files[3]){
                     images.push(req.files[3].path)
                 }
-            }else{
-                images  = product.images
+                 product.images = images
             }
+            // }else{
+            //     images  = product.images
+            // }
          
-            product.title = title
-            product.price = price
-            product.description = description
-            product.category = category
-            product.offer = offer
-            product.deliveryCharge = deliveryCharge
-            product.deliveryTime = deliveryTime
-            product.images = images
+
+          
 
             await product.save()
 
