@@ -18,7 +18,7 @@ router.get("/signin",(req,res ) => {
     res.render('signin',{ title : "Login Now" } )
 } )
 
-router.post("/signin",passport.authenticate("local",{
+router.post("/signin",passport.authenticate("user",{
     failureRedirect : "/wrongCredentials"
 }),middleware.isLoggedIn, (req,res) => {
     res.redirect("/index")

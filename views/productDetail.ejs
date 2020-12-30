@@ -7,8 +7,6 @@
       </div>
     </header>
 
-
-
 <section class="all-partners">
 <div class="container">
 <div class="row">
@@ -31,7 +29,7 @@
 <div class="resto-meal-dt">
 <div class="resto-detail">
 <div class="resto-picy">
-<a href=""><img src="<%=product.user.avatar%>" alt=""></a>
+<a href=""><img style="height: 90%;width: 90%;" src="<%=product.user.avatar%>" alt=""></a>
 </div>
 <div class="name-location">
 <a href="restaurant_detail.html"><h5><%= product.user.fullName %></h5></a>
@@ -206,41 +204,27 @@ Partner
 </li>
 </ul>
 </div>
-
+<% if(user){%> 
+	<% if(product.user.id != user.id){ %> 
+<form action="/addToCart-<%=product.id%>" method="POST">
 <div class="Qty">
 <h4> Qty</h4>
 <div class="input-group">
-<div class="input-group-prepend">
-<button class="minus-btn btn-sm" id="minus-btn"><i class="fas fa-minus-square"></i></button>
-</div>
-<input type="number" id="qty_input" class="qty-control" value="1" min="1">
-<div class="input-group-prepend">
-<button class="add-btn btn-sm" id="plus-btn"><i class="fas fa-plus-square"></i></button>
-</div>
+	<% var cq = 1 %>
+	<% if(quantity){ %> 
+		<% cq = parseFloat(quantity) %>
+	<% } %>
+<input type="number" value="<%=cq%>" name="quantity" placeholder="1" min="1">
 </div>
 </div>
-<% if(user){%> 
-	<% if(product.user.id != user.id){ %> 
 		<div class="order-now-check">
-			<a href="/addToCart-<%=product.id%>">
-				<button class="on-btn btn-link" onclick="">Add to Cart</button>
+			<a href="">
+				<button type="submit" class="on-btn btn-link" onclick="">Add to Cart</button>
 			</a>
 		</div>	
-	<%}else{ %> 
-		<div class="order-now-check">
-			<a href="/editProduct-<%=product.id%>">
-				<button class="on-btn btn-link" onclick="">Edit</button>
-			</a>
-		</div>	
-	<%} %>
-	<% if(product.user.id == user.id ){ %> 
-		<form action="/delete-product" method="POST">
-			<input type="hidden" value="<%= product.id %>" name="productId">
-			<button class="on-btn btn-danger" type="submit" style="color: white;" onclick="">Delete</button>
-		</form>	
-	<%} %>
+</form>
 <%} %>
-
+<%} %>
 
 </div>
 </div>

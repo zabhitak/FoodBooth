@@ -3,7 +3,13 @@ var User = require("../user/User")
 myCart =  async (req,res) => {
     
     try {
-        var user = await  User.findById(req.user.id).populate('cart')
+        var user = await  User.findById(req.user._id).populate({
+            path : 'cart',
+            populate : {
+              path : 'product',
+              model : "Product",
+            }
+          })
         var { totalCost }  = user
         var products = user.cart
         res.render("myCart",{ title : "My Products", user, products ,totalCost })

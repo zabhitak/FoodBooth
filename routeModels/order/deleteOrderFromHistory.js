@@ -7,7 +7,7 @@ const deleteOrderFromHistory = async (req,res) => {
     const { orderId, index} = req.params
 
     try {
-        var user = await User.findById(req.user.id)
+        var user = await User.findById(req.user._id)
         
         var order = await Order.findByIdAndDelete(orderId)
 

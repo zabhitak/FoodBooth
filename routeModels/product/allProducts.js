@@ -1,11 +1,11 @@
 var User = require("../user/User")
-var Products = require("./Product")
+var Products = require("../admin/product/Product")
 
 allProducts =  async (req,res) => {
     try {
         var user;
         if(req.user){
-            user = await  User.findById(req.user.id)
+            user = await  User.findById(req.user._id)
         }
              
         var products = await Products.find({}).populate("user")

@@ -1,0 +1,102 @@
+<%- include('./partials/header') %>
+<%- include('./partials/sidenav') %>
+<%- include('../partials/flashMessage') %>
+  <!-- Main Content -->
+  <main class="body-content">
+    <!-- Navigation Bar -->
+   
+    <div class="ms-content-wrapper">
+      <div class="row">
+        <div class="col-12">
+          <div class="ms-panel">
+            <div class="ms-panel-header">
+              <h6>Order Info </h6>
+            </div>
+            <div class="ms-panel-body">
+              <div class="table-responsive">
+                <table class="table table-hover thead-primary">
+                  <thead>
+                    <tr>
+                      <th scope="col">Order ID</th>
+                      <th scope="col">Customer Name</th>
+                      <th scope="col">Location</th>
+                      <th scope="col">Order Status</th>
+                      <th scope="col">Order Date</th>
+                      <th scope="col">Order Time</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% var index = 1 %>
+                      <tr>
+                        <th scope="row"> <%= index %> </th>
+                        <td> <%= order.customer.username %> </td>
+                        <td> <%= order.customer.address %> </td>
+
+                        <td><span class="badge badge-warning"> <%= order.status %>  </span>
+                        </td>
+                        <td> <%= order.timeOfOrder.toDateString() %>  </td>
+                        <td> <%= order.timeOfOrder.toTimeString() %>  </td>
+                        <td> <%= order.totalCost %>  </td>
+                        <td> 
+                            <% if(order.status == 'Accepted'){ %> 
+                                <form method="POST" action="/admin/sendForDelivery-<%=order.id%>">
+                                    <button class="badge badge-primary"> Send For Delivery </button> 
+                                </form>   
+                                <form method="POST" action="/admin/cancelOrder-<%=order.id%>">
+                                    <button class="badge badge-primary"> Cancel Order </button> 
+                                </form>   
+                            <%}else if(order.status == 'onTheWay'){ %> 
+                                <form method="POST" action="/admin/confirmDelivery-<%=order.id%>">
+                                    <button class="badge badge-warning"> Confirm Delivery </button> 
+                                </form>    
+                            <%} %>
+                            
+                        </td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+            <div class="ms-panel">
+              <div class="ms-panel-header">
+                <h6>Products </h6>
+              </div>
+              <div class="ms-panel-body">
+                <div class="table-responsive">
+                  <table class="table table-hover thead-primary">
+                    <thead>
+                      <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% order.products.forEach( everyProduct => { %> 
+                            <% var eachProduct = everyProduct.product %>
+                            <tr>
+                                <td class="ms-table-f-w"> <img src="<%=eachProduct.images[0]%>" alt="img"> </td>
+                                <!-- <td>French Fries</td> -->
+                                <td> <%= eachProduct.title %> </td>
+                                <td> <%= everyProduct.quantity %> </td>
+                                <td> <%= eachProduct.price %> </td>
+                            </tr>
+                        <% } ) %>
+                     
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </main>
+  
+<%- include('./partials/footer') %>

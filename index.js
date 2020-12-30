@@ -9,12 +9,33 @@ const LocalStratergy = require('passport-local');
 const multer = require("multer")
 const uuid = require("uuid")
 const dotenv = require('dotenv');
+
 dotenv.config();
 
 const keys = require('./keys');
 const MONGODB_URI = keys.MONGODB_URI;
 
 const app = express();
+
+
+var http = require("http").createServer(app);
+
+const io = require('socket.io')(http);
+
+io.on('connection', socket => {
+  socket.on("orderPlaced",( order ) => {
+    var user = order.orderBy
+    var data = {
+      username : user.username,
+      phoneNumber : user.phoneNumber,
+      totalCost : user.totalCost,
+      address : user.address
+    }
+    if(user.cart.length != 0){
+      socket.broadcast.emit("orderReceived", data);
+    }
+  } )
+});
 
 app.use(express.json());
 app.set('view engine', 'ejs');
@@ -42,7 +63,6 @@ const fileFilter = (req, file, cb) => {
 
 const upload =  multer({ storage: fileStorage, fileFilter: fileFilter }).array('image',4);
 
-
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -69,6 +89,7 @@ mongoose
   });
 
 const User = require('./routeModels/user/User');
+const Admin = require("./routeModels/admin/Admin")
 
 app.use(
   require('express-session')({
@@ -88,22 +109,39 @@ app.use(function (req, res, next) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new LocalStratergy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.use("user" ,new LocalStratergy(User.authenticate()))
+passport.use("admin" ,new LocalStratergy(Admin.authenticate()))
+
+passport.serializeUser(function(user, done) { 
+    done(null, user);
+  });
+  
+passport.deserializeUser(function(user, done) {
+    if(user!=null)
+        done(null,user);
+}); 
 
 var indexRoutes = require('./routes/index');
 var authRoutes = require('./routes/auth');
 var productRoutes = require("./routes/product")
 var orderRoutes = require("./routes/order")
+var adminRoutesAuth = require("./routes/adminAuth")
+var adminIndexRoutes = require("./routes/adminRoutes")
+var adminProductRoutes = require("./routes/adminProductRoutes")
+var adminOrderRoutes = require("./routes/adminOrderRoutes")
 
 app.use(indexRoutes);
 app.use(authRoutes);
 app.use(productRoutes)
 app.use(orderRoutes)
+app.use("/admin",adminRoutesAuth)
+app.use("/admin",adminIndexRoutes)
+app.use("/admin",adminOrderRoutes)
+app.use(adminProductRoutes)
+
 
 const port = 3000
 
-app.listen(port, () => {
-  console.log(`server running at ${port}`);
+http.listen(port, function () {
+  console.log("Server connected at " + port);    
 });

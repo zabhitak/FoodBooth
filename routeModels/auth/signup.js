@@ -18,8 +18,8 @@ var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
 const signup = async (req,res) => {
     
     
-    var {username,email,password,confirmPassword, role } = req.body
-
+    var {username,email,password,confirmPassword } = req.body
+    var role = "User"
     try {
         if(password !== confirmPassword ){
             req.flash("error","Passwords are not same")

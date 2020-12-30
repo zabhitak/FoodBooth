@@ -1,15 +1,18 @@
-const Product = require("./Product")
+const Product = require("../admin/product/Product")
 const User = require("../user/User")
 
 const removeFromCart = async (req,res) => {
     const { productId, index} = req.params
 
     try {
-        var user = await User.findById(req.user.id)
+        var user = await User.findById(req.user._id)
         
         var product = await Product.findById(productId)
 
         var currentCart = user.cart
+        
+        var quantity = currentCart[index].quantity
+
         delete currentCart[index]
         
         var newCart = currentCart.filter( eachOne => {
@@ -35,7 +38,9 @@ const removeFromCart = async (req,res) => {
             productDeleveryCharge = parseFloat( deliveryCharge.slice(indexOfDollarDC+1,deliveryCharge.length) )
             currency =  price.slice(0,indexOfDollar+1)
         }
-        var totalCost =  parseFloat(user.totalCost) - parseFloat(productPrice) - parseFloat(productDeleveryCharge)
+        var toSubtract = quantity * ( parseFloat(productPrice) + parseFloat(productDeleveryCharge))
+        
+        var totalCost =  parseFloat(user.totalCost) - toSubtract
         if(totalCost < 0){
             totalCost = 0
         }

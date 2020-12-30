@@ -1,7 +1,7 @@
 const User = require("../user/User")
 
 const changePassword = async (req,res) => {
-    const userID  = req.user.id
+    const userID  = req.user._id
     const { password,confirmPassword } = req.body
     try{
         if(password !== confirmPassword){

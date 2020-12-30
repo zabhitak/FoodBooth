@@ -26,8 +26,9 @@
         </div>
         <div class="accordion" id="accordionone">
             <div class="order-now-check">
-                <form method="POST" action="/order">
-                    <button class="on-btn btn-link " onclick="">Order Now</button>
+                <form >
+                    <!-- method="POST" action="/order" -->
+                    <button class="on-btn btn-link " onclick="placeOrder()">Order Now</button>
                 </form>
             </div>
         </div>
@@ -42,38 +43,39 @@
             </div>
             <div class="row">
                 <% var index = 0; %>
-                <% products.forEach(eachProduct => { %> 
-                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                        <div class="all-meal">
-                            <div class="top">
-                                <a href="productDetail-<%=eachProduct.id%>"><div class="bg-gradient"></div></a>
-                                <div class="top-img">
-                                    <img src="<%=eachProduct.images[0]%>" alt="">
-                                </div>
-                                <div class="logo-img">
-                                    <img src="<%=eachProduct.user.avatar%>" alt="">
-                                </div>
-                                <div class="top-text">
-                                    <div class="heading"><h4><a href="productDetail-<%=eachProduct.id%>"> <%= eachProduct.title %> </a></h4></div>
-                                    <div class="sub-heading">
-                                        <h5><a href="restaurant_detail.html"><%= eachProduct.category %></a></h5>
-                                        <p><%= eachProduct.price %></p>
-                                    </div>
+                <% products.forEach(everyProduct => { %> 
+                   <% var eachProduct = everyProduct.product %>
+                   <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                    <div class="all-meal">
+                        <div class="top">
+                            <a href="productDetail-<%=eachProduct.id%>"><div class="bg-gradient"></div></a>
+                            <div class="top-img">
+                                <img src="<%=eachProduct.images[0]%>" alt="">
+                            </div>
+                            <div class="logo-img">
+                                <img src="<%=eachProduct.user.avatar%>" alt="">
+                            </div>
+                            <div class="top-text">
+                                <div class="heading"><h4><a href="productDetail-<%=eachProduct.id%>"> <%= eachProduct.title %> </a></h4></div>
+                                <div class="sub-heading">
+                                    <h5><a href="restaurant_detail.html"><%= eachProduct.category %></a></h5>
+                                    <p><%= eachProduct.price %> * <%= everyProduct.quantity %> </p>
                                 </div>
                             </div>
-                            <div class="bottom">
-                            <div class="bottom-text">
-                                <div class="delivery"><i class="fas fa-shopping-cart"></i>Delivery Free : <%= eachProduct.deliveryCharge %> </div>
-                                <div class="time"><i class="far fa-clock"></i>Delivery Time : <%= eachProduct.deliveryTime %></div>
-                                <div class="star">
-                                    <a href="/remove-<%=eachProduct.id%>-<%=index%>">
-                                        <span> Remove </span>
-                                    </a>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="bottom">
+                        <div class="bottom-text">
+                            <div class="delivery"><i class="fas fa-shopping-cart"></i>Delivery Free : <%= eachProduct.deliveryCharge %> </div>
+                            <div class="time"><i class="far fa-clock"></i>Delivery Time : <%= eachProduct.deliveryTime %></div>
+                            <div class="star">
+                                <a href="/remove-<%=eachProduct.id%>-<%=index%>">
+                                    <span> Remove </span>
+                                </a>
                             </div>
                         </div>
                         </div>
+                    </div>
+                    </div>
                     <% index = index + 1 %>
                 <% }) %>
            
@@ -84,6 +86,44 @@
         <div style="height: 40px;"></div>
     </section>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
 
+    <script>
+        const socket = io('ws://localhost:3000');
+     
+        function placeOrder() {
+            var order = {
+                orderBy :  <%- JSON.stringify(user) %> 
+            }
+            socket.emit("orderPlaced",order);
+    
+            postData('/order',order)
+            .then(data => {
+                console.log(data.redirect); // JSON data parsed by `data.json()` call
+                window.location.replace(data.redirect)
+            });
+    
+            async function postData(url = '', data = {}) {
+                // Default options are marked with *
+                const response = await fetch(url, {
+                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                    mode: 'cors', // no-cors, *cors, same-origin
+                    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    headers: {
+                    'Content-Type': 'application/json'
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    redirect: 'follow', // manual, *follow, error
+                    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+                    body: JSON.stringify(data) // body data type must match "Content-Type" header
+                });
+                return response.json(); // parses JSON response into native JavaScript objects
+            }
+    
+        
+            // Call an AJAX for further actions you want to perform (like saving in database etc.)
+        }
+    </script>
 
 <%- include('./partials/footer') %>

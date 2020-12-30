@@ -14,7 +14,7 @@ const User = require("../routeModels/user/User")
 router.get('/', async (req,res) => {
     user = null
     if(req.user){
-        user = await User.findById(req.user.id)
+        user = await User.findById(req.user._id)
     }
     res.render("home",{ user, title : "Home" })
 } )

@@ -31,14 +31,20 @@ function generateTableRow(doc, y, item, unitCost, lineTotal) {
 getInvoice = async (req, res, next) => {
   const {orderId} = req.params;
   try {
-    Order.findById(orderId).populate('products')
+    Order.findById(orderId).populate({
+      path : 'products',
+      populate : {
+        path : 'product',
+        model : "Product"
+      }
+    })
     .then( async (order) => {
       if (!order) {
         req.flash('error', 'You dont have any order placed');
         res.redirect('/index');
       }
 
-      if (order.customer.toString() != req.user.id.toString()) {
+      if (order.customer.toString() != req.user._id.toString()) {
         res.redirect('/index');
         return;
       }
@@ -46,8 +52,6 @@ getInvoice = async (req, res, next) => {
       var {totalCost , customer } = order;
 
       customer = await User.findById(customer)
-
-
 
       const invoiceName = 'invoice-' + orderId + '.pdf';
       const invoicePath = path.join('data', 'invoices', invoiceName);
@@ -105,21 +109,24 @@ getInvoice = async (req, res, next) => {
         pdfDoc,
         invoiceTableTop,
         'Item',
+        'Quantity',
         'Unit Cost',
         'Line Total'
       );
       generateHr(pdfDoc, invoiceTableTop + 20);
       pdfDoc.font('Helvetica');
 
-      order.products.forEach((product) => {
+      order.products.forEach((eachProduct) => {
+        var {product} = eachProduct
         const position = invoiceTableTop + (i + 1) * 30;
         i++;
         generateTableRow(
           pdfDoc,
           position,
           product.title,
+          eachProduct.quantity,
           product.deliveryCharge + " + " + product.price,
-          product.deliveryCharge + " + " + product.price
+          eachProduct.quantity + "*(" + product.deliveryCharge + " + " + product.price + ")"
         );
 
         generateHr(pdfDoc, position + 20);

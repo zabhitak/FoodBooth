@@ -1,10 +1,10 @@
-const Product = require("./Product")
+const Product = require("../admin/product/Product")
 const Comment = require("./Comment")
 const User = require("../user/User")
 const addComment = async (req,res) => {
     const {productId} = req.params
     try {
-        var user = await User.findById(req.user.id)
+        var user = await User.findById(req.user._id)
         var userImage = user.avatar
         var username = user.username
         var product = await Product.findById(productId)

@@ -35,11 +35,9 @@ const verifyOtpFunc = async (req,res) => {
                 
                 var newUser = await User.register({ username , email , role }, password ) 
              
-            
                 await newUser.save()
               
-
-                passport.authenticate("local");
+                passport.authenticate("user");
                 req.flash("success","Please signin to continue !!!")
                 res.redirect("/signin" )            
             }

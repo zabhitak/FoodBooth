@@ -1,0 +1,52 @@
+
+<%- include('./partials/header') %>
+<%- include('./partials/sidenav') %>
+<%- include('../partials/flashMessage') %>
+  <!-- Main Content -->
+  <main class="body-content">
+
+    <div class="ms-content-wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ms-panel">
+                  <div class="ms-panel-header">
+                    <h6>All Products</h6>
+                  </div>
+                  <div class="ms-panel-body">
+                    <div class="row">
+      
+                        <% products.forEach(eachProduct => { %> 
+                      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="ms-card no-margin">
+                          <div class="ms-card-img">
+                              <a href="productDetail-<%=eachProduct.id%>">
+                            <img src="<%=eachProduct.images[0]%>" alt="card_img">
+                        </a>
+                          </div>
+                          <div class="ms-card-body">
+                            <div class="ms-card-heading-title">
+                              <h6><%=eachProduct.title%></h6>
+                              <span class="green-text"><strong><%= eachProduct.price %>  </strong></span>
+                            </div>
+      
+                            <div class="ms-card-heading-title">
+                              <p>Delivery Charge :  <span class="red-text"><%= eachProduct.deliveryCharge %></span></p>
+                              <p>Delivery Time : <span class="red-text"><%= eachProduct.deliveryTime %></span></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    <% }) %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    </main>
+
+
+<%- include('./partials/footer') %>

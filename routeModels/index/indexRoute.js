@@ -1,15 +1,23 @@
 var User = require("../user/User")
 
 indexRoute = (req,res) => {
-    User.findById(req.user.id).populate({
+    User.findById(req.user._id).populate({
         path : 'currentOrder',
         populate : {
           path : 'products',
+          populate : {
+            path : 'product',
+            model : "Product"
+          }
         }
       }).populate({
         path : 'orders',
         populate : {
           path : 'products',
+          populate : {
+            path : 'product',
+            model : "Product"
+          }
         }
       })
     .exec(function(err,user) {

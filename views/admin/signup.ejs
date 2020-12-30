@@ -1,0 +1,89 @@
+<%- include('./partials/header') %>
+<%- include('./partials/sidenav') %>
+  <!-- Main Content -->
+  <main class="body-content">
+    <!-- Navigation Bar -->
+    <nav class="navbar ms-navbar">
+      <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft"> <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+      </div>
+      <div class="logo-sn logo-sm ms-d-block-sm">
+        <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="../../index-2.html">
+          <img src="../../assets/img/costic/costic-logo-84x41.png" alt="logo">
+        </a>
+      </div>
+    </nav>
+
+    <!-- Body Content Wrapper -->
+    <div class="ms-content-wrapper ms-auth">
+
+      <div class="ms-auth-container">
+        <div class="ms-auth-col">
+          <div class="ms-auth-bg"></div>
+        </div>
+        <div class="ms-auth-col">
+          <div class="ms-auth-form">
+            <form class="needs-validation" method="POST" name="/admin/signup" novalidate="">
+              <h3>Create Account</h3>
+              <p>Please enter personal information to continue</p>
+              <div class="form-row">
+                <div class="col-md-12 ">
+                  <label for="validationCustom">Username</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="validationCustom" placeholder="Username" required name="username" >
+                  </div>
+                </div>
+                <div class="col-md-12 ">
+                  <label for="validationCustom03">Email Address</label>
+                  <div class="input-group">
+                    <input type="email" class="form-control" id="validationCustom03" placeholder="Email Address" required name="email" >
+                    <div class="invalid-feedback">
+                      Please provide a valid email.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 ">
+                  <label for="validationCustom04">Password</label>
+                  <div class="input-group">
+                    <input type="password" class="form-control" id="validationCustom04" placeholder="Password" required name="password" >
+                    <div class="invalid-feedback">
+                      Please provide a password.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 ">
+                  <label for="validationCustom04">Confirm Password</label>
+                  <div class="input-group">
+                    <input type="password" class="form-control" id="validationCustom04" placeholder="Confirm Password" required name="confirmPassword" >
+                    <div class="invalid-feedback">
+                      Please provide a password.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-check pl-0">
+                  <label class="ms-checkbox-wrap">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <i class="ms-checkbox-check"></i>
+                  </label>
+                  <span> Agree to terms and conditions </span>
+                </div>
+              </div>
+
+              <%- include('../partials/flashMessage') %>
+              <button class="btn btn-primary mt-4 d-block w-100" type="submit">Create Account</button>
+              
+              <p class="mb-0 mt-3 text-center">Already have an account? <a class="btn-link" href="/admin">Login</a> </p>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+<%- include('./partials/footer') %>

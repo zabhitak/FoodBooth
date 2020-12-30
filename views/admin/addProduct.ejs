@@ -1,0 +1,80 @@
+
+<%- include('./partials/header') %>
+<%- include('./partials/sidenav') %>
+<body oncontextmenu="return false;">
+
+    <header id="header" class="default">
+        <div class="container">
+          <%- include('../partials/flashMessage') %>
+        </div>
+      </header>
+
+      <main class="body-content">
+    <div class="ms-content-wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ms-panel">
+                  <div class="ms-panel-header">
+                    <h6>Upload Product Details </h6>
+                  </div>
+                  <div class="ms-panel-body">
+                    <form method="POST"  action="/addProduct" enctype="multipart/form-data">
+                      <div class="form-group">
+                        <label for="exampleEmail">Title or Name</label>
+                        <input type="text" name="title"  class="form-control" id="exampleEmail" placeholder="Title or Name">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleEmail">Price</label>
+                        <input type="text" name="price"  class="form-control" id="exampleEmail" placeholder="Price">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleTextarea">Description</label>
+                        <textarea class="form-control" name="description" id="exampleTextarea" rows="3"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleSelect">Category</label>
+                        <select name="category" class="form-control" id="exampleSelect">
+                          <option style="font-size: 1.3em;" disabled>Category</option>
+                          <option value="Breakfast"> Breakfast </option>
+                          <option value="Lunch"> Lunch </option>
+                          <option value="Dinner"> Dinner </option>
+                          <option value="Snacks"> Snacks </option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleSelect">Offer</label>
+                        <select required name="offer" class="form-control" id="exampleSelect">
+                          <option style="font-size: 1.3em;" disabled>Offer</option>
+                          <option value="10% off"> 10% off </option>
+                          <option value="20% off"> 20% off </option>
+                          <option value="30% off"> 30% off </option>
+                          <option value="40% off"> 40% off </option>
+                          <option value="50% off"> 50% off </option>
+                          <option value="60% off"> 60% off </option>
+                          <option value="70% off"> 70% off </option>
+                          <option value="80% off"> 80% off </option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleEmail">Delivery Charge</label>
+                        <input type="text" name="deliveryCharge"  class="form-control" id="exampleEmail" placeholder="Delivery Charge">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleEmail">Delivery Time</label>
+                        <input type="text" name="deliveryTime"  class="form-control" id="exampleEmail" placeholder="Delivery Time">
+                      </div>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="validatedCustomFile" name="image" multiple accept="image/*">
+                        <label class="custom-file-label" for="validatedCustomFile">Upload Images(At max 4)</label>
+                      </div>
+                      <input type="submit" class="btn btn-primary d-block w-100" name="btn100" value="Submit">
+                    </form>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</main>
+
+<%- include('./partials/footer') %>

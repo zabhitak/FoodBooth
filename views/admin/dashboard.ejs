@@ -1,0 +1,155 @@
+<%- include('./partials/header') %>
+<%- include('./partials/sidenav') %>
+<%- include('../partials/flashMessage') %>
+  <!-- Main Content -->
+  <main class="body-content">
+    <!-- Navigation Bar -->
+   
+    <div class="ms-content-wrapper">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="db-header-title">Welcome, <%= user.username %> </h1>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6">
+          <div class="ms-card ms-widget has-graph-full-width ms-infographics-widget">
+            <span class="ms-chart-label bg-black"><i class="material-icons"></i>  <%= currentOrders.length %> </span>
+            <div class="ms-card-body media">
+              <div class="media-body">
+                <span class="black-text"><strong>Current Orders</strong></span>
+                <h2>.</h2>
+              </div>
+            </div>
+            <canvas id="line-chart"></canvas>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6">
+          <div class="ms-card ms-widget has-graph-full-width ms-infographics-widget">
+            <span class="ms-chart-label bg-red"><i class="material-icons"></i> <%= deliveredOrders.length %> </span>
+            <div class="ms-card-body media">
+              <div class="media-body">
+                <span class="black-text"><strong>Delivered Orders</strong></span>
+                <h2>.</h2>
+              </div>
+            </div>
+            <canvas id="line-chart-2"></canvas>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6">
+          <div class="ms-card ms-widget has-graph-full-width ms-infographics-widget">
+            <span class="ms-chart-label bg-red"><i class="material-icons"></i><%= onTheWayOrders.length %> </span>
+            <div class="ms-card-body media">
+              <div class="media-body">
+                <span class="black-text"><strong>On The Way Orders</strong></span>
+                <h2>.</h2>
+              </div>
+            </div>
+            <canvas id="line-chart-4"></canvas>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6">
+          <div class="ms-card ms-widget has-graph-full-width ms-infographics-widget">
+            <span class="ms-chart-label bg-black"><i class="material-icons"></i> <%= cancelledOrders.length %> </span>
+            <div class="ms-card-body media">
+              <div class="media-body">
+                <span class="black-text"><strong>Cancelled Orders</strong></span>
+                <h2>.</h2>
+              </div>
+            </div>
+            <canvas id="line-chart-3"></canvas>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="ms-panel">
+            <div class="ms-panel-header">
+              <h6>Recently Placed Orders</h6>
+            </div>
+            <div class="ms-panel-body">
+              <div class="table-responsive">
+                <table class="table table-hover thead-primary">
+                  <thead>
+                    <tr>
+                      <th scope="col">Order ID</th>
+                      <!-- <th scope="col">Order Name</th> -->
+                      <th scope="col">Customer Name</th>
+                      <th scope="col">Location</th>
+                      <th scope="col">Order Status</th>
+                      <th scope="col">Order Date</th>
+                      <th scope="col">Order Time</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% var index = 1 %>
+                    <% currentOrders.forEach( eachOrder => { %> 
+                      <tr>
+                        <th scope="row"> <%= index %> </th>
+                        <!-- <td>French Fries</td> -->
+                        <td> <%= eachOrder.customer.username %> </td>
+                        <td> <%= eachOrder.customer.address %> </td>
+
+                        <td><span class="badge badge-warning"> <%= eachOrder.status %>  </span>
+                        </td>
+                        <td> <%= eachOrder.timeOfOrder.toDateString() %>  </td>
+                        <td> <%= eachOrder.timeOfOrder.toTimeString() %>  </td>
+                        <td> <%= eachOrder.totalCost %>  </td>
+                        <td> <a href="/admin/orderInfo-<%=eachOrder.id%>"  class="badge badge-primary"> Order Info </a>  </td>
+                      </tr>
+                      <% index = index + 1 %>
+                    <% } ) %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="ms-panel">
+            <div class="ms-panel-header">
+              <h6>Sent For Delivery</h6>
+            </div>
+            <div class="ms-panel-body">
+              <div class="table-responsive">
+                <table class="table table-hover thead-primary">
+                  <thead>
+                    <tr>
+                      <th scope="col">Order ID</th>
+                      <!-- <th scope="col">Order Name</th> -->
+                      <th scope="col">Customer Name</th>
+                      <th scope="col">Location</th>
+                      <th scope="col">Order Status</th>
+                      <th scope="col">Order Date</th>
+                      <th scope="col">Order Time</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% var index = 1 %>
+                    <% onTheWayOrders.forEach( eachOrder => { %> 
+                      <tr>
+                        <th scope="row"> <%= index %> </th>
+                        <!-- <td>French Fries</td> -->
+                        <td> <%= eachOrder.customer.username %> </td>
+                        <td> <%= eachOrder.customer.address %> </td>
+
+                        <td><span class="badge badge-warning"> <%= eachOrder.status %>  </span>
+                        </td>
+                        <td> <%= eachOrder.timeOfOrder.toDateString() %>  </td>
+                        <td> <%= eachOrder.timeOfOrder.toTimeString() %>  </td>
+                        <td> <%= eachOrder.totalCost %>  </td>
+                        <td> <a href="/admin/orderInfo-<%=eachOrder.id%>"  class="badge badge-primary"> Order Info </a>  </td>
+                      </tr>
+                      <% index = index + 1 %>
+                    <% } ) %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+<%- include('./partials/footer') %>

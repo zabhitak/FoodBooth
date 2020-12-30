@@ -1,0 +1,41 @@
+
+  <!-- SCRIPTS -->
+  <!-- Global Required Scripts Start -->
+  <script src="../../assets/js/jquery-3.5.0.min.js"></script>
+  <script src="../../assets/js/popper.min.js"></script>
+  <script src="../../assets/js/bootstrap.min.js"></script>
+  <script src="../../assets/js/perfect-scrollbar.js">
+  </script>
+  <script src="../../assets/js/jquery-ui.min.js">
+  </script>
+  <!-- Global Required Scripts End -->
+  <!-- Costic core JavaScript -->
+  <script src="../../assets/js/framework.js"></script>
+  <!-- Settings -->
+  <script src="../../assets/js/settings.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script>
+ 
+<script>
+    const socket = io('ws://localhost:3000');
+    socket.on("orderReceived",(data) => {
+      
+        $.notify("New Order\n" + data.username + "\n\Address: " + data.address +
+        "\n\Phone Number: " + data.phoneNumber + 
+        "\n\Total Cost : " + data.totalCost, {
+            autoHide: false,
+            className: "success"
+        });
+    } )
+
+</script>
+</body>
+
+
+<!-- Mirrored from metropolitanhost.com/themes/themeforest/html/costic/pages/prebuilt-pages/default-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Dec 2020 12:21:55 GMT -->
+</html>

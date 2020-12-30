@@ -1,0 +1,111 @@
+<%- include('./partials/header') %>
+<%- include('./partials/sidenav') %>
+<%- include('../partials/flashMessage') %>
+  <!-- Main Content -->
+
+  <main class="body-content">
+
+	<div class="ms-content-wrapper">
+		<div class="row">
+		
+			<div class="col-md-8">
+				<div class="ms-panel">
+				<div class="ms-panel-header">
+					<h6><%= product.title %></h6>
+				</div>
+				<div class="ms-panel-body">
+					<div id="dottedSlider" class="ms-dotted-indicator-slider carousel slide" data-ride="carousel">
+					<ol class="carousel-indicators">
+						<% var index = 0 ; %>
+						<% product.images.forEach(eachImg => { %> 
+							<% var classes = "" %>
+							<% if(index == 0){ %> 
+								<% classes = "active" %>
+							<%} %>
+							<li data-target="#dottedSlider" data-slide-to="<%=index%>" class="<%=classes%>"></li>
+							<% index = index + 1 %>
+						<%}) %>
+					</ol>
+					<div class="carousel-inner">
+						<%  index = 0 ; %>
+						<% product.images.forEach(eachImg => { %> 
+							<% var classes = "carousel-item " %>
+							<% if(index == 0){ %> 
+								<% classes += "active" %>
+							<%} %>
+						<div class="<%=classes%>">
+						<img class="d-block w-100" src="<%=eachImg%>" alt="First slide">
+						</div>
+						<% index = index + 1 %>
+						<%}) %>
+					</div>
+					<a class="carousel-control-prev" href="#dottedSlider" role="button" data-slide="prev">
+						<span class="material-icons" aria-hidden="true">keyboard_arrow_left</span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="carousel-control-next" href="#dottedSlider" role="button" data-slide="next">
+						<span class="material-icons" aria-hidden="true">keyboard_arrow_right</span>
+						<span class="sr-only">Next</span>
+					</a>
+					</div>
+				</div>
+				</div>
+			</div>
+
+			<div class="col-md-2">
+				<div class="about-meal">
+					<h4> Description</h4>
+					<p><span> <%= product.description %>  </span></p>
+				</div>
+				<div class="price">
+					<span><%= product.price %></span>
+				</div>
+				<div class="dt-detail">
+					<ul>
+						<li>
+							<div class="delivery"><i class="fas fa-shopping-cart"></i>Delivery Charge : <%= product.deliveryCharge %></div>
+						</li>
+						<li>
+							<div class="time"><i class="far fa-clock"></i>Delivery Time : <%= product.deliveryTime %></div>
+						</li>
+					</ul>
+				</div>
+
+				<a href="/editProduct-<%=product.id%>" class="btn btn-warning d-block w-100" name="btn100" >Edit </a>
+				<form action="/delete-product" method="POST">
+					<input type="hidden" value="<%= product.id %>" name="productId">
+					<button class="btn btn-danger d-block w-100" type="submit">Delete</button>
+				</form>	
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<div class="ms-panel-body">
+					<div class="table-responsive">
+					  <table class="table table-hover">
+							<tbody>
+							<% product.comments.forEach(eachCmt => { %> 
+								<tr>
+									<td class="ms-table-f-w">
+									<% if(eachCmt.userImage){%> 
+										<img src="<%=eachCmt.userImage%>" alt="people">
+									<%}else{%> 
+											
+									<% } %>
+									<%= eachCmt.commentText %>
+									</td>
+									<td> <%= eachCmt.timeOfUploading.toDateString() %> </td>
+								</tr>
+							<%}) %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	</main>
+
+<%- include('./partials/footer') %>

@@ -680,14 +680,16 @@
                               <thead>
                                 <tr>
                                   <td class="td-heading">Meal</td>
-                                  <!-- <td class="td-heading">Qty</td> -->
+                                  <td class="td-heading">Qty</td>
                                   <td class="td-heading">Price</td>
+                                  <td class="td-heading">Status</td>
                                   <td class="td-heading">Action</td>
                                 </tr>
                               </thead>
                               <tbody>
                               <% if(user.currentOrder){ %> 
-                                <% user.currentOrder.products.forEach( eachProduct => { %> 
+                                <% user.currentOrder.products.forEach( everyProduct => { %> 
+                                  <% var eachProduct = everyProduct.product %>
                                   <tr>
                                     <td>
                                       <div class="checkout-thumb-2">
@@ -709,8 +711,9 @@
                                         >
                                       </div>
                                     </td>
-                                    <!-- <td class="td-content">2</td> -->
+                                    <td class="td-content"> <%= everyProduct.quantity %> </td>
                                     <td class="td-content"> <%= eachProduct.price %>  </td>
+                                    <td class="td-content"> <%= user.currentOrder.status %>  </td>
                                     <td>
                                       <button
                                         class="trace-btn btn-link"
@@ -725,10 +728,6 @@
                                       </button>
                                     </a>
 
-
-                                      <button class="trash-btn btn-link">
-                                        <i class="far fa-trash-alt"></i>
-                                      </button>
                                       <div
                                         class="modal fade"
                                         tabindex="-1"
@@ -921,10 +920,10 @@
                               <thead>
                                 <tr>
                                   <td class="td-heading">Meal</td>
-                                  <!-- <td class="td-heading">Qty</td> -->
+                                  <td class="td-heading">Qty</td>
                                   <td class="td-heading">Price</td>
                                   <td class="td-heading">Action</td>
-                                  <!-- <td class="td-heading">Status</td> -->
+                                  <td class="td-heading">Status</td>
                                   <!-- <td class="td-heading"> -->
 <!-- 
                                     <a target="_blank" href="/getInvoice-<%=eachOrder.id%>">
@@ -942,7 +941,8 @@
                               </thead>
 
                               <tbody>
-                                    <% eachOrder.products.forEach( eachProduct => { %> 
+                                    <% eachOrder.products.forEach( everyProduct => { %> 
+                                      <% var eachProduct = everyProduct.product %>
                                       <tr>
                                         <td>
                                           <div class="checkout-thumb-2">
@@ -964,11 +964,9 @@
                                             >
                                           </div>
                                         </td>
-                                        <!-- <td class="td-content">1</td> -->
+                                        <td class="td-content"> <%= everyProduct.quantity %> </td>
                                         <td class="td-content"><%= eachProduct.price %> </td>
-                            
-
-                                        
+                                        <td class="td-content"><%= eachOrder.status %> </td>
                                         <td>
                                     <a target="_blank" href="/getInvoice-<%=eachOrder.id%>">
                                       <button class="invoice-btn btn-link">

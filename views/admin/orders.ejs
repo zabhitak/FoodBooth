@@ -1,0 +1,59 @@
+<%- include('./partials/header') %>
+<%- include('./partials/sidenav') %>
+<%- include('../partials/flashMessage') %>
+  <!-- Main Content -->
+  <main class="body-content">
+    <!-- Navigation Bar -->
+   
+    <div class="ms-content-wrapper">
+      <div class="row">
+        <div class="col-12">
+            <div class="ms-panel">
+              <div class="ms-panel-header">
+                <h6> <%= whichOrder %> </h6>
+              </div>
+              <div class="ms-panel-body">
+                <div class="table-responsive">
+                  <table class="table table-hover thead-primary">
+                    <thead>
+                      <tr>
+                        <th scope="col">Order ID</th>
+                        <!-- <th scope="col">Order Name</th> -->
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Order Status</th>
+                        <th scope="col">Order Date</th>
+                        <th scope="col">Order Time</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% var index = 1 %>
+                      <% orders.forEach( eachOrder => { %> 
+                        <tr>
+                          <th scope="row"> <%= index %> </th>
+                          <!-- <td>French Fries</td> -->
+                          <td> <%= eachOrder.customer.username %> </td>
+                          <td> <%= eachOrder.customer.address %> </td>
+  
+                          <td><span class="badge badge-warning"> <%= eachOrder.status %>  </span>
+                          </td>
+                          <td> <%= eachOrder.timeOfOrder.toDateString() %>  </td>
+                          <td> <%= eachOrder.timeOfOrder.toTimeString() %>  </td>
+                          <td> <%= eachOrder.totalCost %>  </td>
+                          <td> <a href="/admin/orderInfo-<%=eachOrder.id%>"  class="badge badge-primary"> Order Info </a>  </td>
+                        </tr>
+                        <% index = index + 1 %>
+                      <% } ) %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </main>
+  
+<%- include('./partials/footer') %>

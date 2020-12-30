@@ -53,9 +53,15 @@ const UserSchema = mongoose.Schema({
         default : []
     }],
     cart : [{
-        type : mongoose.Schema.Types.ObjectId,
-        ref : "Product",
-        default : []
+        product : {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "Product",
+            default : null
+        },
+        quantity : {
+            type : String,
+            default : 1,
+        },
     }] ,
     totalCost : {
         type : String,

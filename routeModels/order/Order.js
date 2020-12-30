@@ -11,16 +11,27 @@ var orderSchema = new mongoose.Schema({
     },
     restaurant : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : "User"
+        ref : "Admin"
     },
     products : [{
-        type : mongoose.Schema.Types.ObjectId,
-        ref : "Product",
+        product : {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : "Product",
+            default : null
+        },
+        quantity : {
+            type : String,
+            default : 1
+        },
         default : []
     }],
     totalCost : {
         type : String,
         default : "0"
+    },
+    status : {
+        type : String,
+        default : "Accepted" // accepted -> current .. delivered .. cancelled .. onTheWay
     }
     
 })
