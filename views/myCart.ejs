@@ -26,9 +26,21 @@
         </div>
         <div class="accordion" id="accordionone">
             <div class="order-now-check">
-                <form method="POST" action="/order">
+                <!-- <form method="POST" action="/order">
                     <button class="on-btn btn-link " onclick="">Order Now</button>
-                </form>
+                </form> -->
+                <form action="/order" method="POST"> 
+                    <script
+                        src="//checkout.stripe.com/v2/checkout.js"
+                        class="stripe-button"
+                        data-key="<%= Publishable_Key %>"
+                        data-amount="7000" 
+                        data-currency="usd" 
+                        data-name="Abhinav Goyal" 
+                        data-description="Buy React.js Complete Course" 
+                        data-locale="auto" > 
+                        </script> 
+                    </form> 
             </div>
         </div>
         </div>
