@@ -10,6 +10,10 @@ const multer = require("multer")
 const uuid = require("uuid")
 const dotenv = require('dotenv');
 
+const Emitter = require('events')
+
+
+
 dotenv.config();
 
 const keys = require('./keys');
@@ -18,23 +22,18 @@ const MONGODB_URI = keys.MONGODB_URI;
 const app = express();
 
 
+const eventEmitter = new Emitter()
+app.set('eventEmitter', eventEmitter)
 var http = require("http").createServer(app);
 
-const io = require('socket.io')(http);
+const server = app.listen(3000 , () => {
+  console.log(`Listening on port 3000`)
+})
+
+
+var io = require('socket.io')(server);
 
 io.on('connection', socket => {
-  socket.on("orderPlaced",( order ) => {
-    var user = order.orderBy
-    var data = {
-      username : user.username,
-      phoneNumber : user.phoneNumber,
-      totalCost : user.totalCost,
-      address : user.address
-    }
-    if(user.cart.length != 0){
-      socket.broadcast.emit("orderReceived", data);
-    }
-  } )
   socket.on("sendForDelivery",( order ) => {
     var { orderDetails } = order
     var data = {
@@ -64,6 +63,15 @@ io.on('connection', socket => {
   } )
   
 });
+
+
+eventEmitter.on('orderPlaced', (data) => {
+  io.sockets.emit("orderReceived", data);
+})
+
+eventEmitter.on('orderPlaced', (data) => {
+  io.to('adminRoom').emit('orderPlaced', data)
+})
 
 app.use(express.json());
 app.set('view engine', 'ejs');
@@ -170,6 +178,6 @@ app.use(adminProductRoutes)
 
 const port = 3000
 
-http.listen(port, function () {
-  console.log("Server connected at " + port);    
-});
+// http.listen(port, function () {
+//   console.log("Server connected at " + port);    
+// });

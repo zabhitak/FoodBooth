@@ -30,19 +30,21 @@
                     
                     <button class="on-btn btn-link " onclick="placeOrder()">Order Now</button>
                 </form> -->
-                <form> 
-                    <!-- <script
+                <form method="POST" action="/order" id="importantForm"> 
+                    <script
                         src="//checkout.stripe.com/v2/checkout.js"
                         class="stripe-button"
-                        data-key="<%= Publishable_Key %>"
+                        data-key="pk_test_51I3nnHFmnlpQUlnVG3AdoCKlP6P30y6ZSfa8IaKgH6DPqInvtQgpRaXwUFP3xEAaQVxkeOOl3mPnle1SIFlQxQg000s21G2XJ0"
                         data-amount="7000" 
                         data-currency="usd" 
                         data-name="Abhinav Goyal" 
                         data-description="Buy React.js Complete Course" 
                         data-locale="auto" > 
-                        </script>  -->
-                        <button class="on-btn btn-link " onclick="placeOrder()">Order Now</button>
-                    </form> 
+                    </script> 
+                    <!-- <input />
+                    <button type="submit">submit</button> -->
+                    <!-- <button class="on-btn btn-link " onclick="placeOrder()">Order Now</button> -->
+                </form> 
             </div>
         </div>
         </div>
@@ -99,43 +101,8 @@
         <div style="height: 40px;"></div>
     </section>
 
+                
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
 
-    <script>
-        function placeOrder() {
-            
-            var order = {
-                orderBy :  <%- JSON.stringify(user) %> 
-            }
-            socket.emit("orderPlaced",order);
-    
-            postData('/order',order)
-            .then(data => {
-                console.log(data.redirect); // JSON data parsed by `data.json()` call
-                window.location.replace(data.redirect)
-            });
-    
-            async function postData(url = '', data = {}) {
-                // Default options are marked with *
-                const response = await fetch(url, {
-                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'cors', // no-cors, *cors, same-origin
-                    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                    credentials: 'same-origin', // include, *same-origin, omit
-                    headers: {
-                    'Content-Type': 'application/json'
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    redirect: 'follow', // manual, *follow, error
-                    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-                    body: JSON.stringify(data) // body data type must match "Content-Type" header
-                });
-                return response.json(); // parses JSON response into native JavaScript objects
-            }
-    
-        
-            // Call an AJAX for further actions you want to perform (like saving in database etc.)
-        }
-    </script>
-
+              
 <%- include('./partials/footer') %>
