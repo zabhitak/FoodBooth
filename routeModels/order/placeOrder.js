@@ -1,6 +1,10 @@
 var User = require("../user/User")
 var Order = require("./Order")
 var Admin = require("../admin/Admin")
+const keys = require('../../keys');
+const Secret_Key = keys.Secret_Key;
+
+const stripe = require('stripe')(Secret_Key) 
 
 
 placeOrder = async (req,res) => {
@@ -42,6 +46,28 @@ placeOrder = async (req,res) => {
 
         await admin.save()
 
+        stripe.customers.create({ 
+    email: req.body.stripeEmail, 
+    source: req.body.stripeToken, 
+    name: 'Gautam Sharma', 
+    address: { 
+        line1: 'TC 9/4 Old MES colony', 
+        postal_code: '110092', 
+        city: 'New Delhi', 
+        state: 'Delhi', 
+        country: 'India', 
+    } 
+}) 
+.then((customer) => { 
+
+    return stripe.charges.create({ 
+        amount: 7000,    // Charing Rs 25 
+        description: 'Web Development Product', 
+        currency: 'USD', 
+        customer: customer.id 
+    }); 
+}) 
+
         req.flash("success","Order placed successfully")
         // res.redirect("/index")
         return res.json({redirect : "/index"})
@@ -54,5 +80,29 @@ placeOrder = async (req,res) => {
     }
 }
 module.exports = placeOrder
+
+
+// stripe.customers.create({ 
+//     email: req.body.stripeEmail, 
+//     source: req.body.stripeToken, 
+//     name: 'Gautam Sharma', 
+//     address: { 
+//         line1: 'TC 9/4 Old MES colony', 
+//         postal_code: '110092', 
+//         city: 'New Delhi', 
+//         state: 'Delhi', 
+//         country: 'India', 
+//     } 
+// }) 
+// .then((customer) => { 
+
+//     return stripe.charges.create({ 
+//         amount: 7000,    // Charing Rs 25 
+//         description: 'Web Development Product', 
+//         currency: 'USD', 
+//         customer: customer.id 
+//     }); 
+// }) 
+ 
 
 

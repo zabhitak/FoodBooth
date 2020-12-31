@@ -26,10 +26,23 @@
         </div>
         <div class="accordion" id="accordionone">
             <div class="order-now-check">
-                <form >
-                    <!-- method="POST" action="/order" -->
+                <!-- <form >
+                    
                     <button class="on-btn btn-link " onclick="placeOrder()">Order Now</button>
-                </form>
+                </form> -->
+                <form> 
+                    <!-- <script
+                        src="//checkout.stripe.com/v2/checkout.js"
+                        class="stripe-button"
+                        data-key="<%= Publishable_Key %>"
+                        data-amount="7000" 
+                        data-currency="usd" 
+                        data-name="Abhinav Goyal" 
+                        data-description="Buy React.js Complete Course" 
+                        data-locale="auto" > 
+                        </script>  -->
+                        <button class="on-btn btn-link " onclick="placeOrder()">Order Now</button>
+                    </form> 
             </div>
         </div>
         </div>
@@ -90,6 +103,7 @@
 
     <script>
         function placeOrder() {
+            
             var order = {
                 orderBy :  <%- JSON.stringify(user) %> 
             }
