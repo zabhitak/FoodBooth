@@ -89,8 +89,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
 
     <script>
-        const socket = io('ws://localhost:3000');
-     
         function placeOrder() {
             var order = {
                 orderBy :  <%- JSON.stringify(user) %> 

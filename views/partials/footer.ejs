@@ -173,6 +173,47 @@
       <script src="js/owlslider.js"></script>
       <script src="js/bootstrap-select.js"></script>
       <script src="js/dashboard-tabs-reload.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
+
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script>
+      
+      <script>
+        const socket = io('ws://localhost:3000');
+        socket.on("sentForDelivery",(data) => {
+            var user = <%- JSON.stringify(user) %>
+            if(user._id == data.userId){
+              $.notify("Order sent for delivery\n\Username :" + data.username + "\n\Address: " + data.address, {
+                  autoHide: false,
+                  className: "success"
+              });
+            }
+        } )
+        socket.on("cancelledOrder",(data) => {
+            var user = <%- JSON.stringify(user) %>
+            if(user._id == data.userId){
+              $.notify("Order cancelled\n\Username :" + data.username + "\n\Address: " + data.address, {
+                  autoHide: false,
+                  className: "success"
+              });
+            }
+        } )
+        socket.on("confirmedDelivery",(data) => {
+            var user = <%- JSON.stringify(user) %>
+            if(user._id == data.userId){
+              $.notify("Order has been delivered\n\Username :" + data.username + "\n\Address: " + data.address, {
+                  autoHide: false,
+                  className: "success"
+              });
+            }
+        } )
+        
+    </script>
+
     </body>
   
     <!-- Mirrored from gambolthemes.net/natto-new-demo/my_profile_dashbord.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Dec 2020 07:14:49 GMT -->

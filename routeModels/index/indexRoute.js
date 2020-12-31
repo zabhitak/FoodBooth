@@ -26,7 +26,19 @@ indexRoute = (req,res) => {
             req.flash("error","Unexpected Error Occured!!!")
             res.redirect("/signin")
         }else{
-            res.render("index",{ user : user, title : "My Profile" })
+          if(user){
+            if(user.role != "User"){
+              res.redirect("/admin/index")
+            }else{
+              res.render("index",{ user : user, title : "My Profile" })
+            }
+          }else{
+            if(!user){
+              res.redirect("/admin/index")
+            }else{
+              res.render("index",{ user : user, title : "My Profile" })
+            }
+          }
         }
     })
 }

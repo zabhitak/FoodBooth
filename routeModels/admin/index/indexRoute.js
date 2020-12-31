@@ -64,8 +64,17 @@ indexRoute = (req,res) => {
             req.flash("error","Unexpected Error Occured!!!")
             res.redirect("/admin")
         }else{
-            var {onTheWayOrders,cancelledOrders,currentOrders,deliveredOrders} = admin
-            res.render("admin/dashboard",{ user : admin, title : "Dashboard",onTheWayOrders,cancelledOrders,currentOrders,deliveredOrders })
+          if(admin){
+            if(admin.role == 'User' ){
+              res.redirect("/index")
+            }else{
+              var {onTheWayOrders,cancelledOrders,currentOrders,deliveredOrders} = admin
+              res.render("admin/dashboard",{ user : admin, title : "Dashboard",onTheWayOrders,cancelledOrders,currentOrders,deliveredOrders })
+         
+            }
+          }else{
+            res.redirect("/index")
+          }
         }
     })
 }

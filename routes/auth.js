@@ -14,8 +14,9 @@ const middleware = require("../middleware")
 router.get("/signin",(req,res ) => {
     if(req.user){
         res.redirect("/index")
+    }else{
+        res.render('signin',{ title : "Login Now" } )
     }
-    res.render('signin',{ title : "Login Now" } )
 } )
 
 router.post("/signin",passport.authenticate("user",{
@@ -27,8 +28,9 @@ router.post("/signin",passport.authenticate("user",{
 router.get("/signup",(req,res ) => {
     if(req.user){
         res.redirect("/index")
+    }else{
+        res.render('signup',{ title : "Register Now" })
     }
-    res.render('signup',{ title : "Register Now" })
 } )
 
 router.post("/signup", signup )

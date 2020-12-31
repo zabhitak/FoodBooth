@@ -11,6 +11,7 @@
           <h1 class="db-header-title">Welcome, <%= user.username %> </h1>
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6">
+          <a href="/admin/currentOrders">
           <div class="ms-card ms-widget has-graph-full-width ms-infographics-widget">
             <span class="ms-chart-label bg-black"><i class="material-icons"></i>  <%= currentOrders.length %> </span>
             <div class="ms-card-body media">
@@ -21,20 +22,10 @@
             </div>
             <canvas id="line-chart"></canvas>
           </div>
+        </a>
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6">
-          <div class="ms-card ms-widget has-graph-full-width ms-infographics-widget">
-            <span class="ms-chart-label bg-red"><i class="material-icons"></i> <%= deliveredOrders.length %> </span>
-            <div class="ms-card-body media">
-              <div class="media-body">
-                <span class="black-text"><strong>Delivered Orders</strong></span>
-                <h2>.</h2>
-              </div>
-            </div>
-            <canvas id="line-chart-2"></canvas>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-md-6">
+          <a href="/admin/onTheWayOrders">
           <div class="ms-card ms-widget has-graph-full-width ms-infographics-widget">
             <span class="ms-chart-label bg-red"><i class="material-icons"></i><%= onTheWayOrders.length %> </span>
             <div class="ms-card-body media">
@@ -45,8 +36,25 @@
             </div>
             <canvas id="line-chart-4"></canvas>
           </div>
+        </a>
+        </div>
+
+        <div class="col-xl-3 col-lg-6 col-md-6">
+          <a href="/admin/deliveredOrders">
+          <div class="ms-card ms-widget has-graph-full-width ms-infographics-widget">
+            <span class="ms-chart-label bg-red"><i class="material-icons"></i> <%= deliveredOrders.length %> </span>
+            <div class="ms-card-body media">
+              <div class="media-body">
+                <span class="black-text"><strong>Delivered Orders</strong></span>
+                <h2>.</h2>
+              </div>
+            </div>
+            <canvas id="line-chart-2"></canvas>
+          </div>
+        </a>
         </div>
         <div class="col-xl-3 col-lg-6 col-md-6">
+          <a href="/admin/cancelledOrders">
           <div class="ms-card ms-widget has-graph-full-width ms-infographics-widget">
             <span class="ms-chart-label bg-black"><i class="material-icons"></i> <%= cancelledOrders.length %> </span>
             <div class="ms-card-body media">
@@ -57,7 +65,9 @@
             </div>
             <canvas id="line-chart-3"></canvas>
           </div>
+        </a>
         </div>
+        
         <div class="col-12">
           <div class="ms-panel">
             <div class="ms-panel-header">

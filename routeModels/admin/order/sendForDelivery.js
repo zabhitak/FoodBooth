@@ -39,12 +39,13 @@ orderInfo =  async (req,res) => {
 
         req.flash("success","Order sent for delivery")
 
-        res.redirect("/admin/index")
+        // res.redirect("/admin/index")
+        return res.json({ redirect : "/admin/index" })
 
     } catch (error) {
         console.log(error)
         req.flash("error","Unable to fetch data")
-        res.redirect("/admin")
+        return res.json({ redirect : "/admin/index" })
     }
 }
 module.exports = orderInfo
