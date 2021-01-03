@@ -32,49 +32,50 @@ const signup = async (req,res) => {
             if(users){
                 req.flash("error","Email already in use")
                 res.redirect("/signup")
-            } 
+            }else{
+                users = await User.findOne({ username })
+                if(users){
+                    req.flash("error","Username already in use")
+                    res.redirect("/signup")
+                }else{
+                    const smtpTrans = nodemailer.createTransport({
+                        host: 'smtp.gmail.com',
+                        port: 465,
+                        secure: true,
+                        auth 
+                    })
+                    var otp = ""
+                    for(var i = 0 ; i < 6; i++ ){
+                        var randomIndex = Math.floor(Math.random() * 62)
+                        otp += characters[randomIndex]
+                    }
             
-            users = await User.findOne({ username })
-            if(users){
-                req.flash("error","Username already in use")
-                res.redirect("/signup")
+                    const mailOpts = {
+                        from: "Natto",
+                        to : email,
+                        subject: 'Natto | Verify Account',
+                        text: "Hi," + "\n\n" + 
+                        "To proceed further with your account verification at Natto , Please use the OTP given below.This OTP is only valid for 60 minutes."
+                        + "\n\n" + 
+                        "OTP : " + otp + " \n\n" + 
+                        "Regards,\n" +
+                        "Team ,Natto"
+                    }
+            
+                    var response = await smtpTrans.sendMail(mailOpts)
+                    var otpCreated = await OTP.create({
+                        timeOfSending : Date.now(),
+                        otp ,
+                        username,
+                        email,
+                        password,
+                        role
+                    })
+                    req.flash("success",`Enter OTP sent to provided email`)
+                    res.redirect(`/verifyOtp-${otpCreated.id}`)
+                }
             }
 
-            const smtpTrans = nodemailer.createTransport({
-                host: 'smtp.gmail.com',
-                port: 465,
-                secure: true,
-                auth 
-            })
-            var otp = ""
-            for(var i = 0 ; i < 6; i++ ){
-                var randomIndex = Math.floor(Math.random() * 62)
-                otp += characters[randomIndex]
-            }
-    
-            const mailOpts = {
-                from: "Natto",
-                to : email,
-                subject: 'Natto | Verify Account',
-                text: "Hi," + "\n\n" + 
-                "To proceed further with your account verification at Natto , Please use the OTP given below.This OTP is only valid for 60 minutes."
-                + "\n\n" + 
-                "OTP : " + otp + " \n\n" + 
-                "Regards,\n" +
-                "Team ,Natto"
-            }
-    
-            // var response = await smtpTrans.sendMail(mailOpts)
-            var otpCreated = await OTP.create({
-                timeOfSending : Date.now(),
-                otp ,
-                username,
-                email,
-                password,
-                role
-            })
-            req.flash("success",`Enter OTP sent to provided email`)
-            res.redirect(`/verifyOtp-${otpCreated.id}`)
            
         }  
     } catch(err){

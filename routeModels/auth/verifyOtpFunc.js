@@ -2,6 +2,7 @@ var passport = require("passport")
 
 var User = require("../user/User")
 var OTP = require("../OTP/OTP")
+var Email = require("../email/Email")
 
 const verifyOtpFunc = async (req,res) => {
     var { enteredOtp } = req.body
@@ -34,6 +35,8 @@ const verifyOtpFunc = async (req,res) => {
                 const { username , email , password, role } = otpObject
                 
                 var newUser = await User.register({ username , email , role }, password ) 
+
+                var newEmail = await Email.create({ email })
              
                 await newUser.save()
               
