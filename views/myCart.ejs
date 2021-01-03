@@ -30,21 +30,26 @@
                     
                     <button class="on-btn btn-link " onclick="placeOrder()">Order Now</button>
                 </form> -->
-                <form method="POST" action="/order" id="importantForm"> 
-                    <script
-                        src="//checkout.stripe.com/v2/checkout.js"
-                        class="stripe-button"
-                        data-key="pk_test_51I3nnHFmnlpQUlnVG3AdoCKlP6P30y6ZSfa8IaKgH6DPqInvtQgpRaXwUFP3xEAaQVxkeOOl3mPnle1SIFlQxQg000s21G2XJ0"
-                        data-amount="7000" 
-                        data-currency="usd" 
-                        data-name="Abhinav Goyal" 
-                        data-description="Buy React.js Complete Course" 
-                        data-locale="auto" > 
-                    </script> 
-                    <!-- <input />
-                    <button type="submit">submit</button> -->
-                    <!-- <button class="on-btn btn-link " onclick="placeOrder()">Order Now</button> -->
-                </form> 
+                <% if(isOrderAllowed){%> 
+                    <form method="POST" action="/order" id="importantForm"> 
+                        <script
+                            src="//checkout.stripe.com/v2/checkout.js"
+                            class="stripe-button"
+                            data-key="pk_test_51I3nnHFmnlpQUlnVG3AdoCKlP6P30y6ZSfa8IaKgH6DPqInvtQgpRaXwUFP3xEAaQVxkeOOl3mPnle1SIFlQxQg000s21G2XJ0"
+                            data-amount="7000" 
+                            data-currency="usd" 
+                            data-name="Abhinav Goyal" 
+                            data-description="Buy React.js Complete Course" 
+                            data-locale="auto" > 
+                        </script> 
+                        <!-- <input />
+                        <button type="submit">submit</button> -->
+                        <!-- <button class="on-btn btn-link " onclick="placeOrder()">Order Now</button> -->
+                    </form> 
+                <%}else{ %> 
+                    <button style="color: white;" class="btn btn-danger"> Product Not Available </button>
+                <%} %>
+              
             </div>
         </div>
         </div>
@@ -71,7 +76,16 @@
                                 <img src="<%=eachProduct.user.avatar%>" alt="">
                             </div>
                             <div class="top-text">
-                                <div class="heading"><h4><a href="productDetail-<%=eachProduct.id%>"> <%= eachProduct.title %> </a></h4></div>
+                                <div class="" style="display: flex; flex-direction: row;">
+                                    <h4 style="flex : 1;margin-left: 20px;"><a href="productDetail-<%=eachProduct.id%>" style="color: white;"> <%= eachProduct.title %> </a></h4>
+                                    <% var extraClass = "btn-success" %>
+                                    <% var btnText = "Available" %>
+                                    <% if(eachProduct.isAvailable == "notAvailable"){%> 
+                                        <% extraClass = "btn-danger" %>
+                                        <% btnText = "Not " + btnText %>
+                                    <%} %>
+                                    <button style="color: white;" class="btn <%=extraClass%>" > <%= btnText %> </button>
+                                </div>
                                 <div class="sub-heading">
                                     <h5><a href="restaurant_detail.html"><%= eachProduct.category %></a></h5>
                                     <p><%= eachProduct.price %> * <%= everyProduct.quantity %> </p>

@@ -184,8 +184,15 @@ Partner
 </div>
 <div class="col-lg-4 col-md-4">
 <div class="right-side">
-<div class="new-heading t-bottom">
-<h1><%= product.title %></h1>
+<div class="new-heading t-bottom" style="display: flex; flex-direction: row;">
+<h1 style="flex: 1;"><%= product.title %></h1>
+<% var extraClass = "btn-success" %>
+<% var btnText = "Available" %>
+<% if(product.isAvailable == "notAvailable"){%> 
+	<% extraClass = "btn-danger" %>
+	<% btnText = "Not " + btnText %>
+<%} %>
+<button style="color: white;flex : 1;" class="btn <%=extraClass%>" > <%= btnText %> </button>
 </div>
 <div class="about-meal">
 <h4> Description</h4>
@@ -206,23 +213,26 @@ Partner
 </div>
 <% if(user){%> 
 	<% if(product.user.id != user.id){ %> 
-<form action="/addToCart-<%=product.id%>" method="POST">
-<div class="Qty">
-<h4> Qty</h4>
-<div class="input-group">
-	<% var cq = 1 %>
-	<% if(quantity){ %> 
-		<% cq = parseFloat(quantity) %>
-	<% } %>
-<input type="number" value="<%=cq%>" name="quantity" placeholder="1" min="1">
-</div>
-</div>
-		<div class="order-now-check">
-			<a href="">
-				<button type="submit" class="on-btn btn-link" onclick="">Add to Cart</button>
-			</a>
-		</div>	
-</form>
+		<% if(product.isAvailable == "available"){%> 
+			<form action="/addToCart-<%=product.id%>" method="POST">
+				<div class="Qty">
+				<h4> Qty</h4>
+				<div class="input-group">
+					<% var cq = 1 %>
+					<% if(quantity){ %> 
+						<% cq = parseFloat(quantity) %>
+					<% } %>
+				<input type="number" value="<%=cq%>" name="quantity" placeholder="1" min="1">
+				</div>
+				</div>
+						<div class="order-now-check">
+							<a href="">
+								<button type="submit" class="on-btn btn-link" onclick="">Add to Cart</button>
+							</a>
+						</div>	
+				</form>
+		<%} %>
+
 <%} %>
 <%} %>
 

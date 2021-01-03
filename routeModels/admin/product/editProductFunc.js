@@ -13,7 +13,7 @@ editProductFunc = async (req,res) => {
         if(user.role == 'User'){
           res.redirect("/index")
         }else{
-            const { title, price, description, category, offer,deliveryCharge,deliveryTime } = (req.body)
+            const { title, price, description, category, offer,deliveryCharge,deliveryTime,isAvailable } = (req.body)
             var images = []
             product.title = title
             product.price = price
@@ -22,6 +22,7 @@ editProductFunc = async (req,res) => {
             product.offer = offer
             product.deliveryCharge = deliveryCharge
             product.deliveryTime = deliveryTime
+            product.isAvailable = isAvailable
             if(req.files.length != 0){
                 product.images.forEach(element => {
                     fileHelper.deleteFile(element);

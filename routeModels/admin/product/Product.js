@@ -45,7 +45,11 @@ var productSchema = new mongoose.Schema({
     deliveryTime : {
         type : String,
         default : "",
-    } 
+    } ,
+    isAvailable : {
+        type : String,
+        default : "available"
+    }
     
 })
 

@@ -31,6 +31,17 @@
                         <label for="exampleTextarea">Description</label>
                         <textarea class="form-control" name="description" id="exampleTextarea" rows="3"></textarea>
                       </div>
+
+                      <div class="form-group">
+                        <label for="exampleEmail">Delivery Charge</label>
+                        <input type="text" name="deliveryCharge"  class="form-control" id="exampleEmail" placeholder="Delivery Charge">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleEmail">Delivery Time</label>
+                        <input type="text" name="deliveryTime"  class="form-control" id="exampleEmail" placeholder="Delivery Time">
+                      </div>
+                      
                       <div class="form-group">
                         <label for="exampleSelect">Category</label>
                         <select name="category" class="form-control" id="exampleSelect">
@@ -56,13 +67,12 @@
                         </select>
                       </div>
                       <div class="form-group">
-                        <label for="exampleEmail">Delivery Charge</label>
-                        <input type="text" name="deliveryCharge"  class="form-control" id="exampleEmail" placeholder="Delivery Charge">
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleEmail">Delivery Time</label>
-                        <input type="text" name="deliveryTime"  class="form-control" id="exampleEmail" placeholder="Delivery Time">
+                        <label for="exampleSelect">Available</label>
+                        <select required name="isAvailable" class="form-control" id="exampleSelect">
+                          <option style="font-size: 1.3em;" disabled>Available</option>
+                          <option value="available"> Available </option>
+                          <option value="notAvailable"> Not Available </option>
+                        </select>
                       </div>
                       <div class="custom-file">
                         <input type="file" class="custom-file-input" id="validatedCustomFile" name="image" multiple accept="image/*">

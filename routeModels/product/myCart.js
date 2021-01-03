@@ -14,7 +14,14 @@ myCart =  async (req,res) => {
           })
         var { totalCost }  = user
         var products = user.cart
-        res.render("myCart",{ title : "My Products", user, products ,totalCost,Publishable_Key })
+        var isOrderAllowed = true
+        var orderAllowed = products.filter( eachProduct => {
+          return eachProduct.product.isAvailable === "notAvailable"
+        } )
+        if(orderAllowed.length != 0){
+          isOrderAllowed = false
+        }
+        res.render("myCart",{ title : "My Products", user, products ,totalCost,Publishable_Key,isOrderAllowed })
 
     } catch (error) {
         req.flash("error","Not able to fetch data from database")

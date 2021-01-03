@@ -30,6 +30,16 @@
                         <label for="exampleTextarea">Description</label>
                         <textarea class="form-control" name="description" id="exampleTextarea" rows="3"><%=product.description%>  </textarea>
                       </div>
+
+                      <div class="form-group">
+                        <label for="exampleEmail">Delivery Charge</label>
+                        <input required value="<%=product.deliveryCharge%>" type="text" name="deliveryCharge"  class="form-control" id="exampleEmail" placeholder="Delivery Charge">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleEmail">Delivery Time</label>
+                        <input required value="<%=product.deliveryTime%>" type="text" name="deliveryTime"  class="form-control" id="exampleEmail" placeholder="Delivery Time">
+                      </div>
                       <div class="form-group">
                         <label for="exampleSelect">Category</label>
                         <select required value="<%=product.category%>" name="category" class="form-control" id="exampleSelect">
@@ -55,13 +65,17 @@
                         </select>
                       </div>
                       <div class="form-group">
-                        <label for="exampleEmail">Delivery Charge</label>
-                        <input required value="<%=product.deliveryCharge%>" type="text" name="deliveryCharge"  class="form-control" id="exampleEmail" placeholder="Delivery Charge">
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleEmail">Delivery Time</label>
-                        <input required value="<%=product.deliveryTime%>" type="text" name="deliveryTime"  class="form-control" id="exampleEmail" placeholder="Delivery Time">
+                        <label for="exampleSelect">Available</label>
+                        <select required name="isAvailable" class="form-control" id="exampleSelect">
+                          <option style="font-size: 1.3em;" disabled>Available</option>
+                          <% if(product.isAvailable == "available"){%> 
+                            <option selected value="available"> Available </option>
+                            <option value="notAvailable"> Not Available </option>
+                          <%}else{ %> 
+                            <option value="available"> Available </option>
+                            <option selected value="notAvailable"> Not Available </option>
+                          <%} %>
+                        </select>
                       </div>
                       <div class="custom-file">
                         <input type="file" class="custom-file-input" id="validatedCustomFile" name="image" multiple accept="image/*">

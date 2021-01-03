@@ -12,6 +12,13 @@
 				<div class="ms-panel">
 				<div class="ms-panel-header">
 					<h6><%= product.title %></h6>
+					<% var extraClass = "btn-success" %>
+					<% var btnText = "Available" %>
+					<% if(product.isAvailable == "notAvailable"){%> 
+						<% extraClass = "btn-danger" %>
+						<% btnText = "Not " + btnText %>
+					<%} %>
+					<button style="margin-top: 20px;" class="btn <%=extraClass%>" > <%= btnText %> </button>
 				</div>
 				<div class="ms-panel-body">
 					<div id="dottedSlider" class="ms-dotted-indicator-slider carousel slide" data-ride="carousel">
@@ -40,11 +47,11 @@
 						<%}) %>
 					</div>
 					<a class="carousel-control-prev" href="#dottedSlider" role="button" data-slide="prev">
-						<span class="material-icons" aria-hidden="true">keyboard_arrow_left</span>
+						<span class="material-icons" aria-hidden="true"> << </span>
 						<span class="sr-only">Previous</span>
 					</a>
 					<a class="carousel-control-next" href="#dottedSlider" role="button" data-slide="next">
-						<span class="material-icons" aria-hidden="true">keyboard_arrow_right</span>
+						<span class="material-icons" aria-hidden="true"> >> </span>
 						<span class="sr-only">Next</span>
 					</a>
 					</div>
