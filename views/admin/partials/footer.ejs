@@ -25,13 +25,15 @@
     const socket = io('ws://localhost:3000');
     socket.on("orderReceived",(data) => {
       
+        setTimeout( () => {
+            window.location.reload(true);
+        },2000) // page will refresh after 2 seconds
         $.notify("New Order\n" + data.username + "\n\Address: " + data.address +
         "\n\Phone Number: " + data.phoneNumber + 
         "\n\Total Cost : " + data.totalCost, {
             autoHide: false,
             className: "success"
         });
-        window.location.reload(true);
     } )
 
   

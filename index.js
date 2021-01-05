@@ -34,33 +34,33 @@ const server = app.listen(3000 , () => {
 var io = require('socket.io')(server);
 
 io.on('connection', socket => {
-  socket.on("sendForDelivery",( order ) => {
-    var { orderDetails } = order
-    var data = {
-      username : orderDetails.customer.username,
-      address : orderDetails.customer.address,
-      userId : orderDetails.customer._id
-    }
-    socket.broadcast.emit("sentForDelivery", data);
-  } )
-  socket.on("cancelOrder",( order ) => {
-    var { orderDetails } = order
-    var data = {
-      username : orderDetails.customer.username,
-      address : orderDetails.customer.address,
-      userId : orderDetails.customer._id
-    }
-    socket.broadcast.emit("cancelledOrder", data);
-  } )
-  socket.on("confirmDelivery",( order ) => {
-    var { orderDetails } = order
-    var data = {
-      username : orderDetails.customer.username,
-      address : orderDetails.customer.address,
-      userId : orderDetails.customer._id
-    }
-    socket.broadcast.emit("confirmedDelivery", data);
-  } )
+  // socket.on("sendForDelivery",( order ) => {
+  //   var { orderDetails } = order
+  //   var data = {
+  //     username : orderDetails.customer.username,
+  //     address : orderDetails.customer.address,
+  //     userId : orderDetails.customer._id
+  //   }
+  //   socket.broadcast.emit("sentForDelivery", data);
+  // } )
+  // socket.on("cancelOrder",( order ) => {
+  //   var { orderDetails } = order
+  //   var data = {
+  //     username : orderDetails.customer.username,
+  //     address : orderDetails.customer.address,
+  //     userId : orderDetails.customer._id
+  //   }
+  //   socket.broadcast.emit("cancelledOrder", data);
+  // } )
+  // socket.on("confirmDelivery",( order ) => {
+  //   var { orderDetails } = order
+  //   var data = {
+  //     username : orderDetails.customer.username,
+  //     address : orderDetails.customer.address,
+  //     userId : orderDetails.customer._id
+  //   }
+  //   socket.broadcast.emit("confirmedDelivery", data);
+  // } )
   
 });
 
@@ -69,8 +69,18 @@ eventEmitter.on('orderPlaced', (data) => {
   io.sockets.emit("orderReceived", data);
 })
 
-eventEmitter.on('orderPlaced', (data) => {
-  io.to('adminRoom').emit('orderPlaced', data)
+
+eventEmitter.on('sendForDelivery', (data) => {
+  io.sockets.emit("sentForDelivery", data);
+})
+
+
+eventEmitter.on('cancelOrder', (data) => {
+  io.sockets.emit("cancelledOrder", data);
+})
+
+eventEmitter.on('confirmDelivery', (data) => {
+  io.sockets.emit("confirmedDelivery", data);
 })
 
 app.use(express.json());

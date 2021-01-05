@@ -8,7 +8,9 @@ orderInfo =  async (req,res) => {
             res.redirect("/index")
         }
         var adminId = req.user._id
-        var order = await Order.findById(orderId)
+        var order = await Order.findById(orderId).populate("customer")
+
+        var { customer  } = order
 
         var admin = await Admin.findById(adminId)
 
@@ -37,15 +39,22 @@ orderInfo =  async (req,res) => {
 
         var updatedAdmin = await Admin.findByIdAndUpdate(adminId,savedAdmin)
 
+        const eventEmitter = req.app.get('eventEmitter')
+        var data = {
+            username : customer.username,
+            address : customer.address,
+            userId : customer._id      
+        } 
+        eventEmitter.emit('sendForDelivery', data)
+
         req.flash("success","Order sent for delivery")
 
-        // res.redirect("/admin/index")
-        return res.json({ redirect : "/admin/index" })
+        res.redirect("/admin/index")
 
     } catch (error) {
         console.log(error)
         req.flash("error","Unable to fetch data")
-        return res.json({ redirect : "/admin/index" })
+        res.redirect("/admin/index")
     }
 }
 module.exports = orderInfo

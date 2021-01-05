@@ -183,26 +183,33 @@
         socket.on("sentForDelivery",(data) => {
             var user = <%- JSON.stringify(user) %>
             if(user._id == data.userId){
+              setTimeout( () => {
+                  window.location.reload(true);
+              },2000) // page will refresh after 2 seconds
               $.notify("Order sent for delivery\n\Username :" + data.username + "\n\Address: " + data.address, {
                   autoHide: false,
                   className: "success"
               });
-              window.location.reload(true);
             }
         } )
         socket.on("cancelledOrder",(data) => {
             var user = <%- JSON.stringify(user) %>
             if(user._id == data.userId){
+              setTimeout( () => {
+                  window.location.reload(true);
+              },2000) // page will refresh after 2 seconds
               $.notify("Order cancelled\n\Username :" + data.username + "\n\Address: " + data.address, {
                   autoHide: false,
                   className: "success"
               });
-              window.location.reload(true);
             }
         } )
         socket.on("confirmedDelivery",(data) => {
             var user = <%- JSON.stringify(user) %>
             if(user._id == data.userId){
+              setTimeout( () => {
+                  window.location.reload(true);
+              },2000) // page will refresh after 2 seconds
               $.notify("Order has been delivered\n\Username :" + data.username + "\n\Address: " + data.address, {
                   autoHide: false,
                   className: "success"

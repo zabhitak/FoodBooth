@@ -60,22 +60,20 @@ placeOrder = async (req,res) => {
         }) 
         .then((customer) => { 
             return stripe.charges.create({ 
-                amount: 7000,    // Charing Rs 25 
+                amount: totalCost,    // Charing Rs 25 
                 description: 'Web Development Product', 
                 currency: 'USD', 
                 customer: customer.id 
-            }); 
+            });  
         }) 
         const eventEmitter = req.app.get('eventEmitter')
         var data = {
             username : req.user.username,
             phoneNumber : req.user.phoneNumber,
-            totalCost : req.user.totalCost,
+            totalCost : totalCost,
             address : req.user.address
         } 
-        console.log(data)
         eventEmitter.emit('orderPlaced', data)
-        console.log("emit orderPlaces from eventEmitter")
 
         req.flash("success","Order placed successfully")
         res.redirect("/index")

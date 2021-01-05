@@ -41,15 +41,15 @@
                         <td> <%= order.totalCost %>  </td>
                         <td> 
                             <% if(order.status == 'Accepted'){ %>  
-                                <form>
-                                    <button onclick="sendForDelivery()" class="badge badge-primary"> Send For Delivery </button> 
+                                <form method="POST" action="/admin/sendForDelivery-<%=order._id%>" >
+                                    <button type="submit" class="badge badge-primary"> Send For Delivery </button> 
                                 </form>   
-                                <form>
-                                    <button onclick="cancelOrder()" class="badge badge-primary"> Cancel Order </button> 
+                                <form method="POST" action="/admin/cancelOrder-<%=order._id%>">
+                                    <button type="submit" class="badge badge-primary"> Cancel Order </button> 
                                 </form>   
                             <%}else if(order.status == 'onTheWay'){ %> 
-                                <form >
-                                    <button onclick="confirmDelivery()" class="badge badge-warning"> Confirm Delivery </button> 
+                                <form  method="POST" action="/admin/confirmDelivery-<%=order._id%>" >
+                                    <button type="submit" class="badge badge-warning"> Confirm Delivery </button> 
                                 </form>    
                             <%} %>
                             
@@ -100,69 +100,5 @@
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
-
-  <script>
-    
-      function sendForDelivery() {
-        var orderId =  <%- JSON.stringify(order._id) %> 
-            var order = {
-                orderDetails :  <%- JSON.stringify(order) %> ,
-            }
-            socket.emit("sendForDelivery",order);
-            var url = `/admin/sendForDelivery-${orderId}`
-            postData(url,order)
-            .then(data => {
-                console.log(data.redirect); // JSON data parsed by `data.json()` call
-                window.location.replace(data.redirect)
-            });
-         }
-
-        function cancelOrder() {
-        var orderId =  <%- JSON.stringify(order._id) %> 
-            var order = {
-                orderDetails :  <%- JSON.stringify(order) %> ,
-            }
-            socket.emit("cancelOrder",order);
-            var url = `/admin/cancelOrder-${orderId}` 
-            postData(url,order)
-            .then(data => {
-                console.log(data.redirect); // JSON data parsed by `data.json()` call
-                window.location.replace(data.redirect)
-            });
-         }
-
-        function confirmDelivery() {
-        var orderId =  <%- JSON.stringify(order._id) %> 
-            var order = {
-                orderDetails :  <%- JSON.stringify(order) %> ,
-            }
-            socket.emit("confirmDelivery",order);
-            var url = `/admin/confirmDelivery-${orderId}` 
-            postData(url,order)
-            .then(data => {
-                console.log(data.redirect); // JSON data parsed by `data.json()` call
-                window.location.replace(data.redirect)
-            });
-         }
-
-        async function postData(url = '', data = {}) {
-                // Default options are marked with *
-                const response = await fetch(url, {
-                    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                    mode: 'cors', // no-cors, *cors, same-origin
-                    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                    credentials: 'same-origin', // include, *same-origin, omit
-                    headers: {
-                    'Content-Type': 'application/json'
-                    // 'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    redirect: 'follow', // manual, *follow, error
-                    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-                    body: JSON.stringify(data) // body data type must match "Content-Type" header
-                });
-                return response.json(); // parses JSON response into native JavaScript objects
-            }
-
-  </script>
   
 <%- include('./partials/footer') %>
