@@ -187,6 +187,7 @@
                   autoHide: false,
                   className: "success"
               });
+              window.location.reload(true);
             }
         } )
         socket.on("cancelledOrder",(data) => {
@@ -196,6 +197,7 @@
                   autoHide: false,
                   className: "success"
               });
+              window.location.reload(true);
             }
         } )
         socket.on("confirmedDelivery",(data) => {
