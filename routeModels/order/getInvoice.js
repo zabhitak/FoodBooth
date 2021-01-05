@@ -78,18 +78,18 @@ getInvoice = async (req, res, next) => {
         .text('New York, NY, 10025', 200, 80, {align: 'right'})
         .moveDown();
 
-      pdfDoc.fillColor('#444444').fontSize(20).text('Invoice', 50, 160);
+      pdfDoc.fillColor('#444444').fontSize(20).text('receipt', 50, 160);
 
       generateHr(pdfDoc, 185);
       const customerInformationTop = 200;
 
       pdfDoc
         .fontSize(10)
-        .text('Invoice Number:', 50, customerInformationTop)
+        .text('Receipt Number:', 50, customerInformationTop)
         .font('Helvetica-Bold')
-        .text('invoice.invoice_nr', 150, customerInformationTop)
+        .text('receipt.receipt_nr', 150, customerInformationTop)
         .font('Helvetica')
-        .text('Invoice Date:', 50, customerInformationTop + 15)
+        .text('Receipt Date:', 50, customerInformationTop + 15)
         .text(formatDate(new Date()), 150, customerInformationTop + 15)
         .text('Balance Due:', 50, customerInformationTop + 30)
         .text(formatCurrency(totalCost), 150, customerInformationTop + 30)
