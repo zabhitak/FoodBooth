@@ -34,34 +34,6 @@ const server = app.listen(3000 , () => {
 var io = require('socket.io')(server);
 
 io.on('connection', socket => {
-  // socket.on("sendForDelivery",( order ) => {
-  //   var { orderDetails } = order
-  //   var data = {
-  //     username : orderDetails.customer.username,
-  //     address : orderDetails.customer.address,
-  //     userId : orderDetails.customer._id
-  //   }
-  //   socket.broadcast.emit("sentForDelivery", data);
-  // } )
-  // socket.on("cancelOrder",( order ) => {
-  //   var { orderDetails } = order
-  //   var data = {
-  //     username : orderDetails.customer.username,
-  //     address : orderDetails.customer.address,
-  //     userId : orderDetails.customer._id
-  //   }
-  //   socket.broadcast.emit("cancelledOrder", data);
-  // } )
-  // socket.on("confirmDelivery",( order ) => {
-  //   var { orderDetails } = order
-  //   var data = {
-  //     username : orderDetails.customer.username,
-  //     address : orderDetails.customer.address,
-  //     userId : orderDetails.customer._id
-  //   }
-  //   socket.broadcast.emit("confirmedDelivery", data);
-  // } )
-  
 });
 
 
