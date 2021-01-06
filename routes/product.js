@@ -11,6 +11,9 @@ const addComment = require(`${commonPath}addComment`)
 const addToCart = require(`${commonPath}addToCart`)
 const myCart = require(`${commonPath}myCart`)
 const removeFromCart = require(`${commonPath}removeFromCart`)
+const contact = require(`${commonPath}contact`)
+
+const proController = require('../routeModels/product/contact');
 
 router.get('/allProducts',allProducts)
 
@@ -23,5 +26,9 @@ router.post('/addToCart-:productId',middleware.isLoggedIn,addToCart)
 router.get('/myCart',middleware.isLoggedIn,myCart)
 
 router.get('/remove-:productId-:index',middleware.isLoggedIn,removeFromCart)
+
+router.get('/contact',proController.getcontact)
+
+router.post('/contact',proController.postcontact)
 
 module.exports = router
