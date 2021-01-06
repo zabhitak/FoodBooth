@@ -1,6 +1,16 @@
 var Admin = require("../Admin")
 var Order = require("../../order/Order")
 
+const nodemailer = require("nodemailer")
+
+const user = process.env.EMAIL_ID 
+const pass = process.env.PASSWORD
+
+const auth = {
+    user ,
+    pass  
+}
+
 orderInfo =  async (req,res) => {
     const { orderId } = req.params
     try {
@@ -46,6 +56,27 @@ orderInfo =  async (req,res) => {
             userId : customer._id      
         } 
         eventEmitter.emit('cancelOrder', data)
+
+
+        const smtpTrans = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
+            auth 
+        })
+        
+        const mailOpts = {
+            from: "Natto",
+            to : customer.email,
+            subject: 'Natto | Order Cancelled',
+            text: `Hi, ${ customer.username }` + "\n\n" + 
+            `Your order has been cancelled.`
+            + "\n\n" + 
+            "Regards,\n" +
+            "Team ,Natto"
+        }
+
+        var response = await smtpTrans.sendMail(mailOpts)
 
         req.flash("success","Order cancelled successfully")
 

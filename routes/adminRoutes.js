@@ -9,7 +9,7 @@ const editProfile = require(`${commonPath}editProfile`)
 const editProfileFunc = require(`${commonPath}editProfileFunc`)
 const promotionalEmails = require(`${commonPath}promotionalEmails`)
 const promotionalEmailsFunc = require(`${commonPath}promotionalEmailsFunc`)
-
+const Feedbacks = require(`${commonPath}Feedbacks`)
 
 const middleware = require("../middleware")
 
@@ -21,5 +21,7 @@ router.post("/editProfile",middleware.isLoggedIn,editProfileFunc )
 
 router.get("/promotionalEmails",middleware.isLoggedIn,promotionalEmails  )
 router.post("/promotionalEmails",middleware.isLoggedIn,promotionalEmailsFunc  )
+
+router.get("/feedbacks",middleware.isLoggedIn, Feedbacks )
 
 module.exports = router

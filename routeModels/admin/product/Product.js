@@ -42,10 +42,6 @@ var productSchema = new mongoose.Schema({
         type : String,
         default : "0",
     },
-    deliveryTime : {
-        type : String,
-        default : "",
-    } ,
     isAvailable : {
         type : String,
         default : "available"

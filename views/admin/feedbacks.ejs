@@ -1,0 +1,56 @@
+<%- include('./partials/header') %>
+<%- include('./partials/sidenav') %>
+<body oncontextmenu="return false;">
+
+    <header id="header" class="default">
+        <div class="container">
+          <%- include('../partials/flashMessage') %>
+        </div>
+      </header>
+
+    <main class="body-content">
+        <div class="ms-content-wrapper">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="ms-panel">
+                    <div class="ms-panel-header">
+                        <h6>Feedbacks</h6>
+                    </div>
+                    <div class="ms-panel-body">
+                        <div class="table-responsive">
+                        <table class="table table-hover thead-primary">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Cost</th>
+                                <th scope="col">Message</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% var index = 1 %>
+                            <% data.forEach( eachOne => { %> 
+                                <tr>
+                                    <th scope="row"> <%= index %> </th>
+                                    <td><%= eachOne.name %> </td>
+                                    <td><%= eachOne.email %> </td>
+                                    <td><%= eachOne.address %> </td>
+                                    <td><%= eachOne.cost %> </td>
+                                    <td><%= eachOne.message %> </td>
+                                </tr>
+                                <% index = index + 1 %>
+                            <%} ) %>
+                           
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<%- include('./partials/footer') %>

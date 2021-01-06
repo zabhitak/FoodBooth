@@ -7,7 +7,8 @@ const indexRoute = require(`${commonPath}indexRoute`)
 const settingsRoute = require(`${commonPath}settingsRoute`)
 const settingsFunc = require(`${commonPath}settingsFunc`)
 
-const middleware = require("../middleware")
+const middleware = require("../middleware");
+const sendFeedback = require("../routeModels/feedback/sendFeedback");
 
 const User = require("../routeModels/user/User")
 
@@ -29,6 +30,8 @@ router.get("/index",middleware.isLoggedIn,indexRoute)
 
 router.get('/settings',middleware.isLoggedIn,settingsRoute)
 router.post("/settings",middleware.isLoggedIn,settingsFunc)
+
+router.post("/feedback",sendFeedback)
 
 
 module.exports = router

@@ -58,77 +58,100 @@
   </section>
 
   <section class="browse-places">
-    <div class="col-lg-12 col-md-12 col-12">
-        <div class="contact-heading">
-          <h1>Show your interest !</h1>
-        </div>
-        <div class="contact-info">
-          <form method="POST" action="/contact">
-            <div class="row">
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="form-group">
-                  <label for="userName">Name</label>
-                  <input
+    <div class="container">
+      <div class="col-lg-12 col-md-12 col-12">
+          <div class="contact-heading">
+            <h1>Show your interest !</h1>
+          </div>
+          <div class="contact-info">
+            <form method="POST" action="/feedback">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="form-group">
+                    <label for="userName">Name</label>
+                    <% var name = "" %>
+                    <% if(user){ %> 
+                      <% name = user.username %>
+                    <%}  %>
+                    <input
                     type="text"
+                    required
                     class="video-form"
                     name="name" id="name"
                     placeholder="Your Name"
+                    value="<%=name%>"
                   />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="form-group">
+                    <label for="emailAddress">Email</label>
+                    <% var email = "" %>
+                    <% if(user){ %>
+                      <% email = user.email %>
+                    <%} %>
+                    <input
+                        type="email"
+                        required
+                        class="video-form"
+                        id="email" name="email"   
+                        placeholder="Your Email"
+                        value="<%=email%>"
+                      />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="form-group">
+                    <label for="telNumber">Address</label>
+                    <% var address = "" %>
+                    <% if(user){%> 
+                      <% if(user.address){ %> 
+                        <% address = user.address %>
+                      <% } } %> 
+                      <input
+                        type="tel"
+                        required
+                        class="video-form"
+                        id="address" name="address"
+                        id="telNumber"
+                        placeholder="Short Address"
+                        value="<%=address%>"
+                      />
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="form-group">
+                    <label for="webSite">Expected cost of a Meal Box? (in GBP)</label>
+                    <input
+                      type="Text"
+                      required
+                      class="video-form"
+                      id="cost" name="cost"
+                      placeholder="Expected Cost"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-12">
+                  <div class="form-group">
+                    <label for="typeMessage">Message</label>
+                    <textarea
+                      class="text-area"
+                      required
+                      id="message" name="message"
+                      placeholder="Type Message"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-12">
+                  <button type="submit" class="contact-btn btn-link">
+                    Submit
+                  </button>
                 </div>
               </div>
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="form-group">
-                  <label for="emailAddress">Email</label>
-                  <input
-                    type="email"
-                    class="video-form"
-                    id="email" name="email"   
-                    placeholder="Your Email"
-                  />
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="form-group">
-                  <label for="telNumber">Address</label>
-                  <input
-                    type="tel"
-                    class="video-form"
-                    id="address" name="address"
-                    id="telNumber"
-                    placeholder="Short Address"
-                  />
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-12">
-                <div class="form-group">
-                  <label for="webSite">Expected cost of a Meal Box? (in GBP)</label>
-                  <input
-                    type="Text"
-                    class="video-form"
-                    id="cost" name="cost"
-                    placeholder="Expected Cost"
-                  />
-                </div>
-              </div>
-              <div class="col-lg-12 col-md-12 col-12">
-                <div class="form-group">
-                  <label for="typeMessage">Message</label>
-                  <textarea
-                    class="text-area"
-                    id="message" name="message"
-                    placeholder="Type Message"
-                  ></textarea>
-                </div>
-              </div>
-              <div class="col-lg-12 col-md-12 col-12">
-                <button type="submit" class="contact-btn btn-link">
-                  Submit
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
+            </form>
+          </div>
       </div>
+    </div>
     </div>
 </section>
 
