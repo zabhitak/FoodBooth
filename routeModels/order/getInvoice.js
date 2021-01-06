@@ -125,8 +125,8 @@ getInvoice = async (req, res, next) => {
           position,
           product.title,
           eachProduct.quantity,
-          product.deliveryCharge + " + " + product.price,
-          eachProduct.quantity + "*(" + product.deliveryCharge + " + " + product.price + ")"
+          product.price,
+          eachProduct.quantity + "*(" + product.price + ")"
         );
 
         generateHr(pdfDoc, position + 20);

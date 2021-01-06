@@ -9,7 +9,7 @@ addProductFunc = async (req,res) => {
           res.redirect("/admin/index")
         }else{
           
-          const { title, price, description, category, offer,deliveryCharge,isAvailable } = (req.body)
+          const { title, price, description, category,isAvailable } = (req.body)
           var images = []
           if(req.files[0]){
             images.push(req.files[0].path)
@@ -23,7 +23,7 @@ addProductFunc = async (req,res) => {
           if(req.files[3]){
             images.push(req.files[3].path)
           }
-          const newProduct = await Product.create({ title,price,description,images, user,category, offer,deliveryCharge,isAvailable })
+          const newProduct = await Product.create({ title,price,description,images, user,category, isAvailable })
   
           user.products.unshift(newProduct)
 

@@ -60,14 +60,8 @@ placeOrder = async (req,res) => {
         stripe.customers.create({ 
             email: req.body.stripeEmail, 
             source: req.body.stripeToken, 
-            name: 'Gautam Sharma', 
-            address: { 
-                line1: 'TC 9/4 Old MES colony', 
-                postal_code: '110092', 
-                city: 'New Delhi', 
-                state: 'Delhi', 
-                country: 'India', 
-            } 
+            name: user.username, 
+            address: user.address
         }) 
         .then((customer) => { 
             return stripe.charges.create({ 

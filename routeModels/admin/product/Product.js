@@ -34,14 +34,6 @@ var productSchema = new mongoose.Schema({
         type : String,
         default : "Dinner"
     },
-    offer : {
-        type : String,
-        default : "0",
-    },
-    deliveryCharge : {
-        type : String,
-        default : "0",
-    },
     isAvailable : {
         type : String,
         default : "available"

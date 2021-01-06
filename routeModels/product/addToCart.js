@@ -11,24 +11,26 @@ const addToCart = async (req,res) => {
 
         var product = await Product.findById(productId)
 
-        var { price, deliveryCharge } = product
+        var { price } = product
+
 
         var indexOfDollar = price.indexOf('$')
-        var indexOfDollarDC = price.indexOf('$')
-        var productPrice , productDeleveryCharge, currency
+        
+        // var indexOfDollarDC = price.indexOf('$')
+        var productPrice, currency
 
         if(indexOfDollar == -1){
             var indexOfRs = price.indexOf('Rs')
-            var indexOfRsDC = price.indexOf('Rs')
+            // var indexOfRsDC = price.indexOf('Rs')
             productPrice = parseFloat( price.slice(indexOfRs+1,price.length) )
-            productDeleveryCharge = parseFloat( deliveryCharge.slice(indexOfRsDC+1,deliveryCharge.length) )
+            // productDeleveryCharge = parseFloat( deliveryCharge.slice(indexOfRsDC+1,deliveryCharge.length) )
             currency =  price.slice(0,indexOfDollar+1)
         }else{
             productPrice = parseFloat( price.slice(indexOfDollar+1,price.length) )
-            productDeleveryCharge = parseFloat( deliveryCharge.slice(indexOfDollarDC+1,deliveryCharge.length) )
+            // productDeleveryCharge = parseFloat( deliveryCharge.slice(indexOfDollarDC+1,deliveryCharge.length) )
             currency =  price.slice(0,indexOfDollar+1)
+         
         }
-
         var currentCart  = user.cart
        
         var requiredIndex = currentCart.findIndex(eachOne => eachOne.product == productId );
@@ -41,11 +43,13 @@ const addToCart = async (req,res) => {
         if(requiredIndex != -1){
             var currentQuantity = user.cart[requiredIndex].quantity
             user.cart[requiredIndex] = newItem
-            totalCost =  parseFloat(user.totalCost) + (quantity - currentQuantity) * ( parseFloat(productPrice) + parseFloat(productDeleveryCharge))
+            totalCost =  parseFloat(user.totalCost) + (quantity - currentQuantity) * ( parseFloat(productPrice) )
+            // + parseFloat(productDeleveryCharge))
             
         }else{
             user.cart.unshift(newItem)
-            totalCost =  parseFloat(user.totalCost) + quantity * ( parseFloat(productPrice) + parseFloat(productDeleveryCharge))
+            totalCost =  parseFloat(user.totalCost) + quantity * ( parseFloat(productPrice) )
+            // + parseFloat(productDeleveryCharge))
             
         }
 

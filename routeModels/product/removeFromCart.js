@@ -21,24 +21,25 @@ const removeFromCart = async (req,res) => {
 
         user.cart = newCart
 
-        var { price, deliveryCharge } = product
+        var { price } = product
 
         var indexOfDollar = price.indexOf('$')
-        var indexOfDollarDC = price.indexOf('$')
-        var productPrice , productDeleveryCharge, currency
+        // var indexOfDollarDC = price.indexOf('$')
+        var productPrice , currency
 
         if(indexOfDollar == -1){
             var indexOfRs = price.indexOf('Rs')
-            var indexOfRsDC = price.indexOf('Rs')
+            // var indexOfRsDC = price.indexOf('Rs')
             productPrice = parseFloat( price.slice(indexOfRs+1,price.length) )
-            productDeleveryCharge = parseFloat( deliveryCharge.slice(indexOfRsDC+1,deliveryCharge.length) )
+            // productDeleveryCharge = parseFloat( deliveryCharge.slice(indexOfRsDC+1,deliveryCharge.length) )
             currency =  price.slice(0,indexOfDollar+1)
         }else{
             productPrice = parseFloat( price.slice(indexOfDollar+1,price.length) )
-            productDeleveryCharge = parseFloat( deliveryCharge.slice(indexOfDollarDC+1,deliveryCharge.length) )
+            // productDeleveryCharge = parseFloat( deliveryCharge.slice(indexOfDollarDC+1,deliveryCharge.length) )
             currency =  price.slice(0,indexOfDollar+1)
         }
-        var toSubtract = quantity * ( parseFloat(productPrice) + parseFloat(productDeleveryCharge))
+        var toSubtract = quantity * ( parseFloat(productPrice))
+        //  + parseFloat(productDeleveryCharge))
         
         var totalCost =  parseFloat(user.totalCost) - toSubtract
         if(totalCost < 0){

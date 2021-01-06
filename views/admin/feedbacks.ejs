@@ -27,6 +27,7 @@
                                 <th scope="col">Address</th>
                                 <th scope="col">Cost</th>
                                 <th scope="col">Message</th>
+                                <th scope="col">Time</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -39,6 +40,7 @@
                                     <td><%= eachOne.address %> </td>
                                     <td><%= eachOne.cost %> </td>
                                     <td><%= eachOne.message %> </td>
+                                    <td><%= eachOne.time.toDateString() %> </td>
                                 </tr>
                                 <% index = index + 1 %>
                             <%} ) %>
