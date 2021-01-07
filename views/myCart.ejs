@@ -30,22 +30,27 @@
                     
                     <button class="on-btn btn-link " onclick="placeOrder()">Order Now</button>
                 </form> -->
-                <% if(isOrderAllowed){%> 
-                    <form method="POST" action="/order" id="importantForm"> 
-                        <script
-                            src="//checkout.stripe.com/v2/checkout.js"
-                            class="stripe-button"
-                            data-key="pk_test_51I3nnHFmnlpQUlnVG3AdoCKlP6P30y6ZSfa8IaKgH6DPqInvtQgpRaXwUFP3xEAaQVxkeOOl3mPnle1SIFlQxQg000s21G2XJ0"
-                            data-amount="<%= totalCost %>" 
-                            data-currency="usd" 
-                            data-name="Abhinav Goyal" 
-                            data-description="Buy React.js Complete Course" 
-                            data-locale="auto" > 
-                        </script> 
-                        <!-- <input />
-                        <button type="submit">submit</button> -->
-                        <!-- <button class="on-btn btn-link " onclick="placeOrder()">Order Now</button> -->
-                    </form> 
+                <% if(isOrderAllowed ){%> 
+                    <% if(totalCost != 0){ %> 
+                        <form method="POST" action="/order" id="importantForm"> 
+                            <script
+                                src="//checkout.stripe.com/v2/checkout.js"
+                                class="stripe-button"
+                                data-key="pk_test_51I3nnHFmnlpQUlnVG3AdoCKlP6P30y6ZSfa8IaKgH6DPqInvtQgpRaXwUFP3xEAaQVxkeOOl3mPnle1SIFlQxQg000s21G2XJ0"
+                                data-amount="<%= totalCost %>" 
+                                data-currency="usd" 
+                                data-name="Abhinav Goyal" 
+                                data-description="Buy React.js Complete Course" 
+                                data-locale="auto" > 
+                            </script> 
+                            <!-- <input />
+                            <button type="submit">submit</button> -->
+                            <!-- <button class="on-btn btn-link " onclick="placeOrder()">Order Now</button> -->
+                        </form> 
+                    <%}else{ %> 
+                        <button style="color: white;" class="btn btn-info"> Your cart seems to be empty </button>
+                    <%} %>
+                   
                 <%}else{ %> 
                     <button style="color: white;" class="btn btn-danger"> Product Not Available </button>
                 <%} %>

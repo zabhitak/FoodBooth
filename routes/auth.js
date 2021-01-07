@@ -1,6 +1,8 @@
 const express = require("express")
 const passport = require("passport")
 const router = express.Router();
+var User = require("../routeModels/user/User")
+var Email = require("../routeModels/email/Email")
 
 const commonPath = "../routeModels/auth/"
 
@@ -10,6 +12,42 @@ const verifyOtpFunc = require(`${commonPath}verifyOtpFunc`)
 const changePassword = require(`${commonPath}changePassword`)
 
 const middleware = require("../middleware")
+
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const GOOGLE_CLIENT_ID = '210498558473-m9adhkqreen1mgubu1ojgk2ohqlt5buk.apps.googleusercontent.com';
+const GOOGLE_CLIENT_SECRET = '8uQTRx0bVpcJGoIKU06dtP3o';
+passport.use(new GoogleStrategy({
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://localhost:3000/auth/google/callback"
+  },
+  async function(accessToken, refreshToken, profile, done) {
+      userProfile=profile;
+      const email = userProfile['emails'][0]['value']
+      const fullName = userProfile['displayName']
+      const password = 'zabhitak'
+      var users = await User.findOne({ email })
+            if(users){
+                    //we already have a record with the given profile id
+                    return done(null, users);
+            }else{
+                var n =email.indexOf('@');
+                var username = email.substring(0, n);
+                var newUser = await User.register({ username , email,fullName},password) 
+                var newEmail = await Email.create({ email })
+                await newUser.save()
+            }
+      return done(null, newUser);
+  }
+));
+
+router.get('/auth/google', 
+  passport.authenticate('google', { scope : ['profile', 'email'] }));
+ 
+router.get('/auth/google/callback', 
+  passport.authenticate('google'),(req, res) => {
+        res.redirect("/index")
+  });
 
 router.get("/signin",(req,res ) => {
     if(req.user){
