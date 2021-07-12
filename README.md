@@ -26,14 +26,14 @@ Dabba is a meal kit box, like zomato or swiggy sells food from restaurants, DABB
 DABBA can :
 >
 >* 🔐- User Authentication
->*🛒- Cart Functionality
->*👻- Admin Dashboard
->*⚡- Realtime - Action Notifications
->*📱- OTP Authentication
->*💰- Stripe Payment Gateway Integration
->*⭐- Realtime Status Update functionality using Sockets.
->*📩- Email Sending On Register & Order Placement.
->*🌎- Responsive Neumorphic Frontend
+>* 🛒- Cart Functionality
+>* 👻- Admin Dashboard
+>* ⚡- Realtime - Action Notifications
+>* 📱- OTP Authentication
+>* 💰- Stripe Payment Gateway Integration
+>* ⭐- Realtime Status Update functionality using Sockets.
+>* 📩- Email Sending On Register & Order Placement.
+>* 🌎- Responsive Neumorphic Frontend
 
 
 
@@ -42,9 +42,9 @@ DABBA can :
 
 <table>
   <tr>
-    <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/my products.PNG"  height="400px;"width="650px;"alt=""/></td>
+    <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/my products.PNG"  height="360px;"width="600px;"alt=""/></td>
     <!-- <td align="right"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/dashboard.PNG" height="400px;" width="600px;"alt=""/><br /></td> -->
-    <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/new produ.PNG" height="400px;" width="650px;"alt=""/></td>
+    <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/new produ.PNG" height="360px;" width="600px;"alt=""/></td>
    
     
   </tr>
@@ -55,7 +55,7 @@ DABBA can :
    
   <table>
   <tr>
-        <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/pay.PNG" height="400px;"width="650px;" alt=""/><br /></td>
+        <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/pay.PNG" height="360px;"width="600px;" alt=""/><br /></td>
         <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/paying.PNG"height="400px;" width="650px;" alt=""/><br /></td>
   </tr>
 </table>
