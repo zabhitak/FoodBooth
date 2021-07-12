@@ -25,11 +25,19 @@ Dabba is a meal kit box, like zomato or swiggy sells food from restaurants, DABB
 
 DABBA can :
 >
->* SOS - Emergency Call
+>* 🔐- User Authentication
+>*🛒- Cart Functionality
+>*👻- Admin Dashboard
+>*⚡- Realtime - Action Notifications
+>*📱- OTP Authentication
+>*💰- Stripe Payment Gateway Integration
+>*⭐- Realtime Status Update functionality using Sockets.
+>*📩- Email Sending On Register & Order Placement.
+>*🌎- Responsive Neumorphic Frontend
 
 
 
-## Images of Sunlight!
+## Images of DABBA!
 
 
 <table>
@@ -47,9 +55,8 @@ DABBA can :
    
   <table>
   <tr>
-        <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/pay.PNG" height="460px;"width="400px;" alt=""/><br /></td>
-        <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/paying.PNG"height="460px;" width="400px;" alt=""/><br /></td>
-        <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/receipt.PNG" height="460px;" width="400px;"alt=""/><br /></td>
+        <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/pay.PNG" height="400px;"width="650px;" alt=""/><br /></td>
+        <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/paying.PNG"height="400px;" width="650px;" alt=""/><br /></td>
   </tr>
 </table>
 
