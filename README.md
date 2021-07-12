@@ -41,15 +41,6 @@ This is an example of how to list things you need to use the software and how to
    http://localhost:3000/admin
    ```
 
-
-# Instructions to run locally:
-1. Download the source code
-2. Goto to visual studio code and open the code file. 
-3. Install the dependencies - npm install
-4. Run npm start.
-5. Visit http://localhost:3000 for user locally
-6. Visit http://localhost:3000/admin for admin locally
-
 # Features
 
 DABBA can :
