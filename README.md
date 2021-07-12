@@ -34,9 +34,9 @@ DABBA can :
 
 <table>
   <tr>
-    <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/my products.PNG"  height="400px;"width="600px;"alt=""/></td>
-    <td align="right"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/dashboard.PNG" height="460px;" width="600px;"alt=""/><br /></td>
-    <!-- <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/new produ.PNG" height="460px;" width="400px;"alt=""/></td> -->
+    <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/my products.PNG"  height="400px;"width="650px;"alt=""/></td>
+    <!-- <td align="right"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/dashboard.PNG" height="400px;" width="600px;"alt=""/><br /></td> -->
+    <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/new produ.PNG" height="400px;" width="650px;"alt=""/></td>
    
     
   </tr>
