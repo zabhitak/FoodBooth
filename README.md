@@ -1,10 +1,10 @@
 # DABBA
-RyZit is a meal kit box, like zomato or swiggy sells food from restaurants, DABBA will sell the items required to make that dish in proper proportion, so that sungle user customer don't need to buy a whole bottle for tble spoon of vinegar and like others.
+Dabba is a meal kit box, like zomato or swiggy sells food from restaurants, DABBA will sell the items required to make that dish in proper proportion, so that sungle user customer don't need to buy a whole bottle for tble spoon of vinegar and like others.
 
 <br />
 
 <p align="center">
- <img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/user dash.PNG" height="550px;"width="500px;"alt=""/>
+ <img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/user dash.PNG" height="550px;"width="700px;"alt=""/>
 </p>
 
 <p align="center">
@@ -34,9 +34,9 @@ DABBA can :
 
 <table>
   <tr>
-    <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/my products.PNG"  height="460px;"width="400px;"alt=""/></td>
-    <td align="right"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/dashboard.PNG" height="460px;" width="400px;"alt=""/><br /></td>
-    <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/new produ.PNG" height="460px;" width="400px;"alt=""/></td>
+    <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/my products.PNG"  height="400px;"width="600px;"alt=""/></td>
+    <td align="right"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/dashboard.PNG" height="460px;" width="600px;"alt=""/><br /></td>
+    <!-- <td align="center"><img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/new produ.PNG" height="460px;" width="400px;"alt=""/></td> -->
    
     
   </tr>
