@@ -37,7 +37,7 @@
                                         <h4 style="flex : 1;"><a href="productDetail-<%=eachProduct.id%>"> <%= eachProduct.title %> </a></h4>
                                         <% var extraClass = "btn-success" %>
                                         <% var btnText = "Available" %>
-                                        <% if(!eachProduct.isAvailable){%> 
+                                        <% if(eachProduct.isAvailable == "notAvailable"){%> 
                                             <% extraClass = "btn-danger" %>
                                             <% btnText = "Not " + btnText %>
                                         <%} %>
@@ -50,10 +50,7 @@
                                 </div>
                             </div>
                             <div class="bottom">
-                            <div class="bottom-text">
-                            <!-- <div class="delivery"><i class="fas fa-shopping-cart"></i>Delivery Free : <%= eachProduct.deliveryCharge %> </div> -->
-                            <!-- <div class="time"><i class="far fa-clock"></i>Delivery Time : <%= eachProduct.deliveryTime %></div> -->
-                            <div class="star">
+                            <div class="bottom-text"><div class="star">
                             <span> Comments </span>
                             <div class="comments"><a href="#"><i class="fas fa-comment-alt"></i> <%= eachProduct.comments.length %> </a></div>
                             </div>

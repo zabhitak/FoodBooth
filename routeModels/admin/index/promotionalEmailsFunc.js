@@ -32,7 +32,7 @@ promotionalEmailsFunc = async (req,res) => {
             await allEmail.forEach( async eachEmail => {
                 var { email } = eachEmail
                 const mailOpts = {
-                    from: "Natto",
+                    from: "FoodBooth",
                     to : email,
                     subject,
                     text
