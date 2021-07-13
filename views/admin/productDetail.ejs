@@ -12,13 +12,6 @@
 				<div class="ms-panel">
 				<div class="ms-panel-header">
 					<h6><%= product.title %></h6>
-					<% var extraClass = "btn-success" %>
-					<% var btnText = "Available" %>
-					<% if(product.isAvailable == "notAvailable"){%> 
-						<% extraClass = "btn-danger" %>
-						<% btnText = "Not " + btnText %>
-					<%} %>
-					<button style="margin-top: 20px;" class="btn <%=extraClass%>" > <%= btnText %> </button>
 				</div>
 				<div class="ms-panel-body">
 					<div id="dottedSlider" class="ms-dotted-indicator-slider carousel slide" data-ride="carousel">
@@ -67,17 +60,14 @@
 				<div class="price">
 					<span><%= product.price %></span>
 				</div>
-				<!-- <div class="dt-detail">
-					<ul>
-						<li>
-							<div class="delivery"><i class="fas fa-shopping-cart"></i>Delivery Charge : <%= product.deliveryCharge %></div>
-						</li>
-						<li>
-							<div class="time"><i class="far fa-clock"></i>Delivery Time : <%= product.deliveryTime %></div>
-						</li>
-					</ul>
-				</div> -->
 
+				<% var extraClass = "btn-success" %>
+				<% var btnText = "Available" %>
+				<% if(product.isAvailable == "notAvailable"){%> 
+					<% extraClass = "btn-danger" %>
+					<% btnText = "Not " + btnText %>
+				<%} %>
+				<button class="btn <%=extraClass%> w-100" > <%= btnText %> </button>
 				<a href="/editProduct-<%=product.id%>" class="btn btn-warning d-block w-100" name="btn100" >Edit </a>
 				<form action="/delete-product" method="POST">
 					<input type="hidden" value="<%= product.id %>" name="productId">

@@ -1,27 +1,11 @@
 <%- include('./partials/header') %>
-<%- include('./partials/sidenav') %>
   <!-- Main Content -->
-  <main class="body-content">
-    <!-- Navigation Bar -->
-    <nav class="navbar ms-navbar">
-      <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft"> <span class="ms-toggler-bar bg-primary"></span>
-        <span class="ms-toggler-bar bg-primary"></span>
-        <span class="ms-toggler-bar bg-primary"></span>
-      </div>
-      <div class="logo-sn logo-sm ms-d-block-sm">
-        <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="../../index-2.html">
-          <img src="../../assets/img/costic/costic-logo-84x41.png" alt="logo">
-        </a>
-      </div>
-    </nav>
+  <!-- <main class="body-content"> -->
 
     <!-- Body Content Wrapper -->
     <div class="ms-content-wrapper ms-auth">
 
       <div class="ms-auth-container">
-        <div class="ms-auth-col">
-          <div class="ms-auth-bg"></div>
-        </div>
         <div class="ms-auth-col">
           <div class="ms-auth-form">
             <form class="needs-validation" method="POST" name="/admin/signup" novalidate="">
@@ -62,16 +46,6 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group">
-                <div class="form-check pl-0">
-                  <label class="ms-checkbox-wrap">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                    <i class="ms-checkbox-check"></i>
-                  </label>
-                  <span> Agree to terms and conditions </span>
-                </div>
-              </div>
-
               <%- include('../partials/flashMessage') %>
               <button class="btn btn-primary mt-4 d-block w-100" type="submit">Create Account</button>
               

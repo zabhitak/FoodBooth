@@ -29,7 +29,7 @@ This is an example of how to list things you need to use the software and how to
 
 2. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/zabhitak/Dabba-Meal-Kit
    ```
 3. Install NPM packages
    ```sh
@@ -53,7 +53,7 @@ DABBA can :
 >* 💰- Stripe Payment Gateway Integration
 >* ⭐- Realtime Status Update functionality using Sockets.
 >* 📩- Email Sending On Register & Order Placement.
->* 🌎- Responsive Neumorphic Frontend
+>* 🌎- Responsive Frontend
 
 
 

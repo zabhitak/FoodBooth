@@ -2,7 +2,6 @@
 
   <main class="body-content ms-lock-screen">
     <div class="ms-content-wrapper">
-      <img class="ms-user-img ms-img-round ms-lock-screen-user" src="../../assets/img/costic/customer-3.jpg" alt="people">
       <h1> <%= otp.username %> </h1>
       <form method="POST" action="/admin/verifyOtp-<%=otp.id%>" >
         <div class="ms-form-group my-0 mb-0 has-icon fs-14">
@@ -15,5 +14,13 @@
       </form>
     </div>
   </main>
+
+
+  <%var newDate = new Date(); %>
+
+  <div class="ms-lock-screen-time">
+    <p> <h3 style="color : white;"> <%= newDate.toDateString().slice(0,10) %> </h3> </p>
+  </div>
+
 
 <%- include('./partials/footer') %>

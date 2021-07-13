@@ -67,7 +67,7 @@ placeOrder = async (req,res) => {
             return stripe.charges.create({ 
                 amount: totalCost,    // Charing Rs 25 
                 description: 'Web Development Product', 
-                currency: 'USD', 
+                currency: 'INR', 
                 customer: customer.id 
             });  
         }) 
