@@ -68,31 +68,26 @@ getInvoice = async (req, res, next) => {
       pdfDoc.pipe(res);
 
       pdfDoc
-        .image(image, 50, 45, {width: 50})
         .fillColor('#444444')
         .fontSize(20)
-        .text('ACME Inc.', 110, 57)
+        .text('FoodBooth', 110, 57)
         .fontSize(10)
-        .text('ACME Inc.', 200, 50, {align: 'right'})
+        .text('FoodBooth', 200, 50, {align: 'right'})
         .text('123 Main Street', 200, 65, {align: 'right'})
-        .text('New York, NY, 10025', 200, 80, {align: 'right'})
+        .text('India', 200, 80, {align: 'right'})
         .moveDown();
 
-      pdfDoc.fillColor('#444444').fontSize(20).text('receipt', 50, 160);
+      pdfDoc.fillColor('#444444').fontSize(20).text('Receipt', 50, 160);
 
       generateHr(pdfDoc, 185);
       const customerInformationTop = 200;
 
       pdfDoc
         .fontSize(10)
-        .text('Receipt Number:', 50, customerInformationTop)
-        .font('Helvetica-Bold')
-        .text('receipt.receipt_nr', 150, customerInformationTop)
-        .font('Helvetica')
         .text('Receipt Date:', 50, customerInformationTop + 15)
         .text(formatDate(new Date()), 150, customerInformationTop + 15)
         .text('Balance Due:', 50, customerInformationTop + 30)
-        .text(formatCurrency(totalCost), 150, customerInformationTop + 30)
+        .text(`Rs. ${totalCost}`, 150, customerInformationTop + 30)
         .font('Helvetica-Bold')
         .text(customer.username.toString(), 300, customerInformationTop)
         .font('Helvetica')
@@ -139,7 +134,7 @@ getInvoice = async (req, res, next) => {
         position,
         "",
         "Total",
-        "$ " + totalCost
+        "Rs. " + totalCost
       );
 
       generateHr(pdfDoc, position + 20);

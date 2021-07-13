@@ -51,15 +51,15 @@ const signup = async (req,res) => {
                     }
             
                     const mailOpts = {
-                        from: "Natto",
+                        from: "FoodBooth",
                         to : email,
-                        subject: 'Natto | Verify Account',
+                        subject: 'FoodBooth | Verify Account',
                         text: "Hi," + "\n\n" + 
-                        "To proceed further with your account verification at Natto , Please use the OTP given below.This OTP is only valid for 60 minutes."
+                        "To proceed further with your account verification at FoodBooth , Please use the OTP given below.This OTP is only valid for 60 minutes."
                         + "\n\n" + 
                         "OTP : " + otp + " \n\n" + 
                         "Regards,\n" +
-                        "Team ,Natto"
+                        "Team ,FoodBooth"
                     }
             
                     var response = await smtpTrans.sendMail(mailOpts)
