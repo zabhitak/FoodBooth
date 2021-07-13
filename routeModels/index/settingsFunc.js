@@ -3,7 +3,7 @@ var User = require("../user/User")
 const settingsRoute = async (req,res) => {
     try {
         var user = await User.findById(req.user._id)
-        var { fullName, address,  description, phoneNumber, website, } = (req.body)
+        var { fullName, address,  description, phoneNumber } = (req.body)
         const avatar = req.files[0].path
 
         user.avatar = avatar
@@ -11,7 +11,6 @@ const settingsRoute = async (req,res) => {
         user.address = address
         user.description = description
         user.phoneNumber = phoneNumber
-        user.website = website
 
         var savedUser = await user.save()
 

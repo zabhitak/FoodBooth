@@ -17,7 +17,6 @@
 <div class="nav nav-pills nav-stacked nav-tabs ui vertical menu fluid">
 <a href="#edit-profile" data-toggle="tab" class="item user-tab cursor-pointer active">Edit Profile</a>
 <a href="#change-password" data-toggle="tab" class="item user-tab cursor-pointer">Change Password</a>
-<a href="#delete-account" data-toggle="tab" class="item user-tab cursor-pointer" id="bookmarks" data-tab="bookmarks">Deactivate Account</a>
 </div>
 </div>
 </div>
@@ -52,22 +51,7 @@
             </div>
         </div>
         <br>
-        <!-- <div class="setting-dt b-top padding-b">
-            <h4>Background Image</h4>
-            <div class="background-img">
-                <img src="images/profile/bg.jpg" alt="">
-            </div>
-            <div class="upload-avatar">
-                <div class="input-heading">Upload a New Background Image*</div>
-                <div class="input-container">
-                    <input class="file-upload-input" type="file" name="backgroundImage" id="image" >
-                    <button class="browse-btn">
-                        Choose File
-                    </button>
-                    <span class="file-info">Upload a file</span>
-                </div>
-            </div>
-        </div> -->
+    
         <div class="form-group">
             <label for="nameUser">Full Name*</label>
             <input type="text" required value="<%=user.fullName%>" name="fullName" class="video-form" id="nameUser" placeholder="Full Name">
@@ -92,10 +76,6 @@
         <div class="form-group">
             <label for="telPhone">Phone Number*</label>
             <input type="text" required class="video-form" value="<%=user.phoneNumber%>" name="phoneNumber" id="telPhone" placeholder="Phone Number">
-        </div>
-        <div class="form-group">
-            <label for="webSite">Website*</label>
-            <input type="text" required class="video-form" value="<%=user.website%>" name="website" id="webSite" placeholder="Website">
         </div>
         <button type="submit" class="change-btn btn-link">Save Changes</button>
     </form>
@@ -205,23 +185,7 @@ Hide my profile from search engine
 </div>
 </div>
 </div>
-<div class="tab-pane" id="delete-account">
-<div class="timeline">
-<div class="tab-content-heading">
-<h4>Deactivate Account</h4>
-<a href="/index"><i class="fas fa-angle-double-left"></i>Back to Profile</a>
-</div>
-<div class="edit-profile">
-<form>
-<div class="form-group">
-<label for="yourPassword">Your Password*</label>
-<input type="password" class="video-form" id="yourPassword" placeholder="Enter Your Password">
-</div>
-<button type="submit" class="change-btn btn-link">Deactivate Account</button>
-</form>
-</div>
-</div>
-</div>
+
 </div>
 </div>
 </div>
