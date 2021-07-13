@@ -204,7 +204,7 @@ FoodBooth can :
 # TechStack
 <table>
   <tr>
-    <td><img src="https://github.com/zabhitak/FoodBooth/tree/master/Screenshots/tools/node.jpg" width="100px" height="100px" /></td>
+    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/tools/node.jpg" width="100px" height="100px" /></td>
     <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/tools/mongoose.png" width="100px" height="100px" /></td>
     <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/tools/bootstrap.jpg"  width="100px" height="100px"></td>
     <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/tools/socket.png"  width="100px" height="100px"></td>
