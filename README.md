@@ -204,11 +204,11 @@ FoodBooth can :
 # TechStack
 <table>
   <tr>
-    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/node.jpg" width="100px" height="100px" /></td>
-    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/mongoose.png" width="100px" height="100px" /></td>
-    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/bootstrap.jpg"  width="100px" height="100px"></td>
-    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/socket.jpg"  width="100px" height="100px"></td>
-    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/stripe.jpg"  width="100px" height="100px"></td>
+    <td><img src="https://github.com/zabhitak/FoodBooth/tree/master/Screenshots/tools/node.jpg" width="100px" height="100px" /></td>
+    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/tools/mongoose.png" width="100px" height="100px" /></td>
+    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/tools/bootstrap.jpg"  width="100px" height="100px"></td>
+    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/tools/socket.jpg"  width="100px" height="100px"></td>
+    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/tools/stripe.jpg"  width="100px" height="100px"></td>
   </tr>
   </table>
 
