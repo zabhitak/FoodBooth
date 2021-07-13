@@ -66,14 +66,14 @@ orderInfo =  async (req,res) => {
         })
         
         const mailOpts = {
-            from: "Natto",
+            from: "FoodBooth",
             to : customer.email,
-            subject: 'Natto | Order Cancelled',
+            subject: 'FoodBooth | Order Cancelled',
             text: `Hi, ${ customer.username }` + "\n\n" + 
             `Your order has been cancelled.`
             + "\n\n" + 
             "Regards,\n" +
-            "Team ,Natto"
+            "Team ,FoodBooth"
         }
 
         var response = await smtpTrans.sendMail(mailOpts)

@@ -88,14 +88,14 @@ placeOrder = async (req,res) => {
         })
         
         const mailOpts = {
-            from: "Natto",
+            from: "FoodBooth",
             to : user.email,
-            subject: 'Natto | Order Accepted',
+            subject: 'FoodBooth | Order Accepted',
             text: `Hi, ${ user.username }` + "\n\n" + 
             `Your order has been accepted. Total cost of your order is ${totalCost}`
             + "\n\n" + 
             "Regards,\n" +
-            "Team ,Natto"
+            "Team ,FoodBooth"
         }
 
         var response = await smtpTrans.sendMail(mailOpts)
