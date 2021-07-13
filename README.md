@@ -53,7 +53,7 @@ DABBA can :
 >* 💰- Stripe Payment Gateway Integration
 >* ⭐- Realtime Status Update functionality using Sockets.
 >* 📩- Email Sending On Register & Order Placement.
->* 🌎- Responsive Neumorphic Frontend
+>* 🌎- Responsive Frontend
 
 
 
