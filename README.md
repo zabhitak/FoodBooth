@@ -67,11 +67,6 @@ FoodBooth can :
   </tr>
   <tr>
   <td align="center">
-  <h3> Registration </h3>
-   <img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/user/register.png" /><br />      </td>
-  </tr>
-  <tr>
-  <td align="center">
   <h3> Verify Account </h3>
    <img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/user/verify_account.png" /><br />      </td>
   </tr>
@@ -95,11 +90,6 @@ FoodBooth can :
     <td align="center">
    <h3> Add To Cart </h3>
    <img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/user/addToCart.png" alt=""/><br />      </td>
-  </tr>
-  <tr>
-    <td align="center">
-   <h3> Cart </h3>
-   <img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/user/cart.png" alt=""/><br />      </td>
   </tr>
   </table>
 
@@ -139,8 +129,6 @@ FoodBooth can :
 ## Dashboard
 <table>
   <tr>
-    <td align="center">
-        <h3> Dashboard </h3>
         <img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/admin/admin_dashboard.png" alt=""/></td>
         </tr>
         <tr>
@@ -172,9 +160,6 @@ FoodBooth can :
    <h3>  Order Info </h3>
    <img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/admin/order_info.png" alt=""/></td>
     </tr>
-     <td align="center">
-   <h3>  Order Status </h3>
-   <img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/admin/order_status.png" alt=""/></td>
     </tr>
   </table>
 
@@ -183,8 +168,6 @@ FoodBooth can :
 ## Feedbacks
 <table>
   <tr>
-    <td align="center">
-   <h3>  Feedback </h3>
    <img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/admin/feekbacks.png" alt=""/></td>
     </tr>
   </table>
@@ -193,8 +176,6 @@ FoodBooth can :
 ## Promotional Emails
 <table>
   <tr>
-    <td align="center">
-   <h3>  Promotional Emails </h3>
    <img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/admin/promotional_emails.png" alt=""/></td>
     </tr>
   </table>
