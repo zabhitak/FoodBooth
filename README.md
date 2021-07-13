@@ -141,9 +141,6 @@ FoodBooth can :
    <h3>  Add Product </h3>
    <img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/admin/addProduct.png" alt=""/></td>
     </tr>
-     <td align="center">
-   <h3>  All Products </h3>
-   <img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/admin/allProducts.png" alt=""/></td>
     </tr>
       <td align="center">
    <h3> Product Detail </h3>
@@ -188,7 +185,7 @@ FoodBooth can :
     <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/tools/node.jpg" width="100px" height="100px" /></td>
     <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/tools/mongoose.png" width="100px" height="100px" /></td>
     <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/tools/bootstrap.jpg"  width="100px" height="100px"></td>
-    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/tools/socket.png"  width="100px" height="100px"></td>
+    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/tools/socket.jpeg"  width="100px" height="100px"></td>
     <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/tools/stripe.png"  width="100px" height="100px"></td>
   </tr>
   </table>
