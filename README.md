@@ -1,10 +1,10 @@
-# DABBA
-Dabba is a meal kit box, like zomato or swiggy sells food from restaurants, DABBA will sell the items required to make that dish in proper proportion, so that sungle user customer don't need to buy a whole bottle for tble spoon of vinegar and like others.
+# FoodBooth
+FoodBooth is a meal kit box, like zomato or swiggy sells food from restaurants, FoodBooth will sell the items required to make that dish in proper proportion, so that sungle user customer don't need to buy a whole bottle for tble spoon of vinegar and like others.
 
 <br />
 
 <p align="center">
-<h1 align="center">Dabba User Dashboard</h1>
+<h1 align="center">FoodBooth User Dashboard</h1>
 </p>
 
 <p align="center">
@@ -29,7 +29,7 @@ This is an example of how to list things you need to use the software and how to
 
 2. Clone the repo
    ```sh
-   git clone https://github.com/zabhitak/Dabba-Meal-Kit
+   git clone https://github.com/zabhitak/FoodBooth
    ```
 3. Install NPM packages
    ```sh
@@ -43,7 +43,7 @@ This is an example of how to list things you need to use the software and how to
 
 # Features
 
-DABBA can :
+FoodBooth can :
 >
 >* 🔐- User Authentication
 >* 🛒- Cart Functionality
@@ -204,19 +204,13 @@ DABBA can :
 # TechStack
 <table>
   <tr>
-    <td><img src="https://github.com/sahil-mor/RyZit/blob/master/public/assets/img/theme/node.jpg" width="100px" height="100px" /></td>
-    <td><img src="https://github.com/sahil-mor/RyZit/blob/master/public/assets/img/theme/mongoose.png" width="100px" height="100px" /></td>
-    <td><img src="https://github.com/sahil-mor/RyZit/blob/master/public/assets/img/theme/bootstrap.jpg"  width="100px" height="100px"></td>
+    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/node.jpg" width="100px" height="100px" /></td>
+    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/mongoose.png" width="100px" height="100px" /></td>
+    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/bootstrap.jpg"  width="100px" height="100px"></td>
+    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/socket.jpg"  width="100px" height="100px"></td>
+    <td><img src="https://github.com/zabhitak/FoodBooth/blob/master/Screenshots/stripe.jpg"  width="100px" height="100px"></td>
   </tr>
   </table>
-
-<br />
-
-
-
-# Built With 
-NodeJS - Express <br />
-Database - <a href="https://mongoosejs.com/"> Mongoose </a>  <br />
 
 
 <br />
