@@ -4,7 +4,7 @@ Dabba is a meal kit box, like zomato or swiggy sells food from restaurants, DABB
 <br />
 
 <p align="center">
- <img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/user dash.PNG" height="550px;"width="700px;"alt=""/>
+ <img src="https://github.com/zabhitak/Dabba-Meal-Kit/blob/master/Screenshots/user/dashboard.png" alt=""/>
 </p>
 
 <p align="center">
