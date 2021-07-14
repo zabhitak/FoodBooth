@@ -17,7 +17,7 @@ const Emitter = require('events')
 dotenv.config();
 
 const keys = require('./keys');
-const MONGODB_URI = keys.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 const app = express();
 

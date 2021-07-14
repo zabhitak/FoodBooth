@@ -3,6 +3,8 @@ const passport = require("passport")
 const router = express.Router();
 var User = require("../routeModels/user/User")
 var Email = require("../routeModels/email/Email")
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET
 
 const commonPath = "../routeModels/auth/"
 
@@ -14,8 +16,6 @@ const changePassword = require(`${commonPath}changePassword`)
 const middleware = require("../middleware")
 
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const GOOGLE_CLIENT_ID = '210498558473-m9adhkqreen1mgubu1ojgk2ohqlt5buk.apps.googleusercontent.com';
-const GOOGLE_CLIENT_SECRET = '8uQTRx0bVpcJGoIKU06dtP3o';
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
