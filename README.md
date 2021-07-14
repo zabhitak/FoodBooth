@@ -35,7 +35,12 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    npm install
    ```
-4. Run the project on localhost
+4. Enter your Google Signin API in `.env`
+   ```JS
+   GOOGLE_CLIENT_ID = 'ENTER YOUR API'
+   ```
+
+5. Run the project on localhost
    ```sh
    Visit http://localhost:3000
    http://localhost:3000/admin
