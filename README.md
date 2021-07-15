@@ -1,5 +1,5 @@
 # FoodBooth
-FoodBooth is a meal kit box, like zomato or swiggy sells food from restaurants, FoodBooth will sell the items required to make that dish in proper proportion, so that sungle user customer don't need to buy a whole bottle for tble spoon of vinegar and like others.
+FoodBooth is a meal kit box, like zomato or swiggy sells food from restaurants, FoodBooth will sell the items required to make that dish in proper proportion, so that single user customers don't need to buy a whole bottle for table spoon of vinegar and like others.
 
 <br />
 
